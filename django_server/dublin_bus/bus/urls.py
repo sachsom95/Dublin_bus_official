@@ -15,10 +15,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-# added the libraries path and include so that we can redirect links to bus app
-from django.urls import path,include
+# importing bus apps view into bus url.py
+from . import views
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',include('bus.urls'))
+    path('',views.home,name="home")
 ]
