@@ -17,8 +17,11 @@ from django.contrib import admin
 from django.urls import path
 # added the libraries path and include so that we can redirect links to bus app
 from django.urls import path,include
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',include('bus.urls'))
+    path('',include('bus.urls')),
 ]
+
+urlpatterns += staticfiles_urlpatterns()
