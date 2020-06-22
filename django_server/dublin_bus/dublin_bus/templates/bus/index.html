@@ -7,7 +7,7 @@
         <div class="row"><h1>Journey Planner</h1><h2 class="col-sm-6"></h2></div>
         <div class="col-md-12" id="journey-planner">
        
-        <form id="form1">
+          <form id="form1">
             <p>&nbsp;From:&nbsp;</p>
             <div class="input-group">
               <input id="searchTextField_start" type="text" class="form-control" placeholder="Enter a bus stop or an address">
@@ -42,32 +42,17 @@
       </div>
           </div>
         </form>
-          <button type="submit" form="form1" value="Submit" class="btn btn-warning btn-lg" onclick="myFunction()">Submit</button>  
+          <button type="submit" form="form1" value="Submit" class="btn btn-warning btn-lg">Submit</button>  
     </div>
-    <script>
-      function myFunction() {
-        alert("heyyyy");
-      }
-      </script>
+ 
 
-    <div class="col-md-6"><div id="map"> hello </div></div>
+    <div class="col-md-6"><iframe class="d-lg-flex justify-content-lg-center align-items-lg-end" allowfullscreen="" frameborder="0" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBDWHM_csX0pm5yQAmuwQKDWwH0DS2Tmgk&amp;q=Dublin+Ireland&amp;zoom=15.5" width="100%"
+        height="450"></iframe></div>
         </div>
        
         <script src="https://cdn.jsdelivr.net/momentjs/2.14.1/moment.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js"></script>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/css/bootstrap-datetimepicker.min.css">
-
-
-<!--Jquery for map-->
-<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> -->
-<!--Script for Map and Marker 01-->
-<script src="{% static 'bus/js/map_init.js' %}"></script>
- <!--MAPS API-->
-<script
-src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCFtH8qWuX2LGmHcicY-vLHfYuB7D6WI7Y&libraries=places&callback=initMap" >
-
-</script>
-<script src="{% static 'bus/js/map_auto_complete_text.js' %}"></script>
-
+        <link rel="stylesheet" href="{% static 'bus/css/styles.css' %}">    
 {% endblock %}
