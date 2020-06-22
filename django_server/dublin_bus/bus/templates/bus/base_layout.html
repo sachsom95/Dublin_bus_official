@@ -1,0 +1,65 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" >
+    <title>Dublin Bus</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="{% static 'bus/css/styles.css' %}">       
+    <link rel="stylesheet" href="{% static 'bus/css/map.css' %}">
+</head>
+
+
+<body>
+    <nav class="navbar navbar-light navbar-expand-md d-flex navigation-clean">
+        <div class="container-fluid"><img class="img-fluid border rounded-0 d-inline-block flex-shrink-1 mr-auto" data-bs-hover-animate="pulse" src="{% static 'db-logo-2.jpeg' %}" width="50" height="50" style="padding: 10;margin: 10;background-color: #fbd000;"><a class="navbar-brand"
+                href="#">Dublin Bus</a>
+            <div
+                class="collapse navbar-collapse" id="navcol-1">
+                <ul class="nav navbar-nav ml-auto">
+                    <li class="nav-item" role="presentation"><a class="nav-link active" href="#">Fare Estimator</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="#">Dublin Bus</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="{% url 'login' %}">Log In</a></li>
+                </ul>
+        </div>
+</div>
+</nav>
+    <div class="wrapper">
+        {% if messages %}
+        {% for messages in messages %}
+            <div class = "alert alert-{{ messages.tags }}">
+              {{ messages }}
+            </div>
+        {% endfor %}
+    {% endif %}
+        {% block content %}
+        {% endblock %}
+    </div>
+</div>
+<div class="footer-basic">
+    <footer>
+        <ul class="list-inline">
+            <li class="list-inline-item"><a href="#">Home</a></li>
+            <li class="list-inline-item"><a href="#">Services</a></li>
+            <li class="list-inline-item"><a href="#">About</a></li>
+            <li class="list-inline-item"><a href="#">Terms</a></li>
+            <li class="list-inline-item"><a href="#">Privacy Policy</a></li>
+        </ul>
+        <p class="copyright" style="font-family: Orienta, sans-serif;">Group 8 © 2020</p>
+    </footer>
+</div>
+<!-- <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+
+
+
+
+</body>
+</html>

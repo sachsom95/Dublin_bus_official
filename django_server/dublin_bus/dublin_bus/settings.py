@@ -32,11 +32,14 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'django.contrib.admin',
+    'users.apps.UsersConfig',
     'django.contrib.auth',
+    'crispy_forms',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'bus',
 ]
 
 MIDDLEWARE = [
@@ -118,3 +121,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'assets')]
+# STATIC_ROOT = os.path.join(BASE_DIR, 'assets')
+CRISPY_TEMPLATE_PACK = 'bootstrap4'

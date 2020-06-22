@@ -1,0 +1,20 @@
+
+{% extends 'bus/base_layout.html' %}
+{% load static %}
+{% block content %}
+<div class="row"><h1>User Log-in</h1><h2 class="col-sm-6"></h2></div>
+<div class="row">
+  <div id="col2" class="col-md-6">
+<div class="form-group">
+    <label for="usr">User Name:</label>
+    <input type="text" class="form-control" id="usr">
+  </div>
+  <div class="form-group">
+    <label for="pwd">Password:</label>
+    <input type="password" class="form-control" id="pwd">
+  </div>
+  <button type="button" class="btn btn btn-lg">Sign up</button> <button type="button" class="btn btn-warning btn-lg">Log in</button>
+  </div>
+  <div class="col-md-6"><img src="{% static 'bus-3.jpeg' %}" width="500px"; height="400px"></div>
+  </div>
+{% endblock %}

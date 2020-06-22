@@ -1,0 +1,179 @@
+body{}
+
+h1{
+    font-family:Orienta, sans-serif;
+    color: rgb(248,250,251);
+    background-color: #252d5a;
+    padding-left: 18px;
+    padding-right: 18px;
+}
+#col1 {
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    padding-left: 50px;
+    padding-right: 50px;
+    
+}
+#col2 {
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    padding-left: 50px;
+    padding-right: 50px;
+    
+}
+#journey-planner{
+    padding-left: 5px;
+    padding-right: 5px;
+}
+p {
+    font-family:Orienta, sans-serif;
+    padding-top: 10px;
+}
+input {
+    font-family:Orienta, sans-serif;
+    display: block;
+}
+label {
+    font-family:Orienta, sans-serif;
+}
+.footer-basic {
+    padding: 40px 0;
+    background-color: #fff;
+    color: #4b4c4d
+}
+
+.footer-basic ul {
+    padding: 0;
+    list-style: none;
+    text-align: center;
+    font-size: 18px;
+    line-height: 1.6;
+    margin-bottom: 0;
+    font-family: Orienta, sans-serif;
+}
+
+.footer-basic li {
+    padding: 0 10px
+}
+
+.footer-basic ul a {
+    color: inherit;
+    text-decoration: none;
+    opacity: .8
+}
+
+.footer-basic ul a:hover {
+    opacity: 1
+}
+
+.footer-basic .social {
+    text-align: center;
+    padding-bottom: 25px
+}
+
+.footer-basic .social > a {
+    font-size: 24px;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    display: inline-block;
+    text-align: center;
+    border-radius: 50%;
+    border: 1px solid #ccc;
+    margin: 0 8px;
+    color: inherit;
+    opacity: .75
+}
+
+.footer-basic .social > a:hover {
+    opacity: .9
+}
+
+.footer-basic .copyright {
+    margin-top: 15px;
+    text-align: center;
+    font-size: 13px;
+    color: #aaa;
+    margin-bottom: 0
+}
+.navigation-clean .navbar-brand {
+    font-weight: 700;
+    color: inherit;
+    font-family: Orienta, sans-serif;
+}
+
+.navigation-clean .navbar-brand:hover {
+    color: #222
+}
+.navigation-clean.navbar-dark .navbar-brand:hover {
+    color: #f0f0f0;
+    font-family:Orienta, sans-serif;
+}
+
+.navigation-clean .navbar-brand img {
+    height: 100%;
+    display: inline-block;
+    margin-right: 10px;
+    width: auto
+    
+}
+
+.navigation-clean .navbar-toggler {
+    border-color: #ddd;
+    color: #888
+}
+
+.navigation-clean .navbar-toggler:focus,
+.navigation-clean .navbar-toggler:hover {
+    background: 0 0
+}
+
+.navigation-clean.navbar-dark .navbar-toggler {
+    border-color: #555;
+    color: #eee
+}
+
+.navigation-clean .form-inline,
+.navigation-clean .navbar-collapse {
+    border-top-color: #ddd
+}
+
+.navigation-clean.navbar-dark .form-inline,
+.navigation-clean.navbar-dark .navbar-collapse {
+    border-top-color: #333;
+    font-family: Orienta, sans-serif;
+}
+.navigation-clean.navbar .navbar-nav .nav-link {
+    padding-left: 18px;
+    padding-right: 18px;
+    font-family:Orienta, sans-serif;
+}
+
+.navigation-clean.navbar-light .navbar-nav .nav-link {
+    color: #465765;
+    font-family:Orienta, sans-serif;
+}
+
+.navigation-clean.navbar-light .navbar-nav .nav-link:focus,
+.navigation-clean.navbar-light .navbar-nav .nav-link:hover {
+    color: #37434d !important;
+    background-color: transparent;
+    font-family: Orienta, sans-serif;
+}
+
+.navigation-clean .navbar-nav > li > .dropdown-menu {
+    margin-top: -5px;
+    box-shadow: none;
+    background-color: #fff;
+    border-radius: 2px;
+    font-family: Orienta, sans-serif;
+}
+button {
+    padding-left: 9px;
+    padding-right: 9px;
+    font-family:Orienta, sans-serif;
+    padding-bottom: 5px;
+    padding-top: 5px;
+}
