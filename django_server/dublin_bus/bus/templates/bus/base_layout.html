@@ -31,6 +31,13 @@
 </div>
 </nav>
     <div class="wrapper">
+        {% if messages %}
+        {% for messages in messages %}
+            <div class = "alert alert-{{ messages.tags }}">
+              {{ messages }}
+            </div>
+        {% endfor %}
+    {% endif %}
         {% block content %}
         {% endblock %}
     </div>
