@@ -170,13 +170,7 @@ label {
     border-radius: 2px;
     font-family: Orienta, sans-serif;
 }
-button {
-    padding-left: 9px;
-    padding-right: 9px;
-    font-family:Orienta, sans-serif;
-    padding-bottom: 5px;
-    padding-top: 5px;
-}
+
 #map{
     height:400px;
     width:100%;
