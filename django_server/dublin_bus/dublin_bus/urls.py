@@ -26,7 +26,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('',include('bus.urls')),
     # path('bus/',include('bus.urls')),
-    path('register',user_views.register,name='register'),
+    path('register/',user_views.register,name='register'),
     # path('login/', views.index,name="login")
     path('bus/',include('bus.urls')),
     path('login/', views.index),
