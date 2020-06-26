@@ -30,6 +30,7 @@ urlpatterns = [
     # path('login/', views.index,name="login")
     path('bus/',include('bus.urls')),
     path('login/', views.index),
+    path('account', user_views.account, name='account')
 
 ]
 

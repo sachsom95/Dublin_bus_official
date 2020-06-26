@@ -1,0 +1,26 @@
+{% extends "bus/base_layout.html" %}
+{% load static %}
+
+{% block content %}
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<h1>Tourism</h1>
+<div class="row">
+    <div class="col-sm-6" id="col1">
+<p>Guess what it's tourism time</p>
+<ul>
+    <li><img src="{% static 'DublinAirport.jpeg' %}" class="rounded" alt="Airport">
+        The airport</li><input type="button" class="btn btn-warning btn-info btn-sm" value="Find Route">
+    <li><img src="{% static 'Guinness.jpeg' %}" class="rounded" alt="Black Gates">
+        Guinness Store House</li><input type="button" class="btn btn-warning btn-info btn-sm" value="Find Route">
+        </div>
+        <div class ="row">
+            <div class="col-sm-6" id="col2">
+    <li><img src="{% static 'NGI.jpeg' %}" class="rounded" alt="National Gallery">
+        National Gallery of Ireland</li><input type="button" class="btn btn-warning btn-info btn-sm" value="Find Route">
+    <li><img src="{% static 'NLM.jpeg' %}" class="rounded" alt="Leprechaun">
+        National Leprechaun Museum</li><input type="button" class="btn btn-warning btn-info btn-sm" value="Find Route">
+</ul>
+</div>
+
+
+{% endblock content %}
