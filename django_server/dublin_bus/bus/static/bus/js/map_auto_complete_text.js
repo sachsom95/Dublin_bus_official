@@ -1,10 +1,14 @@
 /*
 Author : Sachin
 Purpose of File: deals with the auto predictions of locations in Dublin and get
-the lat-lon of the locations stored data in hidden fields
+the lat-lon of the locations. Also makes a call on addMarker method when both the forms
+are filled
+
 */
 
 function auto_suggest_location() {
+    let has_entered_start = false;
+    let has_entered_stop = false;
     let start;
     let stop;
 
@@ -30,14 +34,33 @@ function auto_suggest_location() {
 //store value in hidden fields to reterive later feels like a hax to be honest find better way
     google.maps.event.addListener(autocomplete_input_start, 'place_changed', function () {
          start = autocomplete_input_start.getPlace();
+         has_entered_start = true
         document.getElementById('start_lat').value = start.geometry.location.lat();
         document.getElementById('start_lng').value = start.geometry.location.lng();
+        if(has_entered_stop && has_entered_start){
+            addMarker(parseFloat(document.getElementById('start_lat').value),parseFloat(document.getElementById('start_lng').value))
+            addMarker(parseFloat(document.getElementById('stop_lat').value), parseFloat(document.getElementById('stop_lng').value))
+            has_entered_start = false;
+            has_entered_stop = false;
+
+        }
     });
+
 
     google.maps.event.addListener(autocomplete_input_destination, 'place_changed', function () {
          stop = autocomplete_input_destination.getPlace();
+         has_entered_stop = true
         document.getElementById('stop_lat').value = stop.geometry.location.lat();
         document.getElementById('stop_lng').value = stop.geometry.location.lng();
+        //if condition checks if both inputs have been entered before addMarker is called
+        if(has_entered_stop && has_entered_start){
+            //the hidden inputs called and parsed as floats
+            addMarker(parseFloat(document.getElementById('start_lat').value),parseFloat(document.getElementById('start_lng').value))
+            addMarker(parseFloat(document.getElementById('stop_lat').value),parseFloat(document.getElementById('stop_lng').value))
+            //the two booleans i use to see if both the inputs have been entered after sucessfully enter bring it back to false
+            has_entered_start = false;
+            has_entered_stop = false;
+        }
     });
     //
 
