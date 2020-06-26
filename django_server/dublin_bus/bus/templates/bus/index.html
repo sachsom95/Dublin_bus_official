@@ -11,11 +11,18 @@
             <p>&nbsp;From:&nbsp;</p>
             <div class="input-group">
               <input id="searchTextField_start" type="text" class="form-control" placeholder="Enter a bus stop or an address">
+              <!-- Hidden fields are for storing lat lon not for showing -->
+              <input type="hidden" id="start_lat" />
+              <input type="hidden" id="start_lng" />
             </div>
         
             <p>&nbsp;To:&nbsp;</p>
             <div class="input-group">
               <input id="searchTextField_destination" type="text" class="form-control" placeholder="Enter a bus stop or an address">
+              <!-- Hidden fields are for storing lat lon not for showing -->
+              <input type="hidden" id="stop_lat" />
+              <input type="hidden" id="stop_lng" />
+
             </div>
   
       
@@ -67,10 +74,11 @@
 <!--Script for Map and Marker 01-->
 <script src="{% static 'bus/js/map_init.js' %}"></script>
  <!--MAPS API-->
-<script
+<script 
 src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCFtH8qWuX2LGmHcicY-vLHfYuB7D6WI7Y&libraries=places&callback=initMap" >
 
 </script>
 <script src="{% static 'bus/js/map_auto_complete_text.js' %}"></script>
+
 
 {% endblock %}
