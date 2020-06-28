@@ -16,19 +16,34 @@
 
 
 <body>
-    <nav class="navbar navbar-light navbar-expand-md d-flex navigation-clean">
-        <div class="container-fluid"><img class="img-fluid border rounded-0 d-inline-block flex-shrink-1 mr-auto" data-bs-hover-animate="pulse" src="{% static 'db-logo-2.jpeg' %}" width="50" height="50" style="padding: 10;margin: 10;background-color: #fbd000;"><a class="navbar-brand"
-                href="#">Dublin Bus</a>
-            <div
-                class="collapse navbar-collapse" id="navcol-1">
-                <ul class="nav navbar-nav ml-auto">
-                    <li class="nav-item" role="presentation"><a class="nav-link active" href="#">Fare Estimator</a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link" href="#">Dublin Bus</a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link" href="{% url 'login' %}">Log In</a></li>
-                </ul>
-        </div>
-</div>
-</nav>
+<nav class="navbar navbar-light navbar-expand-md d-flex navigation-clean">
+    <!-- Brand -->
+    <img  src="{% static 'db-logo-2.jpeg' %}" width="50" height="50">
+    <a class="navbar-brand" href="{% url 'home' %}">Dublin Bus</a>
+  
+    <!-- Toggler/collapsibe Button -->
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#menu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <!-- Navbar links -->
+    <div class="collapse navbar-collapse" id="menu">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'account' %}">Test Account</a>
+          </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'login' %}">Log In</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'register' %}">Sign Up</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'tourism' %}">Tourism</a>
+          </li>
+      </ul>
+    </div>
+  </nav>
     <div class="wrapper">
         {% if messages %}
         {% for messages in messages %}
@@ -44,8 +59,7 @@
 <div class="footer-basic">
     <footer>
         <ul class="list-inline">
-            <li class="list-inline-item"><a href="#">Home</a></li>
-            <li class="list-inline-item"><a href="#">Services</a></li>
+            <li class="list-inline-item"><a href="{% url 'home' %}">Home</a></li>
             <li class="list-inline-item"><a href="#">About</a></li>
             <li class="list-inline-item"><a href="#">Terms</a></li>
             <li class="list-inline-item"><a href="#">Privacy Policy</a></li>
@@ -56,9 +70,5 @@
 <!-- <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script> -->
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
-
-
-
-
 </body>
 </html>
