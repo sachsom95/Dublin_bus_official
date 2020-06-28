@@ -69,7 +69,8 @@ function showRoutes() {
                 directions: response,
                 draggable: true,
                 polylineOptions: {
-                    strokeColor: 'blue'
+                    strokeColor: 'goldenrod',
+                    strokeWeight:5,
                 }
             });
         } else {
