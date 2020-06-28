@@ -42,6 +42,8 @@ function auto_suggest_location() {
             addMarker(parseFloat(document.getElementById('stop_lat').value), parseFloat(document.getElementById('stop_lng').value))
             has_entered_start = false;
             has_entered_stop = false;
+        //    generate marker and execute route as well
+            showRoutes()
 
         }
     });
@@ -60,9 +62,11 @@ function auto_suggest_location() {
             //the two booleans i use to see if both the inputs have been entered after sucessfully enter bring it back to false
             has_entered_start = false;
             has_entered_stop = false;
+            //generate marker and execute route as well
+            showRoutes()
         }
     });
-    //
+
 
 
 
