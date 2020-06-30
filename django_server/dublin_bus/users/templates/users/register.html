@@ -1,22 +1,29 @@
 {% extends "bus/base_layout.html" %}
 {% load crispy_forms_tags %}
 {% block content %}
-<div class = "content-section">
-    <form method="POST">
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<h1>Join Today</h1>
+<div class="row">
+<div class="col-md-6" id="col1">
+<div class = "content-section cold-md-12">
+    <form method="POST" style="margin-top: 10px;">
         {% csrf_token %}
         <fieldset class="form-group">
-            <legend class="border-bottom mb-4"> Join Today</legend>
+    
             {{ form|crispy }}
         </fieldset>
         <div class = "form-group">
-            <button class="btn btn-outline-info" type="submit">Sign Up</button>
+           
+            <small class="text-muted">Already Have an Account?
+                <a class = "ml-2" href="{% url 'login' %}">Sign In</a>
+                <button class="btn btn-warning btn-lg" type="submit">Sign Up</button>
         </div>
         <div class="border-top pt-3">
-            <small class="text-muted">Already Have an Account?
-                <a class = "ml-2" href="#">Sign In</a>
+           
             </small>
         </div>
     </form>
 </div>
-
+</div> 
+</div>
 {% endblock content %}

@@ -2,7 +2,10 @@
 {% extends 'bus/base_layout.html' %}
 {% load static %}
 {% block content %}
-<div class="row"><h1>User Log-in</h1><h2 class="col-sm-6"></h2></div>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <h1>User Log-in</h1>
+<div class="row">
+</div>
 <div class="row">
   <div id="col2" class="col-md-6">
 <div class="form-group">
@@ -12,8 +15,10 @@
   <div class="form-group">
     <label for="pwd">Password:</label>
     <input type="password" class="form-control" id="pwd">
+    <button type="button" class="btn btn btn-lg" style="margin-top: 10px; margin-bottom: 10px;">Sign up</button> <button type="button" class="btn btn-warning btn-lg" style="margin-top: 10px; margin-bottom: 10px;">Log in</button>
+
   </div>
-  <button type="button" class="btn btn btn-lg">Sign up</button> <button type="button" class="btn btn-warning btn-lg">Log in</button>
+
   </div>
   <div class="col-md-6"><img src="{% static 'bus-3.jpeg' %}" width="500px"; height="400px"></div>
   </div>
