@@ -2,11 +2,13 @@
 {% load static %} 
 
 {% block content %}
-<h1>Journey Planner</h1>
 
-    <div class="col-md-8">
-      <div id="floating-panel">
-        <form id="form1">
+
+    <div class="col-md-6">
+      <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#floating-panel">Show Search</button>
+      <div id="floating-panel" class="card col-sm-12 collapse-show">
+        <h3 class="card-title">Journey Planner</h3>
+        <form id="form1" class="card-body">
             <label>&nbsp;From:&nbsp;</label>
             <div class="input-group">
               <input id="searchTextField_start" type="text" class="form-control" placeholder="Enter a bus stop or an address">
@@ -37,10 +39,14 @@
               });
               </script>
         </form>
-<input type="button" form="form1" class="btn btn-warning btn-info btn-lg" value="Submit" onclick="myFunction()" style="margin-top: 10px; margin-bottom: 10px;">
+        <button type="button" class="btn btn-light" data-toggle="collapse" data-target="#floating-panel">Hide Search</button>
+
+<input type="button" form="form1" class="btn btn-warning btn-info" value="Submit" onclick="myFunction()" style="margin-top: 10px; margin-bottom: 10px;">
 </div>   
 </div>
 </div>
+
+
 <!-- This code below will one day be the pop up journey guide that tells you step by step things -->
 <!-- <div id="floating-panel2">  
   <p id="test"></p>
