@@ -2,7 +2,7 @@
 Author : Sachin
 Purpose of File: deals with the auto predictions of locations in Dublin and get
 the lat-lon of the locations. Also makes a call on addMarker method when both the forms
-are filled
+are filled. It also calls the getRoutes function in map_init.js
 
 */
 
