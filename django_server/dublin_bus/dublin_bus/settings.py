@@ -124,3 +124,5 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'assets')]
 # STATIC_ROOT = os.path.join(BASE_DIR, 'assets')
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
+# url to redirect after succesfull login
+LOGIN_REDIRECT_URL = 'home'

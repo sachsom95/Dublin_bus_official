@@ -1,0 +1,27 @@
+{% extends "bus/base_layout.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<h1>You have been Logged out</h1>
+<div class="row">
+<div class="col-md-6" id="col1">
+    <div class = "content-section cold-md-12">
+
+<div class = "content-section">
+    
+        <div class = "form-group">
+
+            <small class="text-muted">Login again?
+                <a class = "ml-2" href="{% url 'login' %}">Login here</a>
+
+        </div>
+    
+</div>
+</div>
+</div>
+</div>
+
+{% endblock content %}
+
+
+
