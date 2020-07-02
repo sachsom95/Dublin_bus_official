@@ -45,7 +45,7 @@
           </div>
         </form>
       
-        <input type="button" form="form1" class="btn btn-warning btn-info btn-lg" value="Submit" onclick="myFunction()" style="margin-top: 10px; margin-bottom: 10px;">
+        <input id="submit" type="button" form="form1" class="btn btn-warning btn-info btn-lg" value="Submit" onclick="myFunction()" style="margin-top: 10px; margin-bottom: 10px;">
     </div>
   
     <script>
@@ -74,6 +74,7 @@ src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCFtH8qWuX2LGmHcicY-vLHfYu
 
 </script>
 <script src="{% static 'bus/js/map_auto_complete_text.js' %}"></script>
+<script src="{% static 'bus/js/journey_time_prediction.js' %}"></script>
 
 
 {% endblock %}

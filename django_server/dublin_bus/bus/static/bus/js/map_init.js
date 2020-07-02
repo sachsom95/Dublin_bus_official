@@ -1,6 +1,7 @@
 let map
 let markers=[];
 let directionsDisplay;
+var route;
 
 
 
@@ -64,6 +65,8 @@ function showRoutes() {
 
     }, function(response, status) {
         if (status === google.maps.DirectionsStatus.OK) {
+            route = response['routes'][0]['legs'];
+            // console.log(route)
             directionsDisplay = new google.maps.DirectionsRenderer({
                 map: map,
                 directions: response,
