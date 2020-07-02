@@ -6,7 +6,7 @@ $( "#submit" ).click(function() {
     for (i=0; i<route[0]['steps'].length;i++){
         if (route[0]['steps'][i]['travel_mode'] == "TRANSIT"){
             buses[x] = route[0]['steps'][i]['transit']['line']['short_name'];
-            console.log(route[0]['steps'][i]['transit']['line']['lat_lngs'])
+            console.log(route[0]['steps'][i]['transit']['line']['start_location']['lat'])
             x += 1;
         }   
     }
