@@ -1,11 +1,11 @@
 body{}
 
-h1{
+h3, h1{
     font-family:Orienta, sans-serif !important;
     color: rgb(248,250,251) !important;
     background-color: #252d5a !important;
     padding-left: 18px !important;
-    padding-right: 18px !important;
+    position: static;
 }
 #col1 {
     background-position: center !important;
@@ -172,6 +172,24 @@ label {
 }
 
 #map{
-    height:400px;
+    height:800px;
     width:100%;
 }
+#floating-panel {
+    position: absolute;
+    z-index: 5;
+    padding: 15px;
+    background-color: #fff;
+    border: 1px solid#252d5a;
+    width: 265px;
+
+  }
+  #floating-panel2 {
+    position: relative;
+    left: 55px;
+    z-index: 5;
+    background-color: #fff;
+    padding: 25px;
+    line-height: 30px;
+    padding-left: 50px;
+  }
