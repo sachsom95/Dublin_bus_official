@@ -169,10 +169,22 @@ p, input, label {
     position: absolute;
     z-index: 5;
     border: 1px solid#252d5a;
+    font-family: Orienta, sans-serif;
   }
   #directions {
-    position: relative;
+    position: absolute;
     z-index: 5;
     background-color: #fff;
+    border: 1px solid#252d5a;
+    font-family: Orienta, sans-serif;
   
+  }
+  #close {
+    width: 20px;
+    margin-left: 100px;
+    cursor: pointer;
+  }
+  #directions-container {
+    position: relative;
+    height: 60px;
   }

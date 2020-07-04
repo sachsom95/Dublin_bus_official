@@ -26,20 +26,25 @@
 
               </div>
         </form>
-<input type="button" form="form1" class="btn btn-warning" value="Submit" onclick="myFunction()" style="margin-top: 10px; margin-bottom: 10px;">
+<input id="submit-btn" type="button" form="form1" class="btn btn-warning" value="Submit" onclick="myFunction()" style="margin-top: 10px; margin-bottom: 10px;">
   
 </div>
 </div>
 <!-- This code below will one day be the pop up journey guide that tells you step by step things -->
 
-<!-- <div id="directions" class="card col-sm-6">  
-  <div id="row">
-  <p id="test"></p>
-</div>
-    </div> -->
 
-    <div><div id="map"> hello </div></div>
+    <div><div id="map"> hello </div>    </div>
+    <div is="directions-container">
+    <div id="directions" class="card col-sm-6">  
+      <div id="row">
+      <p id="test"></p>
+      <p id="test2"></p>
+      <p id="test3"></p>
+      <span class="btn-primary" id="close">close</span>
+    </div>
         </div>
+        </div></div>
+    
         <script src="{% static 'bus/js/input.js' %}"></script>
 <!--Jquery for map-->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -52,6 +57,8 @@ src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCFtH8qWuX2LGmHcicY-vLHfYu
 
 </script>
 <script src="{% static 'bus/js/map_auto_complete_text.js' %}"></script>
-
+<!-- <script src="https://cdn.jsdelivr.net/momentjs/2.14.1/moment.min.js"></script> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/css/bootstrap-datetimepicker.min.css">
 
 {% endblock %}
