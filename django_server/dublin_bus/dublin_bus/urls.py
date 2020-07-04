@@ -22,7 +22,9 @@ from . import views
 from users import views as user_views
 # login-logout forms
 from django.contrib.auth import views as auth_views
-
+# for media stuff
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -36,5 +38,9 @@ urlpatterns = [
     path('account', user_views.account, name='account')
 
 ]
+
+if settings.DEBUG:
+
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 # urlpatterns += staticfiles_urlpatterns()
