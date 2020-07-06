@@ -177,14 +177,10 @@ p, input, label {
     background-color: #fff;
     border: 1px solid#252d5a;
     font-family: Orienta, sans-serif;
-  
+    display: none;
+    height: 33%;
+
   }
-  #close {
-    width: 20px;
-    margin-left: 100px;
-    cursor: pointer;
-  }
-  #directions-container {
-    position: relative;
-    height: 60px;
+  #test2, #test3, #test {
+    font-family: Orienta, sans-serif;
   }

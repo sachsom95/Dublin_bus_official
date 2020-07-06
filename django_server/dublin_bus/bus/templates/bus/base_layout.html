@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
     <link rel="shortcut icon" type="image/png" href="{% static 'favicon.ico' %}"/>
     <link rel="stylesheet" href="{% static 'bus/css/styles.css' %}">       
 </head>
@@ -43,9 +44,6 @@
           <li class="nav-item">
             <a class="nav-link" href="{% url 'tourism' %}">Tourism</a>
           </li>
-          <li>
-              <div>Here's the weather</div>
-          </li>
       </ul>
     </div>
   </nav>
@@ -61,7 +59,7 @@
         {% endblock %}
     </div>
 </div>
-<div class="footer-basic">
+<div id="huh" class="footer-basic">
     <footer>
         <ul class="list-inline">
             <li class="list-inline-item"><a href="{% url 'home' %}">Home</a></li>

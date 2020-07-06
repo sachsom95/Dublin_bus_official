@@ -1,8 +1,8 @@
 
 // Author: Stacy 
 
-
 // This JQuery Function creates the date and time picker as well as limits the dates selectable by having the minimum date always be today.
+
 var today = new Date();
 var end = new Date('12/31/2020');
 $(function () {
@@ -12,15 +12,15 @@ $(function () {
         format: 'DD/MM/YY H:mm A',
 })})
 // This Jquery function should change the text on the show/hide menu button when pressed 
-$(document).ready(function(){
-  $('#ok').on('click', function () {
-    var text=$('#ok').text();
-      if(text === "Hide Planner"){
+
+  $("#JP-btn").click(function(e){
+    e.preventDefault(); //prevents the need to double click
+    $('#floating-panel').toggle();
+    if($('#floating-panel').is(':visible')) {
+        $(this).html('Hide Planner');
+    } else {
         $(this).html('Show Planner');
-     } else{
-       $(this).text('Hide Planner');
     }
-});
 });
 // This function takes the values entered into the intputs on the index page and re prints them out. 
 function myFunction() {
@@ -29,18 +29,26 @@ function myFunction() {
     var input3 = document.getElementById("datetimepicker4").value;
     document.getElementById("test").innerHTML = "Start: " + input1; 
     document.getElementById("test2").innerHTML = "Destination: " + input2;
-    document.getElementById("test3").innerHTML = "Time and date is: " + input3;
+    document.getElementById("test3").innerHTML = "Estimated Travel Time: " + input3;
   }
-  // Below is the code for the poorly fuctioning direction planner
-  $('#submit-btn').click(function() {
-    $('#directions').animate({
-      bottom: -$("#directions").height(),
-      height: '43%',
+  // Below is the code for the direction planner
+  //first we show the planner
+    $('#submit-btn').click(function(){
+      $('#directions').show({
+        bottom: '-300px',
+        height:'400px',
+        position: 'absolute',
+      });
     });
-  });
-  $('#close').click(function() {
-    $('#directions').toggle({
-      bottom: '0',
-      height: '0',
+    //then we can close the planner
+   $("#close").click(function(){
+      $("#directions").hide();
     });
-  });
+    //then we can animate the planner each time!
+    $('#submit-btn').click(function() {
+      $('#directions').animate({
+        bottom: '-300px',
+        height: '400px',
+        position: 'absolute',
+      });
+    });
