@@ -22,6 +22,7 @@ from . import views
 urlpatterns = [
     path('',views.home,name="home"),
     path('tourism/', views.tourism, name="tourism"),
+    path('prediction/', views.prediction, name="prediction"),
 
 ]
 

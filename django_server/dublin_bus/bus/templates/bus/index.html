@@ -39,6 +39,12 @@
               });
               </script>
         </form>
+
+      
+        <input id="submit" type="button" form="form1" class="btn btn-warning btn-info btn-lg" value="Submit" onclick="myFunction()" style="margin-top: 10px; margin-bottom: 10px;">
+        <div id='precitionResult'></div>
+          </div>
+
         <button type="button" class="btn btn-light" data-toggle="collapse" data-target="#floating-panel">Hide Search</button>
 
 <input type="button" form="form1" class="btn btn-warning btn-info" value="Submit" onclick="myFunction()" style="margin-top: 10px; margin-bottom: 10px;">
@@ -46,11 +52,11 @@
 </div>
 </div>
 
-
 <!-- This code below will one day be the pop up journey guide that tells you step by step things -->
 <!-- <div id="floating-panel2">  
   <p id="test"></p>
     </div> -->
+
     <script>
       function myFunction() {
         var input1 = document.getElementById("searchTextField_start").value;
@@ -78,6 +84,7 @@ src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCFtH8qWuX2LGmHcicY-vLHfYu
 
 </script>
 <script src="{% static 'bus/js/map_auto_complete_text.js' %}"></script>
+<script src="{% static 'bus/js/journey_time_prediction.js' %}"></script>
 
 
 {% endblock %}
