@@ -1,16 +1,11 @@
 from django.shortcuts import render
-from django.http import HttpResponse
-from django.http import JsonResponse
-# from ml_models import *
-import os
+from django.http import HttpResponse,JsonResponse
 from django.conf import settings
 import pickle
 import json
 import pandas as pd 
-# from django.views.decorators.csrf import csrf_exempt,csrf_protect
+import os
 
-# with open('/Users/Ben/Desktop/summer_project/Dublin_bus_official/django_server/dublin_bus/bus/static/1_37_grad_boost_model.sav', 'rb') as f:
-#     model = pickle.load(f)
 
 # Create your views here.
 def home(request):
@@ -38,8 +33,9 @@ def prediction(request):
     dep_lng = dep_lng[0:6]
     arr_lat = arr_lat[0:6]
     arr_lng = arr_lng[0:6]
+
     # create dataframe out of csv with all the bus routes in our data
-    df = pd.read_csv('/Users/Ben/Desktop/summer_project/Dublin_bus_official/django_server/dublin_bus/bus/static/bus/js/routes_clean.csv')
+    df = pd.read_csv(os.path.abspath('bus/static/bus/routes_clean.csv'))
 
     # format the dataframe as necessary to compare the latitude and longitudes in our data with google maps data 
     df['longitude'] = df['longitude'].astype('str')
@@ -69,7 +65,7 @@ def prediction(request):
 
     if correct_route != 'N/A':
         # if an appropriate model was found, load that model 
-        with open('/Users/Ben/Desktop/summer_project/Dublin_bus_official/django_server/dublin_bus/bus/static/bus/grad_boost_models/'+str(correct_route) +'_grad_boost_model.sav', 'rb') as f:
+        with open(os.path.abspath('bus/static/bus/grad_boost_models/'+str(correct_route) +'_grad_boost_model.sav'), 'rb') as f:
             model = pickle.load(f)
 
             # get the percent of the route the journey will take
