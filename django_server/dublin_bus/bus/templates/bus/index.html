@@ -2,12 +2,13 @@
 {% load static %} 
 
 {% block content %}
-<h1>Journey Planner</h1>
-<p id="test"></p>
-    <div class="row">
-    <div class="col-md-6" id="col1">
-        <div class="col-md-12" id="journey-planner">
-        <form id="form1">
+
+
+    <div class="col-md-6">
+      <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#floating-panel">Show Search</button>
+      <div id="floating-panel" class="card col-sm-12 collapse-show">
+        <h3 class="card-title">Journey Planner</h3>
+        <form id="form1" class="card-body">
             <label>&nbsp;From:&nbsp;</label>
             <div class="input-group">
               <input id="searchTextField_start" type="text" class="form-control" placeholder="Enter a bus stop or an address">
@@ -21,14 +22,10 @@
               <!-- Hidden fields are for storing lat lon not for showing -->
               <input type="hidden" id="stop_lat" />
               <input type="hidden" id="stop_lng" />
-
-            </div>
          <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
          
-      <div class="row">
-          <div class='col-lg-6'>
             <label>Travel Date and Time:</label><input type='text' class="form-control" id='datetimepicker4' />
-          </div>
+
           <!-- Script for the Date Time Picker -->
           <script type="text/javascript"> 
           var today = new Date();
@@ -41,14 +38,25 @@
                   });
               });
               </script>
-      </div>
-          </div>
         </form>
+
       
         <input id="submit" type="button" form="form1" class="btn btn-warning btn-info btn-lg" value="Submit" onclick="myFunction()" style="margin-top: 10px; margin-bottom: 10px;">
         <div id='precitionResult'></div>
-    </div>
-  
+          </div>
+
+        <button type="button" class="btn btn-light" data-toggle="collapse" data-target="#floating-panel">Hide Search</button>
+
+<input type="button" form="form1" class="btn btn-warning btn-info" value="Submit" onclick="myFunction()" style="margin-top: 10px; margin-bottom: 10px;">
+</div>   
+</div>
+</div>
+
+<!-- This code below will one day be the pop up journey guide that tells you step by step things -->
+<!-- <div id="floating-panel2">  
+  <p id="test"></p>
+    </div> -->
+
     <script>
       function myFunction() {
         var input1 = document.getElementById("searchTextField_start").value;
@@ -57,7 +65,7 @@
         document.getElementById("test").innerHTML = "The starting destination is: " + input1 + " and the destination is " + input2 + " and the time and date is " + input3;
       }
       </script>
-    <div class="col-md-6"><div id="map"> hello </div></div>
+    <div><div id="map"> hello </div></div>
         </div>
         <script src="https://cdn.jsdelivr.net/momentjs/2.14.1/moment.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
@@ -68,6 +76,7 @@
 <!--Jquery for map-->
 <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> -->
 <!--Script for Map and Marker 01-->
+
 <script src="{% static 'bus/js/map_init.js' %}"></script>
  <!--MAPS API-->
 <script 
