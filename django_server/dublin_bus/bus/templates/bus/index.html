@@ -2,6 +2,9 @@
 {% load static %} 
 
 {% block content %}
+
+
+
 <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#floating-panel" id="JP-btn">Hide Planner</button>
 <div id="floating-panel" class="card col-md-3 collapse-show">
         <h3 class="card-title">Journey Planner<i class="fas fa-cloud">15C</i></h3>
@@ -22,8 +25,13 @@
               <input type="hidden" id="stop_lng" />
          <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
          
-            <label>Travel Date and Time:</label><input type='text' class="form-control" id='datetimepicker4' />
-
+            <label>Travel Date and Time:</label>
+            <div class="input-group date" data-provide="datepicker">
+              <input type="text" class="form-control" id="datepicker">
+              <div class="input-group-addon">
+                  <span class="glyphicon glyphicon-th"></span>
+              </div>
+          </div>
               </div>
         </form>
 <input id="submit-btn" type="button" form="form1" class="btn btn-warning" value="Submit" onclick="myFunction()" style="margin-top: 10px; margin-bottom: 10px;">
@@ -57,8 +65,6 @@ src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCFtH8qWuX2LGmHcicY-vLHfYu
 
 </script>
 <script src="{% static 'bus/js/map_auto_complete_text.js' %}"></script>
-<!-- <script src="https://cdn.jsdelivr.net/momentjs/2.14.1/moment.min.js"></script> -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/css/bootstrap-datetimepicker.min.css">
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/css/bootstrap-datepicker.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/js/bootstrap-datepicker.min.js"></script>
 {% endblock %}
