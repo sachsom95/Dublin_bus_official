@@ -6,16 +6,25 @@
 
 $(document).ready(function () {
   var today = new Date();
-  var end = new Date('12/31/2020');
-    $('#datepicker').datepicker({
-      startDate: today,
-      endDate: end,
-      format: 'dd/mm/yyyy',
-      todayHighlight: 'true',
+  var end = moment(today).add(6, 'M');
+    $('#datetimepicker4').datetimepicker({
+        minDate: today,
+        maxDate: end,
+        format: 'DD/MM/YY LT',
+        date: moment(),
+        icons:{
+          time:'far fa-clock',
+          date: 'fa fa-calendar',
+	      	up: 'fa fa-angle-up',
+		      down: 'fa fa-angle-down',
+		      previous: 'fa fa-angle-left',
+		      next: 'fa fa-angle-right',
+		      today: 'fa fa-dot-circle-o',
+		      clear: 'fa fa-trash',
+		      close: 'fa fa-times'
+          }
 });
 });
-
-
 // This Jquery function should change the text on the show/hide menu button when pressed 
 
   $("#JP-btn").click(function(e){
@@ -31,7 +40,7 @@ $(document).ready(function () {
 function myFunction() {
     var input1 = document.getElementById("searchTextField_start").value;
     var input2 = document.getElementById("searchTextField_destination").value;
-    var input3 = document.getElementById("datepicker").value;
+    var input3 = document.getElementById("datetimepicker4").value;
     document.getElementById("test").innerHTML = "Start: " + input1; 
     document.getElementById("test2").innerHTML = "Destination: " + input2;
     document.getElementById("test3").innerHTML = "Estimated Travel Time: " + input3;
