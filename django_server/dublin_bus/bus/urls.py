@@ -22,7 +22,7 @@ from . import views
 urlpatterns = [
     path('',views.home,name="home"),
     path('tourism/', views.tourism, name="tourism"),
-
+    path('test/', views.test, name="test")
 ]
 
 # Patch notes:sachin

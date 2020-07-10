@@ -21,9 +21,9 @@ def establishConnection():
         try:
             global connection
             connection = mysql.connector.connect(host='localhost',
-                                                database='bus_data',
-                                                user='admin',
-                                                password='Group8sql',)
+                                                 database='bus_data',
+                                                 user='root',  # 'admin',
+                                                 password='dt85226305')  # 'Group8sql')
             if connection.is_connected():
                 #print("This connection worked!")
                 global cursor

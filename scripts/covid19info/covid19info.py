@@ -21,8 +21,8 @@ while True:
                 global connection
                 connection = mysql.connector.connect(host='localhost',
                                                     database='bus_data',
-                                                    user='admin',
-                                                    password='Group8sql',)
+                                                    user='root', #'admin',
+                                                    password='dt85226305') #'Group8sql')
                 if connection.is_connected():
                     #print("This connection worked!")
                     global cursor

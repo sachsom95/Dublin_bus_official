@@ -81,15 +81,24 @@ DATABASES = {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     },
-# 'dublin_bus': { # this is our  db, already created
-#         'ENGINE': 'django.db.backends.mysql',
-#         'NAME': 'bus_data',
-#         'USER': 'admin',
-#         'PASSWORD': 'Group8sql',
-#         'HOST': '137.43.49.25',
-#         'PORT': '3306',
-#     }
+'dublin_bus': { # this is our  db, already created
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'bus_data',
+        'USER': 'root',
+        'PASSWORD': '',
+        'HOST': 'localhost',
+        'PORT': '3306',
+    }
 
+}
+
+# use multi-database in django
+DATABASE_ROUTERS = ['dublin_bus.database_app_router.DatabaseAppsRouter']
+DATABASE_APPS_MAPPING = {
+    # example:
+    #'app_name':'database_name',
+    'users':'default',
+    'bus':'dublin_bus'
 }
 
 
@@ -117,7 +126,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Europe/Dublin'
 
 USE_I18N = True
 

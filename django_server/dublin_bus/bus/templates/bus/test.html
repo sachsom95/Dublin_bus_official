@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+<body>
+
+<p>weather icon</p>
+
+{% for name in weather_info %}
+    <img src="http://openweathermap.org/img/wn/{{name.weather_icon}}@2x.png">
+{% endfor %}
+
+<!--<script>-->
+<!--for (var i in weather_info){-->
+<!--    u = "http://openweathermap.org/img/wn/" + i[weather_icon] + "@2x.png";-->
+<!--}-->
+<!--// http://openweathermap.org/img/wn/ 10d @2x.png-->
+<!--</script>-->
+<!--<img url=u>-->
+</body>
+</html>
