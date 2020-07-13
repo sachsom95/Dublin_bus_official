@@ -1,5 +1,3 @@
-body{}
-
 h3, h1{
     font-family:Orienta, sans-serif;
     color: rgb(248,250,251);
@@ -106,11 +104,17 @@ p, input, label {
     height:800px;
     width:100%;
 }
-#floating-panel {
+ #floating-panel {
     position: absolute;
     z-index: 5;
     border: 1px solid#252d5a;
-    font-family: Orienta, sans-serif;
+    font-family: Orienta, sans-serif; 
+  }
+  #floating-panel2 {
+    position: absolute;
+    z-index: 5;
+    border: 1px solid#252d5a;
+    font-family: Orienta, sans-serif; 
   }
   #directions {
     position: absolute;
@@ -124,4 +128,8 @@ p, input, label {
   }
   #test2, #test3, #test {
     font-family: Orienta, sans-serif;
+  }
+  .tab-content {
+    position: absolute;
+    z-index: 5;
   }

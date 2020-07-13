@@ -36,6 +36,15 @@ $(document).ready(function () {
         $(this).html('Show Planner');
     }
 });
+$("#BS-btn").click(function(e){
+  e.preventDefault(); //prevents the need to double click
+  $('#searchStopNumber').toggle();
+  if($('#searchStopNumber').is(':visible')) {
+      $(this).html('Hide Search');
+  } else {
+      $(this).html('Show Search');
+  }
+});
 // This function takes the values entered into the intputs on the index page and re prints them out. 
 function myFunction() {
     var input1 = document.getElementById("searchTextField_start").value;
@@ -44,6 +53,10 @@ function myFunction() {
     document.getElementById("test").innerHTML = "Start: " + input1; 
     document.getElementById("test2").innerHTML = "Destination: " + input2;
     document.getElementById("test3").innerHTML = "Estimated Travel Time: " + input3;
+  }
+  function myFunction2() {
+    var input1 = document.getElementById("searchStopNumber").value;
+    document.getElementById("stop").innerHTML = "Stop " + input1 + ": Bus, Destination, and Predicted time of arrival"; 
   }
   // Below is the code for the direction planner
   //first we show the planner
