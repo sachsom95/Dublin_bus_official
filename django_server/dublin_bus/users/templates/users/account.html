@@ -3,7 +3,12 @@
 
 {% block content %}
 {% load crispy_forms_tags %}
-    <div class="content-section">
+
+
+<div class = "container">
+  
+  <div class ="row">
+    <div class="col-sm">
       <div class="media">
         <img class="rounded-circle account-img" src="{{ user.profile.image.url }}">
         <div class="media-body">
@@ -11,36 +16,40 @@
           <p class="text-secondary">{{ user.email }}</p>
           <!-- <p class="text-secondary">Leap card Balance: {{ user.profile.leap_balance }}</p> -->
           <p class="text-secondary">Leap card Balance: {{ balance }}</p>
-
         </div>
 
+    </div>
+  </div>
         <!-- new forms here -->
-      </div class="container">
+        <div class="col-sm">
+      <div class="container">
+      <div class="row">
+        <div class="col-md-6" id="col1">
         <form method="POST" enctype="multipart/form-data" novalidate>
           {% csrf_token %}
           <fieldset class="form-group">
-              <legend class="border-bottom mb-4"> Profile Info</legend>
+              <legend class="border-bottom mb-4"> Account Information</legend>
               {{ user_form|crispy }}
-
-              {% if user.profile.leap_username == '' or user.profile.leap_password == '' %}
-            <div><p> Password and leap not set</p></div>
+              <br>
+              <legend class="border-bottom mb-4"> Leap Card details</legend>
+              {% if not is_registered  %}
+            <div><p class="text-danger">You have not set the leap card details. Set it to get leapcard details</p></div>
+              {% else %}
+              <div><p class="text-success">Your account can sync with leap-card click Get balance to see
+                 your current leap balance</p></div>
               {% endif %}
-
+              
               {{ account_form|crispy }}
-  
+            
           </fieldset>
           <div class = "form-group">
-              <button class="btn btn-outline-info" type="submit" name="account">Update</button>
+              <button class="btn btn-warning btn-lg" type="submit" name="account">Update</button>
+              {% if user.profile.leap_username %}
+            <button class="btn btn-success btn-lg" type="submit" name="balance">Get Balance</button>
+              {% endif %}
           </div>
 
-          {% if user.profile.leap_username %}
-
-          <div class = "form-group">
-            <button class="btn btn-outline-danger" type="submit" name="balance">Get Balance</button>
-        </div>
-
-
-          {% endif %}
+          
 
 
 
@@ -50,5 +59,11 @@
 
       </div>
     </div>
+    </div>
+
+  </div>
+
+    </div>
+  </div>
 
 {% endblock content %}

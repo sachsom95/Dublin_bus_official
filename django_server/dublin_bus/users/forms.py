@@ -55,12 +55,13 @@ class ProfileUpdateForm(forms.ModelForm):
         username =  self.cleaned_data.get("leap_username")
 
         if (not get_leap(username,password)):
-            raise forms.ValidationError("Leap error")
+            raise forms.ValidationError("Enter Leap-card Credentials to confirm Edit of Account")
             
     class Meta:
         # May be I should Update leap_card_password in more secure manner?
         model = Profile
         fields = ['image','leap_username','leap_password']
+        widgets = {'is_registered': forms.HiddenInput()}
 
-
+    field_order = ['leap_username', 'leap_password', 'leap_password_confirm','image']
 

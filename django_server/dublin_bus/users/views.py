@@ -49,8 +49,10 @@ def account(request):
             x = User.objects.get(username=request.user)
             z=x.profile
             z.leap_balance = balance['balance']
+            z.is_registered = True
             
-            z.save(update_fields =['leap_balance'])   
+            
+            z.save(update_fields =['leap_balance','is_registered'])   
             # trying vars to get result in a dict
             print(balance["balance"])
             print(request.user)
@@ -80,10 +82,13 @@ def account(request):
         account_form = ProfileUpdateForm(instance=request.user.profile)
     # create a context dictionary to pass both the forms to template
 
+    
+
     context ={
         'user_form':user_form,
         'account_form':account_form,
         'balance':User.objects.get(username=request.user).profile.leap_balance,
+        'is_registered':User.objects.get(username=request.user).profile.is_registered,
     }
 
     return render(request, 'users/account.html',context)
