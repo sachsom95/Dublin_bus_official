@@ -12,6 +12,30 @@
           <p class="text-secondary">Leap card Balance: {{ user.profile.leap_balance }}</p>
 
         </div>
+
+        <!-- new forms here -->
+      </div class="container">
+        <form method="POST" enctype="multipart/form-data" novalidate>
+          {% csrf_token %}
+          <fieldset class="form-group">
+              <legend class="border-bottom mb-4"> Profile Info</legend>
+              {{ user_form|crispy }}
+
+              {% if user.profile.leap_username == '' or user.profile.leap_password == '' %}
+            <div><p> Password and leap not set</p></div>
+              {% endif %}
+
+              {{ account_form|crispy }}
+  
+          </fieldset>
+          <div class = "form-group">
+              <button class="btn btn-outline-info" type="submit">Update</button>
+          </div>
+          
+      </form>
+
+      </div>
+
       </div>
     </div>
 
