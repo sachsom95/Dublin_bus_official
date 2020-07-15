@@ -7,11 +7,13 @@ from django.contrib.auth.models import User
 
 class Profile(models.Model):
     user = models.OneToOneField(User,on_delete=models.CASCADE)
-    image = models.ImageField(default='default.jpg',upload_to='profile_pics')
-    leap_username = models.CharField(max_length=50,default='')
-    leap_password = models.CharField(max_length=50,default='')
+    image = models.ImageField(default='default.jpg',upload_to='profile_pics',blank=True)
+    leap_username = models.CharField(max_length=50,default='',blank=True)
+    leap_password = models.CharField(max_length=50,default='',blank=True)
     leap_balance = models.DecimalField(max_digits=4,decimal_places=2, default=0)
 
 
     def __str__(self):
         return f'{self.user.username} Profile'
+
+
