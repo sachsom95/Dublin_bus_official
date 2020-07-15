@@ -29,7 +29,7 @@ def account(request):
     # instantiating both the forms 
     # user_form = UserUpdateForm(instance=request.user)
     # account_form = ProfileUpdateForm()
-    if (request.method == 'POST'):
+    if (request.method == 'POST' and 'account' in request.POST ):
         user_form = UserUpdateForm(request.POST,instance=request.user)
         account_form = ProfileUpdateForm(request.POST,
             request.FILES,instance=request.user.profile)
@@ -56,16 +56,36 @@ def account(request):
             print(request.user)
             messages.success(request, f'Your account has been updated!')
             return redirect('account')
+    # the elif is checking which button is pressed whether we pressed the show balance or update buttons
+    elif(request.method == 'POST' and 'balance' in request.POST):
+        # instantiating both the forms
+        print("came to balance")
+        balance = vars(get_leap(request.user.profile.leap_username,request.user.profile.leap_password))
+
+        x = User.objects.get(username=request.user)
+        z=x.profile
+        z.leap_balance = balance['balance']
+        # z.leap_balance = 2
+
+        z.save(update_fields =['leap_balance'])
+        # We any way need to pass an instance of form 
+        user_form = UserUpdateForm(instance=request.user)
+        account_form = ProfileUpdateForm(instance=request.user.profile)
+
+
     else:
         # instantiating both the forms
         print("gone to the else case")
         user_form = UserUpdateForm(instance=request.user)
         account_form = ProfileUpdateForm(instance=request.user.profile)
- 
     # create a context dictionary to pass both the forms to template
+
     context ={
         'user_form':user_form,
-        'account_form':account_form
+        'account_form':account_form,
+        'balance':User.objects.get(username=request.user).profile.leap_balance,
     }
 
     return render(request, 'users/account.html',context)
+
+     

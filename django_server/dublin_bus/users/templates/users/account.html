@@ -9,7 +9,8 @@
         <div class="media-body">
           <h2 class="account-heading">{{ user.username }}</h2>
           <p class="text-secondary">{{ user.email }}</p>
-          <p class="text-secondary">Leap card Balance: {{ user.profile.leap_balance }}</p>
+          <!-- <p class="text-secondary">Leap card Balance: {{ user.profile.leap_balance }}</p> -->
+          <p class="text-secondary">Leap card Balance: {{ balance }}</p>
 
         </div>
 
@@ -29,9 +30,20 @@
   
           </fieldset>
           <div class = "form-group">
-              <button class="btn btn-outline-info" type="submit">Update</button>
+              <button class="btn btn-outline-info" type="submit" name="account">Update</button>
           </div>
-          
+
+          {% if user.profile.leap_username %}
+
+          <div class = "form-group">
+            <button class="btn btn-outline-danger" type="submit" name="balance">Get Balance</button>
+        </div>
+
+
+          {% endif %}
+
+
+
       </form>
 
       </div>
