@@ -2,117 +2,98 @@
 {% load static %} 
 
 {% block content %}
-<div class="card">
-  <div class="card-header"> 
-      <ul class="nav nav-tabs card-header-tabs pull-right"  id="myTab" role="tablist">
-          <li class="nav-item">
-              <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Journey Planner</a>
-          </li>
-          <li class="nav-item">
-              <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Search by Stop Number</a>
-          </li>
-          <li class="nav-item">
-              <a class="nav-link" id="twitter-tab" data-toggle="tab" href="#twitter" role="tab" aria-controls="twitter" aria-selected="false">Twitter</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" id="tourism-tab" data-toggle="tab" href="#tourism" role="tab" aria-controls="tourism" aria-selected="false">Tourism</a>
-        </li>
-      </ul>
-  </div>
+<div class="container">
+  <!-- Nav tabs -->
+  <ul class="nav nav-tabs" role="tablist">
+    <li class="nav-item">
+      <a class="nav-link active" data-toggle="tab" href="#journey-planner">Journey Planner</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" data-toggle="tab" href="#tourism">Tourism</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" data-toggle="tab" href="#twitter">Twitter</a>
+    </li>
+  </ul>
 
-  <div class="card-body">
-      <div class="tab-content" id="myTabContent">
-          <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-            <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#floating-panel" id="JP-btn">Hide Planner</button>
-<div id="floating-panel" class="card col-md-12 collapse-show">
-        <h3 class="card-title">Journey Planner<i class="fas fa-cloud">15C</i></h3>
-        <form id="form1" class="form">
-          <div class="form-group">
-            <label>From:</label>
-    
-              <input id="searchTextField_start" type="text" class="form-control" placeholder="Enter a bus stop or an address">
-              <!-- Hidden fields are for storing lat lon not for showing -->
-              <input type="hidden" id="start_lat" />
-              <input type="hidden" id="start_lng" />
-         
-            <label>To:</label>
-          
-              <input id="searchTextField_destination" type="text" class="form-control" placeholder="Enter a bus stop or an address">
-              <!-- Hidden fields are for storing lat lon not for showing -->
-              <input type="hidden" id="stop_lat" />
-              <input type="hidden" id="stop_lng" />
-         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-         
-            <label>Travel Date and Time:</label>
-            <div class="input-group date" data-provide="datepicker">
-              <!-- <input type="text" class="form-control" id="datetimepicker4"> -->
-              <input type="text" class="form-control datetimepicker-input" id="datetimepicker4" data-toggle="datetimepicker" data-target="#datetimepicker4"/>
-          </div>
-              </div>
-        </form>
-        
-        <!-- Submit button for the journey plannner -->
+  <!-- Tab panes -->
+  <div class="tab-content">
+    <!-- This code is for the journey planner tab -->
+    <div id="journey-planner" class="container tab-pane active">
+      <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#floating-panel" id="JP-btn">Hide Planner</button>
+      <div id="floating-panel" class="card col-md-12 collapse-show">
+              <h3 class="card-title">Journey Planner<i class="fas fa-cloud">15C</i></h3>
+              <form id="form1" class="form">
+                <div class="form-group">
+
+                  <label>From:</label>
+                    <input id="searchTextField_start" type="text" class="form-control" placeholder="Enter a bus stop or an address">
+                    <!-- Hidden fields are for storing lat lon not for showing -->
+                    <input type="hidden" id="start_lat" />
+                    <input type="hidden" id="start_lng" />
+               
+                  <label>To:</label>
+                    <input id="searchTextField_destination" type="text" class="form-control" placeholder="Enter a bus stop or an address">
+                    <!-- Hidden fields are for storing lat lon not for showing -->
+                    <input type="hidden" id="stop_lat" />
+                    <input type="hidden" id="stop_lng" />
+               <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+               
+                  <label>Travel Date and Time:</label>
+                  <div class="input-group date" data-provide="datepicker">
+                    <!-- <input type="text" class="form-control" id="datetimepicker4"> -->
+                    <input type="text" class="form-control datetimepicker-input" id="datetimepicker4" data-toggle="datetimepicker" data-target="#datetimepicker4"/>
+                </div>
+                    </div>
+              </form>
+                      <!-- Submit button for the journey plannner -->
 <input id="submit-btn" type="button" form="form1" class="btn btn-warning" value="Submit" onclick="myFunction()" style="margin-top: 10px; margin-bottom: 10px;">
   
 </div>
           </div>
-          <!-- This is another tab for locating next available bus based on stop number -->
-          
-          <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-            <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#searchStopNumber" id="BS-btn">Hide Search</button>
-
-            <div id="floating-panel2" class="card col-md-12 collapse-show">
-            <div class="form-group">
-              <label>Stop Number:</label>
-              <form id="form2">
-                <input id="searchStopNumber" type="text" class="form-control" placeholder="Enter a bus stop or an address">
-                <input id="submit-btn" type="button" form="form2" class="btn btn-warning" value="Submit" onclick="myFunction2()" style="margin-top: 10px; margin-bottom: 10px;">
-              </form>
-            </div>
-              <div id="stop">Hellooooo</div>
-                </div>
+    <!-- This code is for the Tourism tab -->
+    <div id="tourism" class="container tab-pane fade">
+      <div class="card col-md-4" id="tourism-card">
+     
+        <h3 class="card-title">Tourism</h3>
+        <p id="ok">hi</p>
+        <button class="btn btn-warning" onclick="getLocation()">Try It</button>
+          <div class="card-body">
+      <p>Guess what it's tourism time</p>
+          <img src="{% static 'DublinAirport.jpeg' %}" class="rounded" alt="Airport">
+              The airport<input type="button" class="btn btn-warning btn-info btn-sm" value="Find Route">
+          <img src="{% static 'Guinness.jpeg' %}" class="rounded" alt="Black Gates">
+              Guinness Store House<input type="button" class="btn btn-warning btn-info btn-sm" value="Find Route">
+             
+          <img src="{% static 'NGI.jpeg' %}" class="rounded" alt="National Gallery">
+              National Gallery of Ireland<input type="button" class="btn btn-warning btn-info btn-sm" value="Find Route">
+          <img src="{% static 'NLM.jpeg' %}" class="rounded" alt="Leprechaun">
+              National Leprechaun Museum<input type="button" class="btn btn-warning btn-info btn-sm" value="Find Route">
+    </div>
           </div>
-          <div class="tab-pane fade" id="twitter" role="tabpanel" aria-labelledby="twitter-tab">
-            <div class="card">
-              Tweet tweet bitch
-            </div>
-          </div>
-          
-      <div class="tab-pane fade" id="tourism" role="tabpanel" aria-labelledby="tourism-tab">
-        <div class="card-body">
-  <h3 class="card-title">Tourism</h3>
-    <div class="card-body col-md-6">
-<p>Guess what it's tourism time</p>
-<ul>
-    <li><img src="{% static 'DublinAirport.jpeg' %}" class="rounded" alt="Airport">
-        The airport</li><input type="button" class="btn btn-warning btn-info btn-sm" value="Find Route">
-    <li><img src="{% static 'Guinness.jpeg' %}" class="rounded" alt="Black Gates">
-        Guinness Store House</li><input type="button" class="btn btn-warning btn-info btn-sm" value="Find Route">
-        </div>
-            <div class="col-md-6">
-    <li><img src="{% static 'NGI.jpeg' %}" class="rounded" alt="National Gallery">
-        National Gallery of Ireland</li><input type="button" class="btn btn-warning btn-info btn-sm" value="Find Route">
-    <li><img src="{% static 'NLM.jpeg' %}" class="rounded" alt="Leprechaun">
-        National Leprechaun Museum</li><input type="button" class="btn btn-warning btn-info btn-sm" value="Find Route">
-</ul>
-</div>
-      </div>
+    </div>
+    <!-- This code is for the twitter tab -->
+    <div id="twitter" class="container tab-pane fade">
+      <div class="card col-md-12" id="twitter-card">
+      <h3 class="card-title">Dublin Bus Twitter</h3>
+        Tweet tweet bitch
+      </div>   
+     </div>
   </div>
-</div>
-</div>
 </div>
 <!-- This code below will one day be the pop up journey guide that tells you step by step things -->
 
-
     <div><div id="map"> hello </div></div>
     <div id="directions-container">
-    <div id="directions" class="card col-md-3">  
+    <div id="directions" class="card col-md-4">  
       <div id="row">
-        <h3 class="card-title">Directions</h3>
-        <i class="fas fa-bus" style='color:green'></i><p id="test"></p>
-        <i class='fas fa-map-pin' style='color:red'></i><p id="test2"></p>
-        <i class='far fa-clock'></i><p id="test3"></p>
-      <button class="btn-primary" id="close">Close</button>
+        <h3 class="card-title">Directions</h3>  <button class="btn btn-primary" id="close">Close</button>
+        <p id="test3"> <i class='far fa-clock'></i> Predicted Journey Time:</i></p>
+        <i class="fas fa-bus" style='color:green;'><p id="test1"></p></i>
+        <p id="test">..</p>
+        <i class='fas fa-map-pin' style='color:red'><p id="test2"></p></i>
+        
+    
     </div>
         </div>
         </div>

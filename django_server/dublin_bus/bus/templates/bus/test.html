@@ -1,0 +1,136 @@
+{% extends 'bus/base_layout.html' %}
+{% load static %} 
+
+{% block content %}
+<div class="card">
+  <div class="card-header"> 
+      <ul class="nav nav-tabs card-header-tabs pull-right"  id="myTab" role="tablist">
+          <li class="nav-item">
+              <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Journey Planner</a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Search by Stop Number</a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link" id="twitter-tab" data-toggle="tab" href="#twitter" role="tab" aria-controls="twitter" aria-selected="false">Twitter</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="tourism-tab" data-toggle="tab" href="#tourism" role="tab" aria-controls="tourism" aria-selected="false">Tourism</a>
+        </li>
+      </ul>
+  </div>
+
+      <div class="tab-content" id="myTabContent">
+          <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+            <div class="card-body">
+            <div><button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#floating-panel" id="JP-btn">Hide Planner</button></div>
+<div id="floating-panel" class="card col-md-12 collapse-show">
+        <h3 class="card-title">Journey Planner<i class="fas fa-cloud">15C</i></h3>
+        <form id="form1" class="form">
+          <div class="form-group">
+            <label>From:</label>
+    
+              <input id="searchTextField_start" type="text" class="form-control" placeholder="Enter a bus stop or an address">
+              <!-- Hidden fields are for storing lat lon not for showing -->
+              <input type="hidden" id="start_lat" />
+              <input type="hidden" id="start_lng" />
+         
+            <label>To:</label>
+          
+              <input id="searchTextField_destination" type="text" class="form-control" placeholder="Enter a bus stop or an address">
+              <!-- Hidden fields are for storing lat lon not for showing -->
+              <input type="hidden" id="stop_lat" />
+              <input type="hidden" id="stop_lng" />
+         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+         
+            <label>Travel Date and Time:</label>
+            <div class="input-group date" data-provide="datepicker">
+              <!-- <input type="text" class="form-control" id="datetimepicker4"> -->
+              <input type="text" class="form-control datetimepicker-input" id="datetimepicker4" data-toggle="datetimepicker" data-target="#datetimepicker4"/>
+          </div>
+              </div>
+        </form>
+        
+        <!-- Submit button for the journey plannner -->
+<input id="submit-btn" type="button" form="form1" class="btn btn-warning" value="Submit" onclick="myFunction()" style="margin-top: 10px; margin-bottom: 10px;">
+  
+</div>
+          </div>
+          <!-- This is another tab for locating next available bus based on stop number -->
+          
+          <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+            <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#searchStopNumber" id="BS-btn">Hide Search</button>
+
+            <div id="floating-panel2" class="card col-md-12 collapse-show">
+            <div class="form-group">
+              <label>Stop Number:</label>
+              <form id="form2">
+                <input id="searchStopNumber" type="text" class="form-control" placeholder="Enter a bus stop or an address">
+                <input id="submit-btn" type="button" form="form2" class="btn btn-warning" value="Submit" onclick="myFunction2()" style="margin-top: 10px; margin-bottom: 10px;">
+              </form>
+            </div>
+              <div id="stop">Hellooooo</div>
+                </div>
+          </div>
+          <div class="tab-pane fade" id="twitter" role="tabpanel" aria-labelledby="twitter-tab">
+            <div class="card">
+              Tweet tweet bitch
+            </div>
+          </div>
+          
+      <div class="tab-pane fade" id="tourism" role="tabpanel" aria-labelledby="tourism-tab">
+        <div class="card-body">
+  <h3 class="card-title">Tourism</h3>
+    <div class="card-body col-md-6">
+<p>Guess what it's tourism time</p>
+<ul>
+    <li><img src="{% static 'DublinAirport.jpeg' %}" class="rounded" alt="Airport">
+        The airport</li><input type="button" class="btn btn-warning btn-info btn-sm" value="Find Route">
+    <li><img src="{% static 'Guinness.jpeg' %}" class="rounded" alt="Black Gates">
+        Guinness Store House</li><input type="button" class="btn btn-warning btn-info btn-sm" value="Find Route">
+        </div>
+            <div class="col-md-6">
+    <li><img src="{% static 'NGI.jpeg' %}" class="rounded" alt="National Gallery">
+        National Gallery of Ireland</li><input type="button" class="btn btn-warning btn-info btn-sm" value="Find Route">
+    <li><img src="{% static 'NLM.jpeg' %}" class="rounded" alt="Leprechaun">
+        National Leprechaun Museum</li><input type="button" class="btn btn-warning btn-info btn-sm" value="Find Route">
+</ul>
+</div>
+      </div>
+  </div>
+</div>
+</div>
+</div>
+<!-- This code below will one day be the pop up journey guide that tells you step by step things -->
+
+
+    <div><div id="map"> hello </div></div>
+    <div id="directions-container">
+    <div id="directions" class="card col-md-5">  
+      <div id="row">
+        <h3 class="card-title">Directions</h3>
+        <p>Predicted Journey Time</p>
+        <i class="fas fa-bus" style='color:green;'><p id="test1"></p></i>
+        <p id="test">..</p>
+        <i class='fas fa-map-pin' style='color:red'><p id="test2"></p></i>
+        <i class='far fa-clock'></i><p id="test3"></p>
+      <button class="btn-primary" id="close">Close</button>
+    </div>
+        </div>
+        </div>
+        <script src="{% static 'bus/js/input.js' %}"></script>
+<!--Jquery for map-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<!--Script for Map and Marker 01-->
+
+<script src="{% static 'bus/js/map_init.js' %}"></script>
+ <!--MAPS API-->
+<script 
+src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCFtH8qWuX2LGmHcicY-vLHfYuB7D6WI7Y&libraries=places&callback=initMap" >
+
+</script>
+<script src="{% static 'bus/js/map_auto_complete_text.js' %}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.0/moment.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.0-alpha14/css/tempusdominus-bootstrap-4.min.css" />
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.0-alpha14/js/tempusdominus-bootstrap-4.min.js"></script>
+{% endblock %}

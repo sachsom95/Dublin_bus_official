@@ -1,6 +1,13 @@
 let map
 let markers=[];
 let directionsDisplay;
+let route; 
+let arr;
+let dep;
+let i;
+let stepList = [];
+let text = "<ol>";
+let durationList = [];
 
 
 
@@ -64,6 +71,24 @@ function showRoutes() {
 
     }, function(response, status) {
         if (status === google.maps.DirectionsStatus.OK) {
+            arr = response.routes[0].legs[0].arrival_time.text;
+            dep = response.routes[0].legs[0].departure_time.text;
+            duration_time = response.routes[0].legs[0].steps[0].duration.text;
+            route = response.routes[0].legs[0];
+            // console.log("your arrival time is " + arr);
+            // console.log("your departure time is " + dep);
+            console.log(route);
+            console.log(response);
+            // console.log(duration_time);
+       
+            for (i=0; i < route.steps.length; i++) {
+                stepList.push(route.steps[i].instructions);
+                durationList.push(route.steps[i].duration.text)
+                console.log(stepList);
+               
+            }
+            
+           
             directionsDisplay = new google.maps.DirectionsRenderer({
                 map: map,
                 directions: response,
@@ -77,9 +102,7 @@ function showRoutes() {
             window.alert('Directions request failed due to ' + status);
         }
     });
-
-
-
+    return stepList;
 }
 
 $(document).on('change', '#searchTextField_start, #searchTextField_destination', function () {

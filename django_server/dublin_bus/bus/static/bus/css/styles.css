@@ -105,8 +105,8 @@ p, input, label {
     width:100%;
 }
  #floating-panel {
-    position: absolute;
-    z-index: 5;
+    position: relative;
+    z-index: 4;
     border: 1px solid#252d5a;
     font-family: Orienta, sans-serif; 
   }
@@ -124,6 +124,7 @@ p, input, label {
     font-family: Orienta, sans-serif;
     display: none;
     height: 33%;
+    overflow: auto;
 
   }
   #test2, #test3, #test {
@@ -132,4 +133,15 @@ p, input, label {
   .tab-content {
     position: absolute;
     z-index: 5;
+  }
+  #tourism-card{
+      position: auto;
+      z-index: 4;
+      border: 1px solid#252d5a;
+      font-family: Orienta, sans-serif; 
+
+  }
+  #twitter-card{
+    background-color: #fff;
+    border: 1px solid#252d5a;
   }
