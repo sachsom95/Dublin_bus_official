@@ -12,7 +12,13 @@ class Profile(models.Model):
     leap_password = models.CharField(max_length=50,default='',blank=True)
     leap_balance = models.DecimalField(max_digits=4,decimal_places=2, default=0)
     is_registered = models.BooleanField(default=False)
-
+    leap_card_number = models.CharField(max_length=50,default='',blank=True)
+    leap_card_status = models.CharField(max_length=50,default='',blank=True)
+    leap_card_type = models.CharField(max_length=50,default='',blank=True)
+    leap_credit_status = models.CharField(max_length=50,default='',blank=True)
+    leap_expiry_date = models.CharField(max_length=50,default='',blank=True)
+    leap_issue_date = models.CharField(max_length=50,default='',blank=True)
+    leap_auto_topup = models.CharField(max_length=50,default='',blank=True)
     def __str__(self):
         return f'{self.user.username} Profile'
 

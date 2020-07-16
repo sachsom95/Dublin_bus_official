@@ -10,6 +10,9 @@ from .leap_card import get_leap
 from .models import Profile
 from django.contrib.auth.models import User
 
+# For passing the profile as a python serialized ob
+from django.core import serializers
+
 
 def register(request):
     if request.method == 'POST':
@@ -50,9 +53,17 @@ def account(request):
             z=x.profile
             z.leap_balance = balance['balance']
             z.is_registered = True
+            z.leap_card_number = balance['card_num']
+            z.leap_card_status = balance['card_status']
+            z.leap_card_type = balance['card_type']
+            z.leap_credit_status = balance['credit_status']
+            z.leap_expiry_date = balance['expiry_date']
+            z.leap_issue_date = balance['issue_date']
+            z.leap_auto_topup = balance['auto_topup']
+
             
-            
-            z.save(update_fields =['leap_balance','is_registered'])   
+            z.save(update_fields =['leap_balance','is_registered','leap_card_number','leap_card_status','leap_card_type','leap_credit_status',
+            'leap_expiry_date','leap_issue_date','leap_auto_topup'])   
             # trying vars to get result in a dict
             print(balance["balance"])
             print(request.user)
@@ -89,6 +100,12 @@ def account(request):
         'account_form':account_form,
         'balance':User.objects.get(username=request.user).profile.leap_balance,
         'is_registered':User.objects.get(username=request.user).profile.is_registered,
+        # used fileter instead of get as get object not iteratable
+        # from stack-overflow  : https://stackoverflow.com/questions/2170228/iterate-over-model-instance-field-names-and-values-in-template
+        # Serialization was cool but it kinda put all unnecessary keys as well so back to basics
+        # 'profile' : serializers.serialize( "python", Profile.objects.filter(user_id=request.user.id) )
+        'profile':Profile.objects.get(user_id=request.user.id),
+
     }
 
     return render(request, 'users/account.html',context)

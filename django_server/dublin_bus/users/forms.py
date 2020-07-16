@@ -61,7 +61,14 @@ class ProfileUpdateForm(forms.ModelForm):
         # May be I should Update leap_card_password in more secure manner?
         model = Profile
         fields = ['image','leap_username','leap_password']
-        widgets = {'is_registered': forms.HiddenInput()}
+        widgets = {'is_registered': forms.HiddenInput(),
+                    'leap_card_number': forms.HiddenInput(),
+                    'leap_card_status': forms.HiddenInput(),
+                    'leap_card_type': forms.HiddenInput(),
+                    'leap_credit_status': forms.HiddenInput(),
+                    'leap_expiry_date': forms.HiddenInput(),
+                    'leap_issue_date': forms.HiddenInput(),
+                    'leap_auto_topup': forms.HiddenInput(),}
 
     field_order = ['leap_username', 'leap_password', 'leap_password_confirm','image']
 
