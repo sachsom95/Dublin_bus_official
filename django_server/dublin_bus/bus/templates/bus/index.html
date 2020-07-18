@@ -27,13 +27,13 @@
                 <div class="form-group">
 
                   <label>From:</label>
-                    <input id="searchTextField_start" type="text" class="form-control" placeholder="Enter a bus stop or an address">
+                    <input id="searchTextField_start" onClick="this.select();" type="text" class="form-control" placeholder="Enter a bus stop or an address">
                     <!-- Hidden fields are for storing lat lon not for showing -->
                     <input type="hidden" id="start_lat" />
                     <input type="hidden" id="start_lng" />
                
                   <label>To:</label>
-                    <input id="searchTextField_destination" type="text" class="form-control" placeholder="Enter a bus stop or an address">
+                    <input id="searchTextField_destination" type="text" onClick="this.select()" class="form-control" placeholder="Enter a bus stop or an address">
                     <!-- Hidden fields are for storing lat lon not for showing -->
                     <input type="hidden" id="stop_lat" />
                     <input type="hidden" id="stop_lng" />
@@ -42,7 +42,7 @@
                   <label>Travel Date and Time:</label>
                   <div class="input-group date" data-provide="datepicker">
                     <!-- <input type="text" class="form-control" id="datetimepicker4"> -->
-                    <input type="text" class="form-control datetimepicker-input" id="datetimepicker4" data-toggle="datetimepicker" data-target="#datetimepicker4"/>
+                    <input type="text" class="form-control datetimepicker-input" onClick="this.select()" id="datetimepicker4" data-toggle="datetimepicker" data-target="#datetimepicker4"/>
                 </div>
                     </div>
               </form>

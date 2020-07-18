@@ -6,9 +6,10 @@ let arr;
 let dep;
 let i;
 let stepList = [];
-let text = "<ul class='list-group'>";
+let text= '';
 let durationList = [];
-let counter = 1;
+
+
 
 
 
