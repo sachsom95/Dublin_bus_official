@@ -47,24 +47,25 @@ $("#BS-btn").click(function(e){
   }
 });
 // This function takes the values entered into the intputs on the index page and re prints them out. 
+function stepListBuilder() {
+  for (i=0; i < stepList.length; i++ && counter <= stepList.length){
+    text += "<li class='list-group-item'>" + "<span class='badge badge-primary badge-pill'>" + "Step: " + counter +  "</span>" + " " + stepList[i] + " " + "(Duration: " + durationList[i] + ")" + "</li>";
+    counter += 1;
+    text += "</ul>";
+    }
+}
 function myFunction() {
+  text = [] //start with an empty list each time
+  counter = 1; //start with counter at 1 each time
   var input1 = document.getElementById("searchTextField_start").value;
   var input2 = document.getElementById("searchTextField_destination").value;
-  for (i=0; i < stepList.length; i++) {
-    text += "<li>" + stepList[i] + " " + "(Duration: " + durationList[i] + ")" + "</li>";
-    // console.log(text);
-    document.getElementById("test").innerHTML = text;
-    // document.getElementById("test").innerHTML = "Step " + route.steps.length + ":" + stepList;
-    document.getElementById("test1").innerHTML = " Start: " + input1; 
-    document.getElementById("test2").innerHTML = " Destination: " + input2;
-    // document.getElementById("test3").innerHTML = "Estimated arrival Time: " + arr;
-  }
-  text =+ "</ol>";
+  stepListBuilder();
+  document.getElementById("test").innerHTML = text;
+  document.getElementById("test1").innerHTML = " Start: " + input1; 
+  document.getElementById("test2").innerHTML = " Destination: " + input2;
+
 }
-  function myFunction2() {
-    var input1 = document.getElementById("searchStopNumber").value;
-    document.getElementById("stop").innerHTML = "Stop " + input1 + ": Bus, Destination, and Predicted time of arrival"; 
-  }
+
   // Below is the code for the direction planner
   //first we show the planner
     $('#submit-btn').click(function(){
@@ -86,65 +87,3 @@ function myFunction() {
         position: 'absolute',
       });
     });
-
-
-
-var initMap = function() {
-  var userLocation = {
-    lat: 53.33498053,
-    lng: -62603097
-  };
-  map = new google.maps.Map(document.getElementById('map'), {
-    zoom: 16,
-    center: userLocation
-  });
-  var marker = new google.maps.Marker({
-    position: userLocation,
-    map: map
-  });
-  markers.push(marker);
-}(position) {
-  var userLatLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-  var marker = new google.maps.Marker({
-    position: userLatLng,
-    title: 'Your Location',
-    draggable: true,
-    map: map
-  });
-  markers.push(marker);
-  var bounds = new google.maps.LatLngBounds();
-  for (var i = 0; i < markers.length; i++){
-    bounds.extend(markers[i].getPosition());
-  }
-  map.firBounds(bounds);
-}
-function errorHandler(error) {
-  console.log('Geolocation error : code ' + error.code + ' -- ' + error.message);
-}
-initMap(); 
-
-navigator.geolocation.getCurrentPosition(showPosition, errorHandler, {
-  enableHighAccuracy: false,
-  maximumAge: 60000,
-  timeout: 27000
-});
-var geo = document.getElementById("ok");
-function getLocation() {
-  if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(showPosition);
-  } else {
-    geo.innerHTML = "Geolocation is not supported by this browser.";
-  }
-}
-
-function showPosition(position) {
-  geo.innerHTML = "Latitude: " + position.coords.latitude +
-  "<br>Longitude: " + position.coords.longitude;
-}
-// function showPosition(position) {
-//   var latlon = position.coords.latitude + "," + position.coords.longitude;
-
-//   var img_url = "https://maps.googleapis.com/maps/api/staticmap?center=" + latlon + "&zoom=14&size=400x300&sensor=false&key=AIzaSyCFtH8qWuX2LGmHcicY-vLHfYuB7D6WI7Y&libraries=places&callback=initMap";
-
-//   document.getElementById("").innerHTML = "<img src='"+img_url+"'>";
-// }

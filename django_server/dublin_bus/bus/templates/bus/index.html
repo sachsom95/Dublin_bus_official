@@ -22,7 +22,7 @@
     <div id="journey-planner" class="container tab-pane active">
       <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#floating-panel" id="JP-btn">Hide Planner</button>
       <div id="floating-panel" class="card col-md-12 collapse-show">
-              <h3 class="card-title">Journey Planner<i class="fas fa-cloud">15C</i></h3>
+              <h3 class="card-title">Journey Planner  <i class="fas fa-cloud">15C</i></h3>
               <form id="form1" class="form">
                 <div class="form-group">
 
@@ -57,7 +57,13 @@
      
         <h3 class="card-title">Tourism</h3>
         <p id="ok">hi</p>
-        <button class="btn btn-warning" onclick="getLocation()">Try It</button>
+        
+        <form id="form2">
+          <input type="text" class="form-control" id="route">
+          <input type="hidden" id="stop_lat" />
+          <input type="hidden" id="stop_lng" />
+          <button class="btn btn-warning" form="form2" onclick="getLocation()">Try It</button>
+</form>
           <div class="card-body">
       <p>Guess what it's tourism time</p>
           <img src="{% static 'DublinAirport.jpeg' %}" class="rounded" alt="Airport">
@@ -91,12 +97,13 @@
         <p id="test3"> <i class='far fa-clock'></i> Predicted Journey Time:</i></p>
         <i class="fas fa-bus" style='color:green;'><p id="test1"></p></i>
         <p id="test">..</p>
-        <i class='fas fa-map-pin' style='color:red'><p id="test2"></p></i>
+        <i class='fas fa-map-pin' style='color:#b91700'><p id="test2"></p></i>
         
     
     </div>
         </div>
         </div>
+        <script src="{% static 'bus/js/tourist.js' %}"></script>
         <script src="{% static 'bus/js/input.js' %}"></script>
 <!--Jquery for map-->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
