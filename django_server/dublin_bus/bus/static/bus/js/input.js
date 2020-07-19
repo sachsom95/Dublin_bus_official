@@ -64,14 +64,15 @@ function myFunction() {
   document.getElementById("test1").innerHTML = " Start: " + input1; 
   document.getElementById("test2").innerHTML = " Destination: " + input2;
   document.getElementById("test").innerHTML = text;
+  document.getElementById("busbus").innerHTML = "Suggested Bus: " + bus + " towards " + headsign;
 }
 
   // Below is the code for the direction planner
   //first we show the planner
     $('#submit-btn').click(function(){
       $('#directions').show({
-        bottom: '-300px',
-        height:'400px',
+        bottom: '-550px',
+        height:'500px',
         position: 'absolute',
       });
     });
@@ -82,8 +83,8 @@ function myFunction() {
     //then we can animate the planner each time!
     $('#submit-btn').click(function() {
       $('#directions').animate({
-        bottom: '-300px',
-        height: '400px',
+        bottom: '-550px',
+        height: '500px',
         position: 'absolute',
       });
     });

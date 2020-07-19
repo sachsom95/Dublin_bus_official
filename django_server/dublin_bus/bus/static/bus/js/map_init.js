@@ -8,6 +8,8 @@ let i;
 let stepList = [];
 let text= '';
 let durationList = [];
+let bus;
+let headsign;
 
 
 
@@ -77,10 +79,16 @@ function showRoutes() {
             dep = response.routes[0].legs[0].departure_time.text;
             duration_time = response.routes[0].legs[0].steps[0].duration.text;
             route = response.routes[0].legs[0];
+            bus = route.steps[1].transit.line.short_name;
+            headsign = route.steps[1].transit.headsign;
+
+      
+
             // console.log("your arrival time is " + arr);
             // console.log("your departure time is " + dep);
             console.log(route);
             console.log(response);
+            console.log("Bus number: " + bus);
             // console.log(duration_time);
        
             for (i=0; i < route.steps.length; i++) {

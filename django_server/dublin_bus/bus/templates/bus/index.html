@@ -20,7 +20,7 @@
   <div class="tab-content">
     <!-- This code is for the journey planner tab -->
     <div id="journey-planner" class="container tab-pane active">
-      <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#floating-panel" id="JP-btn">Hide Planner</button>
+      <button type="button" class="btn btn-primary btn-block" data-toggle="collapse" data-target="#floating-panel" id="JP-btn">Hide Planner</button>
       <div id="floating-panel" class="card col-md-12 collapse-show">
               <h3 class="card-title">Journey Planner  <i class="fas fa-cloud">15C</i></h3>
               <form id="form1" class="form">
@@ -49,8 +49,20 @@
                       <!-- Submit button for the journey plannner -->
 <input id="submit-btn" type="button" form="form1" class="btn btn-warning" value="Submit" onclick="myFunction()" style="margin-top: 10px; margin-bottom: 10px;">
   
-</div>
-          </div>
+
+          
+          <div id="directions-container">
+            <div id="directions" class="card col-md-12">  
+                <h3 class="card-title">Directions</h3>  <button class="btn btn-primary" id="close">Close</button>
+                <p id="busbus">..</p>
+                <p id="test3"> <i class='far fa-clock'></i> Predicted Journey Time:</i></p>
+                <i class="fas fa-bus" style='color:green;'><p id="test1"></p></i>
+                <p id="test">..</p>
+                <i class='fas fa-map-pin' style='color:#b91700'><p id="test2"></p></i>
+                </div>
+                </div>
+              </div>
+              </div>
     <!-- This code is for the Tourism tab -->
     <div id="tourism" class="container tab-pane fade">
       <div class="card col-md-4" id="tourism-card">
@@ -90,19 +102,7 @@
 <!-- This code below will one day be the pop up journey guide that tells you step by step things -->
 
     <div><div id="map"> hello </div></div>
-    <div id="directions-container">
-    <div id="directions" class="card col-md-4">  
-      <div id="row">
-        <h3 class="card-title">Directions</h3>  <button class="btn btn-primary" id="close">Close</button>
-        <p id="test3"> <i class='far fa-clock'></i> Predicted Journey Time:</i></p>
-        <i class="fas fa-bus" style='color:green;'><p id="test1"></p></i>
-        <p id="test">..</p>
-        <i class='fas fa-map-pin' style='color:#b91700'><p id="test2"></p></i>
-        
-    
-    </div>
-        </div>
-        </div>
+ 
         <script src="{% static 'bus/js/tourist.js' %}"></script>
         <script src="{% static 'bus/js/input.js' %}"></script>
 <!--Jquery for map-->
