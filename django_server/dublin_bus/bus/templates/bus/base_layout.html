@@ -15,6 +15,7 @@
 </head>
 
 
+
 <body>
 <nav class="navbar navbar-light navbar-expand-md d-flex navigation-clean">
     <!-- Brand -->
@@ -29,18 +30,37 @@
     <!-- Navbar links -->
     <div class="collapse navbar-collapse" id="menu">
       <ul class="navbar-nav">
+      
         <li class="nav-item">
-            <a class="nav-link" href="{% url 'account' %}">Test Account</a>
-          </li>
+          <a class="nav-link" href="{% url 'home' %}">Home</a>
+      </li>
+
+        <!-- modify navbar based on login status -->
+        
+        {% if user.is_authenticated %}
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'account' %}">Accounts</a>
+        </li>
+        
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+        </li>
+
+        <!-- SHOW THIS NAV IF NOT LOGGED IN -->
+        {% else %}
         <li class="nav-item">
           <a class="nav-link" href="{% url 'login' %}">Log In</a>
         </li>
+
         <li class="nav-item">
-            <a class="nav-link" href="{% url 'register' %}">Sign Up</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'tourism' %}">Tourism</a>
-          </li>
+          <a class="nav-link" href="{% url 'register' %}">Register</a>
+      </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'tourism' %}">Tourism</a>
+        </li>
+        {% endif %}
+
       </ul>
     </div>
   </nav>
