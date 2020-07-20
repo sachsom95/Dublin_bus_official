@@ -11,7 +11,7 @@
 </head>
 
 <body>
-<h2>Covid-19 Detailed Information</h2>
+
 <!-- press button -->
 <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
 	Get Covid-19 Info
@@ -20,116 +20,127 @@
 
 
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-	<div class="modal-dialog" style="width:90%">
+	<div class="modal-dialog" style="width:80%">
 		<div class="modal-content">
 
                 <div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
 					&times;
 				</button>
-				<h3 class="modal-title" id="myModalLabel">
-					Covid-19 Detailed Info
-				</h3>
+				<h2 class="modal-title" id="myModalLabel">
+					Covid-19 Detailed Information. Hope you stay safe!
+				</h2>
 			</div>
          <div class="modal-body">
-
 <!--<p>weather icon</p>-->
 
 <!--<img src="http://openweathermap.org/img/wn/{{weather_info.weather_icon}}@2x.png">-->
 
-<div class="content" style="height:650px ;overflow:auto;">
+<div class="content" style="height:590px ;overflow:auto;padding:2px 30px;margin:0px 5px">
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js" integrity="sha256-R4pqcOYV8lt7snxMQO/HSbVCFRPMdrhAFMH+vr9giYI=" crossorigin="anonymous"></script>
 
 
-<div id="mq"></div>
-<div id="map-tooltip"></div>
-<div class="html-tooltip" id="chartjs-tooltip">
-<table>
-<tbody>
-<tr>
-<td> </td>
-</tr>
-</tbody>
-</table>
-</div>
-<section class="header">
-<div class="row">
+<div id="notice"><p>Note: The data of covid-19 updates every 24 hours in our database</p></div>
 
-<div class="small-12 columns">
-<div class="row stat-boxes">
-<div class="small-12 columns stat-box">
+<section class="header">
+
+								<style>
+									.small-columns{
+										text-align:center;
+										color: #252d5a;
+										padding: 4px 4px;
+									}
+									.header{
+										background-color: #D0D0D0;
+									}
+									.main-content-row{
+										background-color: #F0F0F0;
+									}
+									.perc{
+										color: #252d5a;
+										font-family: "Bitstream Vera Sans Mono", Monaco, "Courier New", Courier, monospace;
+										font-size: large;
+									}
+									.small-stat-box{
+										background-color: #c8c8c8;
+										padding: 3px 3px;
+									}
+								</style>
+
+<div class="small-columns">
+<div class="row-stat-boxes">
+<div class="small-stat-box">
 <div>
-<span class="label">Total Cases</span>
+<span class="perc">Total Cases: </span>
 <span class="perc">{{covid.TotalConfirmedCovidCases}}</span>
 </div>
 </div>
-<div class="small-6 medium-4 columns stat-box">
+<div class="small-stat-box">
 <div>
-<span class="label">Latest Daily Cases</span>
+<span class="perc">Latest Daily Cases: </span>
 <span class="perc">{{covid.ConfirmedCovidCases}}</span>
 </div>
 </div>
-<div class="small-6 medium-4 columns stat-box">
+<div class="small-stat-box">
 <div>
-<span class="label">Total Deaths</span>
+<span class="perc">Total Deaths: </span>
 <span class="perc">{{covid.TotalCovidDeaths}}</span>
 </div>
 </div>
-<div class="small-6 medium-4 columns stat-box">
+<div class="small-stat-box">
 <div>
-<span class="label">Latest Daily Deaths</span>
+<span class="perc">Latest Daily Deaths: </span>
 <span class="perc">{{covid.ConfirmedCovidDeaths}}</span>
 </div>
 </div>
-<div class="small-6 medium-4 columns stat-box">
+<div class="small-stat-box">
 <div>
-<span class="label">Total Hospitalised</span>
+<span class="perc">Total Hospitalised: </span>
 <span class="perc">{{covid.HospitalisedCovidCases}}</span>
 </div>
 </div>
-<div class="small-6 medium-4 columns stat-box">
+<div class="small-stat-box">
 <div>
-<span class="label">Total Treated in ICU</span>
+<span class="perc">Total Treated in ICU: </span>
 <span class="perc">{{covid.RequiringICUCovidCases}}</span>
 </div>
 </div>
-<div class="small-6 medium-4 columns stat-box">
+<div class="small-stat-box">
 <div>
-<span class="label">Community Transmission</span>
+<span class="perc">Community Transmission: </span>
 <span class="perc">{{covid.CommunityTransmission}}</span>
-</div>
 </div>
 </div>
 </div>
 </div>
 </section>
 
-<section class="main-content row">
-<div class="small-12 columns with-divider">
-<h2>Daily confirmed cases &amp; deaths</h2>
-<div class="chart-container point-container" data-pillar="news">
+<section class="main-content-row">
+<div class="small-columns-divider">
+<h4>Daily confirmed cases &amp; deaths</h4>
+<div class="chart-container point-container" style="width:100%;height:330px;">
 <canvas id="dailyconfirmedcases"></canvas>
 </div>
 </div>
 
-<div class="small-12 columns with-divider">
-<h2>Total confirmed cases &amp; deaths</h2>
-<div class="chart-container point-container" data-pillar="news">
-<canvas id="totalconfirmedcases"></canvas>
+<div class="small-columns-divider">
+<h4>Total confirmed cases &amp; deaths</h4>
+<div class="chart-container point-container" style="width:100%;height:330px;">
+<canvas id="totalconfirmedcases" ></canvas>
 </div>
 </div>
 
-<div class="small-12 columns with-divider">
-<h2>Total number of cases requiring hospitalisation &amp; ICU</h2>
-<div class="chart-container point-container" data-pillar="news">
+<div class="small-columns-divider">
+<h4>Total number of cases requiring hospitalisation &amp; ICU</h4>
+<div class="chart-container point-container" style="width:100%;height:330px;">
 <canvas id="hospitalcases"></canvas>
 </div>
 </div>
 
-<div class="small-12 columns with-divider">
-<h2>% Known mode of transmission since 16/03/2020</h2>
-<div class="chart-container point-container" data-pillar="news">
+<div class="small-columns-divider">
+<h4>% Known mode of transmission since 16/03/2020</h4>
+<div class="chart-container point-container" style="width:100%;height:330px;">
 <canvas id="transmissioncases"></canvas>
 </div>
 </div>
@@ -160,10 +171,12 @@
                 ]
         },
         options: {
+        	responsive: true,
+			maintainAspectRatio: false,
             scales: {
                 xAxes: [{
                     ticks: {
-                        maxTicksLimit: 20,
+                        maxTicksLimit: 29,
                         autoskip: true
                     }
                 }],
@@ -200,10 +213,12 @@
                 ]
         },
         options: {
+        	responsive: true,
+			maintainAspectRatio: false,
             scales: {
                 xAxes: [{
                     ticks: {
-                        maxTicksLimit: 20,
+                        maxTicksLimit: 29,
                         autoskip: true
                     }
                 }],
@@ -240,10 +255,12 @@
                 ]
         },
         options: {
+        	responsive: true,
+			maintainAspectRatio: false,
             scales: {
                 xAxes: [{
                     ticks: {
-                        maxTicksLimit: 20,
+                        maxTicksLimit: 29,
                         autoskip: true
                     }
                 }],
@@ -264,32 +281,34 @@
     var transmissioncases = new Chart(ctx4, {
         type: 'line',
         data: {
-            labels: [ {% for item in covid_chart|slice:"16:" %}'{{item.Date}}',{% endfor %}],
+            labels: [ {% for item in covid_chart|slice:"14:" %}'{{item.Date}}',{% endfor %}],
             datasets: [{
                 label: 'Community Transmission',
-                data: [{% for item in covid_chart|slice:"16:" %}'{{item.CommunityTransmission}}',{% endfor %}],
+                data: [{% for item in covid_chart|slice:"14:" %}'{{item.CommunityTransmission}}',{% endfor %}],
                 borderColor: ['rgb(212, 36, 36)'],
                 pointBackgroundColor: 'rgb(212, 36, 36)',
                 borderWidth: 2},
                 {
                 label: 'Close Contact',
-                data: [{% for item in covid_chart|slice:"16:" %}'{{item.CloseContact}}',{% endfor %}],
+                data: [{% for item in covid_chart|slice:"14:" %}'{{item.CloseContact}}',{% endfor %}],
                 borderColor: ['rgb(34, 43, 201)'],
                 pointBackgroundColor: 'rgb(34, 43, 201)',
                 borderWidth: 2},
                 {
                 label: 'Travel Abroad',
-                data: [{% for item in covid_chart|slice:"16:" %}'{{item.TravelAbroad}}',{% endfor %}],
+                data: [{% for item in covid_chart|slice:"14:" %}'{{item.TravelAbroad}}',{% endfor %}],
                 borderColor: ['rgb(52, 163, 74)'],
                 pointBackgroundColor: 'rgb(52, 163, 74)',
                 borderWidth: 2}
                 ]
         },
         options: {
+        	responsive: true,
+			maintainAspectRatio: false,
             scales: {
                 xAxes: [{
                     ticks: {
-                        maxTicksLimit: 20,
+                        maxTicksLimit: 29,
                         autoskip: true
                     }
                 }],
@@ -308,7 +327,7 @@
 
                 </div>
        			<div class="modal-footer">
-				<button type="button" class="btn btn-default" data-dismiss="modal">I Got It!
+				<button type="button" class="btn btn-default" data-dismiss="modal">The pandemic is not over yet. Hope you stay safe!
 				</button>
 			    </div>
 

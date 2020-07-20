@@ -41,7 +41,7 @@ while True:
                 print("will try to connect again in 25 seconds")
                 sleep(25)
 
-    sleep(60)
+    sleep(10)
     # get data of covid 19
     url = "https://services1.arcgis.com/eNO7HHeQ3rUcBllm/arcgis/rest/services/CovidStatisticsProfileHPSCIrelandOpenData/FeatureServer/0/query?where=1%3D1&outFields=Date,RequiringICUCovidCases,CommunityTransmission,TotalConfirmedCovidCases,TotalCovidDeaths,ConfirmedCovidCases,ConfirmedCovidDeaths,CloseContact,StatisticsProfileDate,FID,TravelAbroad,HospitalisedCovidCases&outSR=4326&f=json"
     lm_json = requests.get(url).json()
@@ -60,7 +60,7 @@ while True:
         for i in featurelist:
             attribute = i["attributes"]
             d = attribute["Date"]
-            Date = str(pandas.to_datetime(d,unit='ms'))
+            Date = (str(pandas.to_datetime(d,unit='ms')))[:10]
             RequiringICUCovidCases = attribute["RequiringICUCovidCases"]
             CommunityTransmission = attribute["CommunityTransmission"]
             TotalConfirmedCovidCases = attribute["TotalConfirmedCovidCases"]
@@ -84,7 +84,7 @@ while True:
     else:
         attribute = featurelist[-1]["attributes"]
         d = attribute["Date"]
-        Date = str(pandas.to_datetime(d, unit='ms'))
+        Date = (str(pandas.to_datetime(d, unit='ms')))[:10]
         RequiringICUCovidCases = attribute["RequiringICUCovidCases"]
         CommunityTransmission = attribute["CommunityTransmission"]
         TotalConfirmedCovidCases = attribute["TotalConfirmedCovidCases"]
