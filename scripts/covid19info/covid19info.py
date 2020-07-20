@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding:utf-8 -*-
 
-import re
+import pandas
 import json
 import requests
 import logging
@@ -59,7 +59,8 @@ while True:
         cursor.execute('truncate table bus_data.covid')
         for i in featurelist:
             attribute = i["attributes"]
-            Date = attribute["Date"]
+            d = attribute["Date"]
+            Date = str(pandas.to_datetime(d,unit='ms'))
             RequiringICUCovidCases = attribute["RequiringICUCovidCases"]
             CommunityTransmission = attribute["CommunityTransmission"]
             TotalConfirmedCovidCases = attribute["TotalConfirmedCovidCases"]
@@ -82,7 +83,8 @@ while True:
 
     else:
         attribute = featurelist[-1]["attributes"]
-        Date = attribute["Date"]
+        d = attribute["Date"]
+        Date = str(pandas.to_datetime(d, unit='ms'))
         RequiringICUCovidCases = attribute["RequiringICUCovidCases"]
         CommunityTransmission = attribute["CommunityTransmission"]
         TotalConfirmedCovidCases = attribute["TotalConfirmedCovidCases"]

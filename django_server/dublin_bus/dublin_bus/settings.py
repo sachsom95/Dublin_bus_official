@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'bus',
     'crispy_forms',
+    'dublin_bus',
     # 'corsheaders',
 ]
 
