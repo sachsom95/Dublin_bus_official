@@ -5,17 +5,40 @@
 <meta content="ie=edge" http-equiv="x-ua-compatible"/>
 <meta content="width=device-width, height=device-height, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" name="viewport"/>
 <title>Coronavirus information</title>
-
+	<link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+	<script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 
 <body>
+<h2>Covid-19 Detailed Information</h2>
+<!-- press button -->
+<button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+	Get Covid-19 Info
+</button>
+
+
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog" style="width:90%">
+		<div class="modal-content">
+
+                <div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+					&times;
+				</button>
+				<h3 class="modal-title" id="myModalLabel">
+					Covid-19 Detailed Info
+				</h3>
+			</div>
+         <div class="modal-body">
 
 <!--<p>weather icon</p>-->
 
 <!--<img src="http://openweathermap.org/img/wn/{{weather_info.weather_icon}}@2x.png">-->
 
+<div class="content" style="height:650px ;overflow:auto;">
 
-<div class="content">
 <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js" integrity="sha256-R4pqcOYV8lt7snxMQO/HSbVCFRPMdrhAFMH+vr9giYI=" crossorigin="anonymous"></script>
 
 
@@ -32,9 +55,7 @@
 </div>
 <section class="header">
 <div class="row">
-<div class="small-12 columns">
-<h1>COVID-19 Situation</h1>
-</div>
+
 <div class="small-12 columns">
 <div class="row stat-boxes">
 <div class="small-12 columns stat-box">
@@ -283,6 +304,17 @@
      // var DAILY_FEED = {covid_chart};
  </script>
 
+</div>
+
+                </div>
+       			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">I Got It!
+				</button>
+			    </div>
+
+
+		</div><!-- /.modal-content -->
+	</div><!-- /.modal -->
 </div>
 
 </body>
