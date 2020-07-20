@@ -11,7 +11,7 @@ function secondsToHms(d) {
     return hDisplay + mDisplay; 
 }
 
-$( "#submit" ).click(function() {
+$( "#submit-btn" ).click(function() {
     // let x = 0;
     var time_prediction = 0
     console.log(route)
