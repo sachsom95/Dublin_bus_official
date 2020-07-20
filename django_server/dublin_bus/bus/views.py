@@ -17,7 +17,7 @@ def tourism(request):
 # @csrf_exempt
 def prediction(request):
     # get lat & lng values for departure and arrival bus stops and the line chosen by google maps
-    line,dep_lat,dep_lng,arr_lat,arr_lng,google_pred = request.GET['line'],request.GET['dep_lat'],request.GET['dep_lng'],request.GET['arr_lat'],request.GET['arr_lng'],request.GET['google_pred']
+    line,dep_lat,dep_lng,arr_lat,arr_lng,google_pred,time,day = request.GET['line'],request.GET['dep_lat'],request.GET['dep_lng'],request.GET['arr_lat'],request.GET['arr_lng'],request.GET['google_pred'],request.GET['time'],request.GET['day']
 
     ''' Because of the inconsistencies which result from using different data sources I am using latitudes and logituteds to match google maps chosen
     bus stops with bus stops in our data. The lats and longs wont be exactly the same so I am narrowing them down to 3 decimal places.
@@ -73,7 +73,16 @@ def prediction(request):
             percent_of_route = num_stops / total_stops_on_route * 100
 
             # make a prediction for how long the total bus route will take
-            dummy_values = [[84600.0,5.44,7.20,2924.0,1,0,0,0,0,0,0,0,0,0,0,1]]
+            dummy_val_dict = {'ACTUALTIME_DEP':time,'temp':10,'wind_speed': 7,'Clouds':0,'Drizzle':0,'Fog':0,'Mist':0,'Rain': 0,'Smoke':0,'Snow':0,'Mon':0,'Sat':0,'Sun':0,'Thu':0,'Tue':0,'Wed':0}
+            dummy_values = [[]]
+            dummy_val_dict['Clouds'] = 1
+            # fridays have been dropped and are inferred from absence of other days
+            if day != 'Fri':
+                dummy_val_dict[day] = 1
+            # add values for prediction to an array
+            for key,value in dummy_val_dict.items():
+                dummy_values[0].append(value)
+            # make prediction
             prediction = model.predict(dummy_values)[0]
 
             # get a percentage of that prediction based on how much of the route will be travelled
