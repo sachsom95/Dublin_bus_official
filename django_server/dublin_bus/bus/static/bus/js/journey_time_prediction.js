@@ -42,7 +42,7 @@ $( "#submit" ).click(function() {
     }
     // alert('Your bus journey will take' + time_prediction + 'seconds')
     // console.log(parseInt(time_prediction))
-    document.getElementById('precitionResult').innerHTML = "Your bus journey(s) will take: " + secondsToHms(time_prediction)
+    document.getElementById("precitionResult").innerHTML = "Your bus journey(s) will take: " + secondsToHms(time_prediction)
 
 });
 

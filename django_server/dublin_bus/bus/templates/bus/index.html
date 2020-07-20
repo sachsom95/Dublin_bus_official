@@ -54,7 +54,9 @@
             <div id="directions" class="card col-md-12">  
                 <h3 class="card-title">Directions</h3>  <button class="btn btn-primary" id="close">Close</button>
                 <p id="busbus">..</p>
-                <p id="test3"> <i class='far fa-clock'></i> Predicted Journey Time:</i></p>
+                <script src="{% static 'bus/js/journey_time_prediction.js' %}"></script>
+                <!-- Here is the code for the predition algorithm -->
+                <p id="precitionResult"> ...</p>
                 <i class="fas fa-bus" style='color:green;'><p id="test1"></p></i>
                 <p id="test">..</p>
                 <i class='fas fa-map-pin' style='color:#b91700'><p id="test2"></p></i>
@@ -119,5 +121,5 @@ src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCFtH8qWuX2LGmHcicY-vLHfYu
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.0/moment.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.0-alpha14/css/tempusdominus-bootstrap-4.min.css" />
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.0-alpha14/js/tempusdominus-bootstrap-4.min.js"></script>
-<script src="{% static 'bus/js/journey_time_prediction.js' %}"></script>
+
 {% endblock %}
