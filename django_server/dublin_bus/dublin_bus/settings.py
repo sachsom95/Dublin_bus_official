@@ -91,7 +91,7 @@ DATABASES = {
 
     }
 
-    },
+    }
 # 'dublin_bus': { # this is our  db, already created
 #         'ENGINE': 'django.db.backends.mysql',
 #         'NAME': 'bus_data',
@@ -101,7 +101,7 @@ DATABASES = {
 #         'PORT': '3306',
 #     }
 
-}
+# }
 
 
 # Password validation
