@@ -48,7 +48,6 @@
               </form>
                       <!-- Submit button for the journey plannner -->
 <input id="submit-btn" type="button" form="form1" class="btn btn-warning" value="Submit" onclick="myFunction()" style="margin-top: 10px; margin-bottom: 10px;">
-  
 
           
           <div id="directions-container">
@@ -99,7 +98,7 @@
      </div>
   </div>
 </div>
-<!-- This code below will one day be the pop up journey guide that tells you step by step things -->
+
 
     <div><div id="map"> hello </div></div>
  
@@ -116,7 +115,9 @@ src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCFtH8qWuX2LGmHcicY-vLHfYu
 
 </script>
 <script src="{% static 'bus/js/map_auto_complete_text.js' %}"></script>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.0/moment.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.0-alpha14/css/tempusdominus-bootstrap-4.min.css" />
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.0-alpha14/js/tempusdominus-bootstrap-4.min.js"></script>
+<script src="{% static 'bus/js/journey_time_prediction.js' %}"></script>
 {% endblock %}

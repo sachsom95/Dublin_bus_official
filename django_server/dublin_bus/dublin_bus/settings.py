@@ -40,9 +40,11 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'bus',
     'crispy_forms',
+    # 'corsheaders',
 ]
 
 MIDDLEWARE = [
+    # 'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -53,6 +55,12 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'dublin_bus.urls'
+# CORS_ORIGIN_ALLOW_ALL = True
+# CORS_ALLOW_METHODS = (
+#     'GET',
+#     'POST',
+#     'OPTIONS',
+# )
 
 TEMPLATES = [
     {
@@ -80,7 +88,19 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+
     }
+
+    },
+# 'dublin_bus': { # this is our  db, already created
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'bus_data',
+#         'USER': 'admin',
+#         'PASSWORD': 'Group8sql',
+#         'HOST': '137.43.49.25',
+#         'PORT': '3306',
+#     }
+
 }
 
 
@@ -124,3 +144,11 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'assets')]
 # STATIC_ROOT = os.path.join(BASE_DIR, 'assets')
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
+# url to redirect after succesfull login
+LOGIN_REDIRECT_URL = 'home'
+# Redirect to login page if user access url 
+# reserved for logged in user
+LOGIN_URL = 'login'
+# Media paths 
+MEDIA_ROOT=os.path.join(BASE_DIR,'media')
+MEDIA_URL='/media/'
