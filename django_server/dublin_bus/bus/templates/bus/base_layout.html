@@ -46,6 +46,10 @@
           <a class="nav-link" href="{% url 'logout' %}">Logout</a>
         </li>
 
+        <li class="nav-item">
+          <img src="{{ user.profile.image.url }}" alt="profile pic" style="height:90px; width:90px; object-fit: cover;" class="img-thumbnail float-right rounded-circle">
+        </li>
+
         <!-- SHOW THIS NAV IF NOT LOGGED IN -->
         {% else %}
         <li class="nav-item">
