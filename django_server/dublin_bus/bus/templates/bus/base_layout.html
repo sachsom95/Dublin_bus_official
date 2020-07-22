@@ -1,4 +1,5 @@
 {% load static %}
+{% load avatar_tags %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -22,13 +23,13 @@
 
 
 <body>
-<nav class="navbar navbar-light navbar-expand-md d-flex navigation-clean">
+<nav class="navbar navbar-light navbar-expand-sm d-flex navigation-clean">
     <!-- Brand -->
-    <img  src="{% static 'db-logo-2.jpeg' %}" width="50" height="50">
-    <a class="navbar-brand" href="{% url 'home' %}">Dublin Bus</a>
+    
+    <a class="navbar-brand" href="{% url 'home' %}"><img  src="{% static 'db-logo-2.jpeg' %}" width="50" height="50">Dublin Bus</a>
   
     <!-- Toggler/collapsibe Button -->
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#menu">
+    <button class="navbar-toggler float-left" type="button" data-toggle="collapse" data-target="#menu">
       <span class="navbar-toggler-icon"></span>
     </button>
   
@@ -43,14 +44,17 @@
         <!-- modify navbar based on login status -->
         
         {% if user.is_authenticated %}
+        
         <li class="nav-item">
-            <a class="nav-link" href="{% url 'account' %}">Accounts</a>
+            <a class="nav-link" href="{% url 'account' %}">Account</a>
         </li>
         
         <li class="nav-item">
           <a class="nav-link" href="{% url 'logout' %}">Logout</a>
         </li>
-
+      <div>
+          <img src="{{ user.profile.image.url }}" alt="profile pic" style="height:90px; width:90px; object-fit: cover;" class="img-thumbnail float-right rounded-circle">
+        </div>
         <!-- SHOW THIS NAV IF NOT LOGGED IN -->
         {% else %}
         <li class="nav-item">
@@ -59,16 +63,10 @@
         </li>
 
         <li class="nav-item">
-          <a class="nav-link" href="{% url 'register' %}">Register</a>
-      </li>
-
-        <li class="nav-item">
 
             <a class="nav-link" href="{% url 'register' %}">Sign Up</a>
           </li>
 
-          <a class="nav-link" href="{% url 'tourism' %}">Tourism</a>
-        </li>
         {% endif %}
       </ul>
     </div>

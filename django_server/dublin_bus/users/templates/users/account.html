@@ -10,7 +10,7 @@
   <div class ="row">
     <div class="col-sm">
       <div class="media">
-        <img class="rounded-circle account-img" src="{{ user.profile.image.url }}">
+        <img class="rounded-circle account-img" style="height:100px; width:100px; object-fit: cover;" src="{{ user.profile.image.url }}">
         <div class="media-body">
           <h2 class="account-heading">{{ user.username }}</h2>
           <p class="text-secondary">{{ user.email }}</p>
