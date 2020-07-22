@@ -40,7 +40,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'bus',
     'crispy_forms',
-    'avatar',
     # 'corsheaders',
 ]
 
@@ -151,5 +150,5 @@ LOGIN_REDIRECT_URL = 'home'
 # reserved for logged in user
 LOGIN_URL = 'login'
 # Media paths 
-MEDIA_ROOT=os.path.join(BASE_DIR,'media/profile_pics')
+MEDIA_ROOT= os.path.join(BASE_DIR,'media')
 MEDIA_URL='/media/'
