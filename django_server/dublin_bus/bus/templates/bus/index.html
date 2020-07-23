@@ -26,51 +26,77 @@
               <form id="form1" class="form">
                 <div class="form-group">
 
-    <div class="col-md-6">
-      <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#floating-panel">Show Search</button>
-      <div id="floating-panel" class="card col-sm-12 collapse-show">
-        <h3 class="card-title">Journey Planner</h3>
-        <form id="form1" class="card-body">
-            <label>&nbsp;From:&nbsp;</label>
-            <div class="input-group">
-              <input id="searchTextField_start" type="text" class="form-control" placeholder="Enter a bus stop or an address">
-              <!-- Hidden fields are for storing lat lon not for showing -->
-              <input type="hidden" id="start_lat" />
-              <input type="hidden" id="start_lng" />
-            </div>
-            <label>&nbsp;To:&nbsp;</label>
-            <div class="input-group">
-              <input id="searchTextField_destination" type="text" class="form-control" placeholder="Enter a bus stop or an address">
-              <!-- Hidden fields are for storing lat lon not for showing -->
-              <input type="hidden" id="stop_lat" />
-              <input type="hidden" id="stop_lng" />
-         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-         
-            <label>Travel Date and Time:</label><input type='text' class="form-control" id='datetimepicker4' />
-
-          <!-- Script for the Date Time Picker -->
-          <script type="text/javascript"> 
-          var today = new Date();
-          var end = new Date('12/31/2020');
-              $(function () {
-                  $('#datetimepicker4').datetimepicker({
-                      minDate: today,
-                      maxDate: end,
-                      format: 'DD/MM/YY H:mm A',
-                  });
-              });
-              </script>
-        </form>
-
-      
-        <input id="submit" type="button" form="form1" class="btn btn-warning btn-info btn-lg" value="Submit" onclick="myFunction()" style="margin-top: 10px; margin-bottom: 10px;">
-        <div id='precitionResult'></div>
-        <!-- code change : sachin for adding a sharable link on pressing submit when the submit button by
-        ben is pressed the visiblity will be set to visible-->
-        <small style="visibility: hidden;" id="text-muted" id="share_journey" >Share My Journey
-          <a class = "ml-2" onclick="generate_link()" href="#" data-toggle="modal" data-target="#link_modal">Click here</a> 
-          </small>
-          <!-- end of code change by sachin -->
+                  <label>From:</label>
+                    <input id="searchTextField_start" onClick="this.select();" type="text" class="form-control" placeholder="Enter a bus stop or an address">
+                    <!-- Hidden fields are for storing lat lon not for showing -->
+                    <input type="hidden" id="start_lat" />
+                    <input type="hidden" id="start_lng" />
+               
+                  <label>To:</label>
+                    <input id="searchTextField_destination" type="text" onClick="this.select()" class="form-control" placeholder="Enter a bus stop or an address">
+                    <!-- Hidden fields are for storing lat lon not for showing -->
+                    <input type="hidden" id="stop_lat" />
+                    <input type="hidden" id="stop_lng" />
+               <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+               
+                  <label>Travel Date and Time:</label>
+                  <div class="input-group date" data-provide="datepicker">
+                    <!-- <input type="text" class="form-control" id="datetimepicker4"> -->
+                    <input type="text" class="form-control datetimepicker-input" onClick="this.select()" id="datetimepicker4" data-toggle="datetimepicker" data-target="#datetimepicker4"/>
+                </div>
+                    </div>
+              </form>
+                      <!-- Submit button for the journey plannner -->
+<input id="submit-btn" type="button" form="form1" class="btn btn-warning" value="Submit" onclick="myFunction()" style="margin-top: 10px; margin-bottom: 10px;">
+          
+            <div id="directions" class="card">  
+             
+                <h3>Directions <button type="btn btn-white" class="close text-white" aria-label="Close" id="close">
+                  <span aria-hidden="true">&times;</span>
+                </button></h3>  
+                <!-- <button class="btn btn-primary" id="close">Close</button> -->
+                <div class="d-inline-flex p-2">
+                  <script src="{% static 'bus/js/journey_time_prediction.js' %}"></script>
+                  
+                  <!-- Here is the code for the predition algorithm -->
+                  <p id="precitionResult" class="font-weight-bolder"> ...</p>
+                </div>
+                <br>
+                <!-- <div class="class=d-inline-flex">
+                <p id="busbus">..</p>
+              </div> -->
+            
+                <i class="fas fa-bus d-inline-flex p-2" style='color:green;'><p id="test1"></p></i>
+                <p id="test">..</p>
+                <i class='fas fa-map-pin d-inline-flex p-2' style='color:#b91700'><p id="test2"></p></i>
+                </div>
+              </div>
+              </div>
+    <!-- This code is for the Tourism tab -->
+    <div id="tourism" class="container tab-pane fade">
+      <div class="card col-md-4" id="tourism-card">
+     
+        <h3 class="card-title">Tourism</h3>
+        <p id="ok">hi</p>
+        
+        <form id="form2">
+          <input type="text" class="form-control" id="route">
+          <input type="hidden" id="stop_lat" />
+          <input type="hidden" id="stop_lng" />
+          <button class="btn btn-warning" form="form2" onclick="getLocation()">Try It</button>
+</form>
+          <div class="card-body">
+      <p>Guess what it's tourism time</p>
+          <img src="{% static 'DublinAirport.jpeg' %}" class="rounded" alt="Airport">
+              The airport<input type="button" class="btn btn-warning btn-info btn-sm" value="Find Route">
+          <img src="{% static 'Guinness.jpeg' %}" class="rounded" alt="Black Gates">
+              Guinness Store House<input type="button" class="btn btn-warning btn-info btn-sm" value="Find Route">
+             
+          <img src="{% static 'NGI.jpeg' %}" class="rounded" alt="National Gallery">
+              National Gallery of Ireland<input type="button" class="btn btn-warning btn-info btn-sm" value="Find Route">
+          <img src="{% static 'NLM.jpeg' %}" class="rounded" alt="Leprechaun">
+              National Leprechaun Museum<input type="button" class="btn btn-warning btn-info btn-sm" value="Find Route">
+    </div>
           </div>
     </div>
     <!-- This code is for the twitter tab -->
@@ -83,33 +109,6 @@
   </div>
 </div>
 
-
-<!--  -->
-<!-- Modal -->
-<div class="modal fade" id="link_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        ...
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div>
-<!--  -->
-<!-- This code below will one day be the pop up journey guide that tells you step by step things -->
-<!-- <div id="floating-panel2">  
-  <p id="test"></p>
-    </div> -->
 
     <div><div id="map"> hello </div></div>
  

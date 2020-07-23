@@ -42,22 +42,9 @@ $( "#submit-btn" ).click(function() {
     }
     // alert('Your bus journey will take' + time_prediction + 'seconds')
     // console.log(parseInt(time_prediction))
-    // code edit: sachin create a generateable sharable link here
-    // let sharable_link = document.createElement("button")
-    // sharable_link.innerHTML="share my ride"
-    // sharable_link.addEventListener("click", function(event){
-    //     event.preventDefault();
-    //     generate_link()
-    // },false);
-    document.getElementById('precitionResult').innerHTML = "Your bus journey(s) will take: " + secondsToHms(time_prediction) 
-    // let result = document.getElementById('precitionResult')
-    // result.appendChild(sharable_link)
-    document.getElementById("text-muted").style.visibility="visible"
+    document.getElementById("precitionResult").innerHTML = "Your bus journey(s) will take: " + secondsToHms(time_prediction)
+
 });
 
 
-function generate_link(){
 
-    console.log("came to generate_link function")
-
-}
