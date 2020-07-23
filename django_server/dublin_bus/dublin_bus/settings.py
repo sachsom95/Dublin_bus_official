@@ -89,26 +89,26 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    },
-'dublin_bus': { # this is our  db, already created
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'bus_data',
-        'USER': 'root',
-        'PASSWORD': 'dt85226305',
-        'HOST': 'localhost',
-        'PORT': '3306'
     }
+# 'dublin_bus': { # this is our  db, already created
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'bus_data',
+#         'USER': 'root',
+#         'PASSWORD': 'dt85226305',
+#         'HOST': 'localhost',
+#         'PORT': '3306'
+#     }
 
 }
 
-# use multi-database in django
-DATABASE_ROUTERS = ['dublin_bus.database_app_router.DatabaseAppsRouter']
-DATABASE_APPS_MAPPING = {
-    # example:
-    #'app_name':'database_name',
-    'users':'default',
-    'bus':'dublin_bus'
-}
+# # use multi-database in django
+# DATABASE_ROUTERS = ['dublin_bus.database_app_router.DatabaseAppsRouter']
+# DATABASE_APPS_MAPPING = {
+#     # example:
+#     #'app_name':'database_name',
+#     'users':'default',
+#     'bus':'dublin_bus'
+# }
 
 
 # Password validation
