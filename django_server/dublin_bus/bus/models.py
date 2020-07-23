@@ -56,4 +56,3 @@ class Covid(models.Model):
 #     class Meta:
 #         db_table = 'covid'
 #         app_label = "dublin_bus"
-
