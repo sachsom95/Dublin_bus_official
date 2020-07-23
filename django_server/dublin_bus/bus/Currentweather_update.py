@@ -4,7 +4,11 @@
 import requests
 import os
 import django
+import sys
 
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+sys.path.append(BASE_DIR)
+os.environ['DJANGO_SETTINGS_MODULE'] = 'dublin_bus.settings'
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "dublin_bus.settings")
 django.setup()
 
@@ -28,9 +32,9 @@ w = Currentweather()
 
 # add variables to the instance from openweathermap data
 w.dt = cur_weather['dt']
-w.temp = cur_weather['main']['temp'] - 273.15
-w.temp_min = cur_weather['main']['temp_min']-273.15
-w.temp_max = cur_weather['main']['temp_max']-273.15
+w.temp = round(cur_weather['main']['temp'] - 273.15, 2)
+w.temp_min = round(cur_weather['main']['temp_min']-273.15, 2)
+w.temp_max = round(cur_weather['main']['temp_max']-273.15, 2)
 w.pressure = cur_weather['main']['pressure']
 w.humidity = cur_weather['main']['humidity']
 w.wind_speed = cur_weather['wind']['speed']

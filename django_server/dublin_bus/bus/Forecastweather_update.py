@@ -4,7 +4,11 @@
 import requests
 import os
 import django
+import sys
 
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+sys.path.append(BASE_DIR)
+os.environ['DJANGO_SETTINGS_MODULE'] = 'dublin_bus.settings'
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "dublin_bus.settings")
 django.setup()
 
@@ -28,9 +32,9 @@ for i in weatherlist:
     w = Forecastweather()
     w.dt = i['dt']
     w.dt_iso = i['dt_txt']
-    w.temp = i['main']['temp'] - 273.15
-    w.temp_min = i['main']['temp_min'] - 273.15
-    w.temp_max = i['main']['temp_max'] - 273.15
+    w.temp = round(i['main']['temp'] - 273.15,2)
+    w.temp_min = round(i['main']['temp_min'] - 273.15,2)
+    w.temp_max = round(i['main']['temp_max'] - 273.15,2)
     w.pressure = i['main']['pressure']
     w.humidity = i['main']['humidity']
     w.wind_speed = i['wind']['speed']

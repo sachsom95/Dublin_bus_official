@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'django_crontab',
     'django.contrib.admin',
     'users.apps.UsersConfig',
     'django.contrib.auth',
@@ -43,6 +44,16 @@ INSTALLED_APPS = [
     'dublin_bus',
     # 'corsheaders',
 ]
+
+
+
+CRONJOBS = (
+    ('*/30 * * * *', 'bus.crons.currentweather'),
+    ('0 */3 * * *', 'bus.crons.forecastweather'),
+    ('0 6 * * *', 'bus.crons.covid')
+)
+
+
 
 MIDDLEWARE = [
     # 'corsheaders.middleware.CorsMiddleware',
@@ -90,14 +101,6 @@ DATABASES = {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
-# 'dublin_bus': { # this is our  db, already created
-#         'ENGINE': 'django.db.backends.mysql',
-#         'NAME': 'bus_data',
-#         'USER': 'root',
-#         'PASSWORD': 'dt85226305',
-#         'HOST': 'localhost',
-#         'PORT': '3306'
-#     }
 
 }
 
