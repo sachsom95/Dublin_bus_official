@@ -101,4 +101,4 @@ def covid_and_weather(request):
     # print(cov_info)
     cov_chart = Covid.objects.all().order_by('Date')
     # print(cov_chart)
-    return render(request, 'bus/index.html',{ 'weather_info':weather, 'forecast':forecast, 'covid':cov_info,'covid_chart':cov_chart})
+    return render(request, 'bus/test.html',{ 'weather_info':weather, 'forecast':forecast, 'covid':cov_info,'covid_chart':cov_chart})
