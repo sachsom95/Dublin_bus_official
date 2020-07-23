@@ -48,12 +48,18 @@
               </form>
                       <!-- Submit button for the journey plannner -->
 <input id="submit-btn" type="button" form="form1" class="btn btn-warning" value="Submit" onclick="myFunction()" style="margin-top: 10px; margin-bottom: 10px;">
-          
+<!-- sac: this is where the share my trip link pops up -->
+<small id = "share_trip" style="visibility: hidden;" class="text-muted">Share My Trip
+    <a class = "ml-2" href="#" onclick="get_link()">Click here</a>
+</small>
+<!-- ----- -->
             <div id="directions" class="card">  
              
                 <h3>Directions <button type="btn btn-white" class="close text-white" aria-label="Close" id="close">
                   <span aria-hidden="true">&times;</span>
-                </button></h3>  
+                </button>
+              </h3>  
+                
                 <!-- <button class="btn btn-primary" id="close">Close</button> -->
                 <div class="d-inline-flex p-2">
                   <script src="{% static 'bus/js/journey_time_prediction.js' %}"></script>
