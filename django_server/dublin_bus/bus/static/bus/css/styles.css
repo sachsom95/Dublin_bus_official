@@ -116,7 +116,7 @@ p, input, label {
     font-family: Orienta, sans-serif; 
   }
   #directions {
-    position: absolute;
+    position: static;
     z-index: 5;
     background-color: #fff;
     border: 1px solid#252d5a;

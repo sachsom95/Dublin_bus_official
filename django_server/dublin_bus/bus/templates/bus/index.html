@@ -17,11 +17,11 @@
   </ul>
 
   <!-- Tab panes -->
-  <div class="tab-content">
+  <div class="tab-content col-md-6">
     <!-- This code is for the journey planner tab -->
     <div id="journey-planner" class="container tab-pane active">
-      <button type="button" class="btn btn-primary btn-block" data-toggle="collapse" data-target="#floating-panel" id="JP-btn">Hide Planner</button>
-      <div id="floating-panel" class="card col-md-12 collapse-show">
+      <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#floating-panel" id="JP-btn">Hide Planner</button>
+      <div id="floating-panel" class="card col-md-8 collapse-show">
               <h3 class="card-title">Journey Planner  <i class="fas fa-cloud">15C</i></h3>
               <form id="form1" class="form">
                 <div class="form-group">
@@ -48,19 +48,27 @@
               </form>
                       <!-- Submit button for the journey plannner -->
 <input id="submit-btn" type="button" form="form1" class="btn btn-warning" value="Submit" onclick="myFunction()" style="margin-top: 10px; margin-bottom: 10px;">
-
           
-          <div id="directions-container">
-            <div id="directions" class="card col-md-12">  
-                <h3 class="card-title">Directions</h3>  <button class="btn btn-primary" id="close">Close</button>
-                <p id="busbus">..</p>
-                <script src="{% static 'bus/js/journey_time_prediction.js' %}"></script>
-                <!-- Here is the code for the predition algorithm -->
-                <p id="precitionResult"> ...</p>
-                <i class="fas fa-bus" style='color:green;'><p id="test1"></p></i>
-                <p id="test">..</p>
-                <i class='fas fa-map-pin' style='color:#b91700'><p id="test2"></p></i>
+            <div id="directions" class="card">  
+             
+                <h3>Directions <button type="btn btn-white" class="close text-white" aria-label="Close" id="close">
+                  <span aria-hidden="true">&times;</span>
+                </button></h3>  
+                <!-- <button class="btn btn-primary" id="close">Close</button> -->
+                <div class="d-inline-flex p-2">
+                  <script src="{% static 'bus/js/journey_time_prediction.js' %}"></script>
+                  
+                  <!-- Here is the code for the predition algorithm -->
+                  <p id="precitionResult" class="font-weight-bolder"> ...</p>
                 </div>
+                <br>
+                <!-- <div class="class=d-inline-flex">
+                <p id="busbus">..</p>
+              </div> -->
+            
+                <i class="fas fa-bus d-inline-flex p-2" style='color:green;'><p id="test1"></p></i>
+                <p id="test">..</p>
+                <i class='fas fa-map-pin d-inline-flex p-2' style='color:#b91700'><p id="test2"></p></i>
                 </div>
               </div>
               </div>
