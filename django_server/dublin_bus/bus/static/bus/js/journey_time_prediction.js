@@ -48,4 +48,17 @@ $( "#submit-btn" ).click(function() {
 });
 
 
+function get_shareable_link()
+{
+    
+    let link = window.location.href
+    console.log(link)
+    document.getElementById("link_paragraph").innerHTML = link
+}
 
+function copy_link()
+{
+
+    navigator.clipboard.writeText(document.getElementById("link_paragraph").innerHTML)
+  alert("Copied the text: " + copyText.value);
+}

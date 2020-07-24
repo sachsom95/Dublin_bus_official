@@ -37,6 +37,8 @@ function auto_suggest_location() {
     google.maps.event.addListener(autocomplete_input_start, 'place_changed', function () {
          start = autocomplete_input_start.getPlace();
          has_entered_start = true
+        document.getElementById('start_destination').value = start
+        console.log(document.getElementById('start_destination').value)
         document.getElementById('start_lat').value = start.geometry.location.lat();
         document.getElementById('start_lng').value = start.geometry.location.lng();
         if(has_entered_stop && has_entered_start){
@@ -54,6 +56,7 @@ function auto_suggest_location() {
     google.maps.event.addListener(autocomplete_input_destination, 'place_changed', function () {
          stop = autocomplete_input_destination.getPlace();
          has_entered_stop = true
+         document.getElementById('stop_destination').value = start.geometry.location.lat();
         document.getElementById('stop_lat').value = stop.geometry.location.lat();
         document.getElementById('stop_lng').value = stop.geometry.location.lng();
         //if condition checks if both inputs have been entered before addMarker is called
