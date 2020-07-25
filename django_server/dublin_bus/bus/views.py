@@ -7,6 +7,21 @@ import pandas as pd
 import os
 
 
+
+# sac: share logic here
+def share(request,start_lat,start_lng,stop_lat,stop_lng):
+    position_data ={"start_lat":start_lat,
+    "start_lng":start_lng,
+    "stop_lat":stop_lat,
+    "stop_lng":stop_lng}
+
+    json_position_data = json.dumps(position_data)
+    context= {"position":json_position_data}
+    return render(request, 'bus/index.html',context)
+
+
+# end sac share logic
+
 # Create your views here.
 def home(request):
     return render(request, 'bus/index.html')

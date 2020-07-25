@@ -2,6 +2,7 @@
 {% load static %} 
 
 {% block content %}
+
 <div class="container">
   <!-- Nav tabs -->
   <ul class="nav nav-tabs" role="tablist">
@@ -149,7 +150,6 @@
 <!--  -->
 
 
-
  
         <script src="{% static 'bus/js/tourist.js' %}"></script>
         <script src="{% static 'bus/js/input.js' %}"></script>
@@ -168,5 +168,21 @@ src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCFtH8qWuX2LGmHcicY-vLHfYu
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.0/moment.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.0-alpha14/css/tempusdominus-bootstrap-4.min.css" />
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.0-alpha14/js/tempusdominus-bootstrap-4.min.js"></script>
+
+<!-- This is for share link the js is in html page as we get some data from django which is used in js -->
+<!-- This method currently is vulnerable to cross-site scripting -->
+{% if position %}
+<script>
+   var data = JSON.parse("{{position|escapejs}}"); 
+    console.log(data)
+    document.getElementById('start_lat').value = data["start_lat"]
+    document.getElementById('start_lng').value = data["start_lng"]
+    document.getElementById('stop_lat').value = data["stop_lat"]
+    document.getElementById('stop_lng').value = data["stop_lng"]
+    addMarker(parseFloat(document.getElementById('start_lat').value),parseFloat(document.getElementById('start_lng').value))
+    addMarker(parseFloat(document.getElementById('stop_lat').value),parseFloat(document.getElementById('stop_lng').value))
+    showRoutes()
+</script>
+{% endif %}
 
 {% endblock %}
