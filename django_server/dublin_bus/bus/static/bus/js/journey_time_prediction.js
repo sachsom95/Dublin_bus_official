@@ -51,14 +51,21 @@ $( "#submit-btn" ).click(function() {
 function get_shareable_link()
 {
     
-    let link = window.location.href
-    console.log(link)
+    let link = window.location.href +"/"+document.getElementById("start_lat").value+"/"+
+    document.getElementById("start_lng").value+"/"+document.getElementById("stop_lat").value+"/"+document.getElementById("stop_lng").value
+
     document.getElementById("link_paragraph").innerHTML = link
 }
 
 function copy_link()
 {
+    console.log(document.getElementById("start_lat").value)
+    console.log(document.getElementById("start_lng").value)
 
-    navigator.clipboard.writeText(document.getElementById("link_paragraph").innerHTML)
-  alert("Copied the text: " + copyText.value);
+    console.log(document.getElementById("stop_lat").value)
+    console.log(document.getElementById("stop_lng").value)
+
+    let link =document.getElementById("link_paragraph").innerHTML +"/"+document.getElementById("start_lat").value+"/"+
+    document.getElementById("start_lng").value+"/"+document.getElementById("stop_lat").value+"/"+document.getElementById("stop_lng").value
+    navigator.clipboard.writeText(link)
 }
