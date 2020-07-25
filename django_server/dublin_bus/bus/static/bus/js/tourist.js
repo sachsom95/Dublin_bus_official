@@ -51,15 +51,10 @@ function geoSuccess(position) {
         title: 'My location'
     });
     var markers = [
-        ['3fe', 53.339964, -6.241972],
-        ['The Fumbally', 53.337031, -6.272995],
-        ['Coffeeangel', 53.343963, -6.262116],
-        ['Brother Hubbard', 53.332744, -6.265639],
-        ['Vice Coffee Inc.', 53.347829, -6.262295],
-        ['Roasted Brown', 53.344813, -6.264707],
-        ['Kaph', 53.342599, -6.263272],
-        ['Fallon & Byrne', 53.343151, -6.263287],
-        ['Clement & Pekoe', 53.341534, -6.26276],
+        ['Dublin Airport', 53.4264, -6.2499,],
+        ['The National Gallery', 53.3418, -6.2540],
+        ['Guinness Storehouse', 53.3420, -6.2867],
+        ['Dublin Castle', 53.3429, -6.2674],
         ['my current location', latitude, longitude]
     ];
 

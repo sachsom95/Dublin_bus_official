@@ -143,6 +143,8 @@ p, input, label {
   #twitter-card{
     background-color: #fff;
     border: 1px solid#252d5a;
+    overflow: scroll;
+    height: 500px;
   }
   /* SACHIN TESTING ACCOUNTS PART  @stacy this was for the 
   accounts section the html is in users/template/accounts.html just for testing*/
