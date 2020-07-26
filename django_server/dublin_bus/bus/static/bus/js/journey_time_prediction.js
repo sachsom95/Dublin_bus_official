@@ -90,11 +90,26 @@ function predict(){
 
 function get_shareable_link()
 {
+    let link_info_part = "share/"+document.getElementById("start_lat").value+"/"+
+                                document.getElementById("start_lng").value+"/"+
+                                document.getElementById("stop_lat").value+"/"+
+                                document.getElementById("stop_lng").value+"/"+
+                                document.getElementById("searchTextField_start").value+"/"+
+                                document.getElementById("searchTextField_destination").value
+
+    let link = window.location.href
+    if(window.location.href.includes("share")){
+        let x = link.split("share")
+        link = x[0] + link_info_part
+        document.getElementById("link_paragraph").innerHTML = link
+
+    }else
+    {
+        let link = window.location.href +link_info_part
+        document.getElementById("link_paragraph").innerHTML = link
+    }
+
     
-    let link = window.location.href +"share/"+document.getElementById("start_lat").value+"/"+
-    document.getElementById("start_lng").value+"/"+document.getElementById("stop_lat").value+"/"+document.getElementById("stop_lng").value+"/"+
-    document.getElementById("searchTextField_start").value+"/"+document.getElementById("searchTextField_destination").value
-    document.getElementById("link_paragraph").innerHTML = link
 }
 
 
