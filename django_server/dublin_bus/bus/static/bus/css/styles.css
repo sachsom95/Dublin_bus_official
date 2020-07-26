@@ -1,43 +1,30 @@
-body{}
-
 h3, h1{
-    font-family:Orienta, sans-serif !important;
-    color: rgb(248,250,251) !important;
-    background-color: #252d5a !important;
-    padding-left: 18px !important;
-    position: static;
+    font-family:Orienta, sans-serif;
+    color: rgb(248,250,251);
+    background-color: #252d5a;
+    padding-left: 18px;
 }
 #col1 {
-    background-position: center !important;
-    background-size: cover !important;
-    background-repeat: no-repeat !important;
-    padding-left: 50px !important;
-    padding-right: 50px !important;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    padding-left: 50px;
+    padding-right: 50px;
     
 }
 #col2 {
-    background-position: center !important;
-    background-size: cover !important;
-    background-repeat: no-repeat !important;
-    padding-left: 50px !important;
-    padding-right: 50px !important;
-    
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    padding-left: 50px;
+    padding-right: 50px;    
 }
-#journey-planner{
-    padding-left: 5px;
-    padding-right: 5px;
-}
-p {
+
+p, input, label {
     font-family:Orienta, sans-serif;
-    padding-top: 10px;
+    /* padding-top: 10px; */
 }
-input {
-    font-family:Orienta, sans-serif;
-    display: block;
-}
-label {
-    font-family:Orienta, sans-serif;
-}
+
 .footer-basic {
     padding: 40px 0;
     background-color: #fff;
@@ -53,44 +40,11 @@ label {
     margin-bottom: 0;
     font-family: Orienta, sans-serif;
 }
-
-.footer-basic li {
-    padding: 0 10px
-}
-
 .footer-basic ul a {
     color: inherit;
     text-decoration: none;
     opacity: .8
 }
-
-.footer-basic ul a:hover {
-    opacity: 1
-}
-
-.footer-basic .social {
-    text-align: center;
-    padding-bottom: 25px
-}
-
-.footer-basic .social > a {
-    font-size: 24px;
-    width: 40px;
-    height: 40px;
-    line-height: 40px;
-    display: inline-block;
-    text-align: center;
-    border-radius: 50%;
-    border: 1px solid #ccc;
-    margin: 0 8px;
-    color: inherit;
-    opacity: .75
-}
-
-.footer-basic .social > a:hover {
-    opacity: .9
-}
-
 .footer-basic .copyright {
     margin-top: 15px;
     text-align: center;
@@ -99,102 +53,97 @@ label {
     margin-bottom: 0
 }
 .navigation-clean .navbar-brand {
-    font-weight: 700 !important;
-    color: inherit !important;
-    font-family: Orienta, sans-serif !important; 
-}
-
-.navigation-clean .navbar-brand:hover {
-    color: #222 !important;
-}
-.navigation-clean.navbar-dark .navbar-brand:hover {
-    color: #f0f0f0 !important; 
-    font-family:Orienta, sans-serif !important;
-}
-
-.navigation-clean .navbar-brand img {
-    height: 100% !important;
-    display: inline-block !important;
-    margin-right: 10px !important;
-    width: auto !important;
-    
+    font-weight: 700;
+    color: inherit;
+    font-family: Orienta, sans-serif; 
 }
 
 .navigation-clean .navbar-toggler {
-    border-color: #ddd !important;
-    color: #888 !important;
-}
-
-.navigation-clean .navbar-toggler:focus,
-.navigation-clean .navbar-toggler:hover {
-    background: 0 0 !important;
-}
-
-.navigation-clean.navbar-dark .navbar-toggler {
-    border-color: #555 !important;
-    color: #eee !important;
+    border-color: #ddd;
+    color: #888;
 }
 
 .navigation-clean .form-inline,
 .navigation-clean .navbar-collapse {
-    border-top-color: #ddd !important;
+    border-top-color: #ddd;
 }
 
 .navigation-clean.navbar-dark .form-inline,
 .navigation-clean.navbar-dark .navbar-collapse {
-    border-top-color: #333 !important;
-    font-family: Orienta, sans-serif !important;
+    border-top-color: #333;
+    font-family: Orienta, sans-serif;
 }
 .navigation-clean.navbar .navbar-nav .nav-link {
-    padding-left: 18px !important;
-    padding-right: 18px !important;
-    font-family:Orienta, sans-serif !important;
+    padding-left: 18px;
+    padding-right: 18px;
+    font-family:Orienta, sans-serif;
 }
 
 .navigation-clean.navbar-light .navbar-nav .nav-link {
-    color: #465765 !important;
-    font-family:Orienta, sans-serif !important;
+    color: #465765;
+    font-family:Orienta, sans-serif;
 }
 
 .navigation-clean.navbar-light .navbar-nav .nav-link:focus,
 .navigation-clean.navbar-light .navbar-nav .nav-link:hover {
-    color: #37434d !important;
-    background-color: transparent !important;
-    font-family: Orienta, sans-serif !important;
+    color: #37434d;
+    background-color: transparent;
+    font-family: Orienta, sans-serif;
 }
 
 .navigation-clean .navbar-nav > li > .dropdown-menu {
-    margin-top: -5px !important;
-    box-shadow: none !important;
-    background-color: #fff !important;
-    border-radius: 2px !important;
-    font-family: Orienta, sans-serif !important;
+    margin-top: -5px;
+    box-shadow: none;
+    background-color: #fff;
+    border-radius: 2px;
+    font-family: Orienta, sans-serif;
 }
 
 #map{
     height:800px;
     width:100%;
 }
-#floating-panel {
-    position: absolute;
-    z-index: 5;
-    padding: 15px;
-    background-color: #fff;
+ #floating-panel {
+    position: relative;
+    z-index: 4;
     border: 1px solid#252d5a;
-    width: 265px;
-
+    font-family: Orienta, sans-serif; 
   }
   #floating-panel2 {
-    position: relative;
-    left: 55px;
+    position: absolute;
+    z-index: 5;
+    border: 1px solid#252d5a;
+    font-family: Orienta, sans-serif; 
+  }
+  #directions {
+    position: static;
     z-index: 5;
     background-color: #fff;
-    padding: 25px;
-    line-height: 30px;
-    padding-left: 50px;
+    border: 1px solid#252d5a;
+    font-family: Orienta, sans-serif;
+    display: none;
+    height: 33%;
+    overflow: auto;
+
   }
+  #test2, #test3, #test {
+    font-family: Orienta, sans-serif;
+  }
+  .tab-content {
+    position: absolute;
+    z-index: 5;
+  }
+  #tourism-card{
+      position: auto;
+      z-index: 4;
+      border: 1px solid#252d5a;
+      font-family: Orienta, sans-serif; 
 
-
+  }
+  #twitter-card{
+    background-color: #fff;
+    border: 1px solid#252d5a;
+  }
   /* SACHIN TESTING ACCOUNTS PART  @stacy this was for the 
   accounts section the html is in users/template/accounts.html just for testing*/
   .account-img {

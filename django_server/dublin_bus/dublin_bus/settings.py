@@ -88,7 +88,10 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    },
+
+    }
+
+    }
 # 'dublin_bus': { # this is our  db, already created
 #         'ENGINE': 'django.db.backends.mysql',
 #         'NAME': 'bus_data',
@@ -98,7 +101,7 @@ DATABASES = {
 #         'PORT': '3306',
 #     }
 
-}
+# }
 
 
 # Password validation
@@ -147,5 +150,5 @@ LOGIN_REDIRECT_URL = 'home'
 # reserved for logged in user
 LOGIN_URL = 'login'
 # Media paths 
-MEDIA_ROOT=os.path.join(BASE_DIR,'media')
+MEDIA_ROOT= os.path.join(BASE_DIR,'media')
 MEDIA_URL='/media/'

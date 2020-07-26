@@ -1,80 +1,159 @@
 {% extends 'bus/base_layout.html' %}
 {% load static %} 
-
 {% block content %}
 
+<div class="container">
+  <!-- Nav tabs -->
+  <ul class="nav nav-tabs" role="tablist">
+    <li class="nav-item">
+      <a class="nav-link active" data-toggle="tab" href="#journey-planner">Journey Planner</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" data-toggle="tab" href="#tourism">Tourism</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" data-toggle="tab" href="#twitter">Twitter</a>
+    </li>
+  </ul>
 
-    <div class="col-md-6">
-      <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#floating-panel">Show Search</button>
-      <div id="floating-panel" class="card col-sm-12 collapse-show">
-        <h3 class="card-title">Journey Planner</h3>
-        <form id="form1" class="card-body">
-            <label>&nbsp;From:&nbsp;</label>
-            <div class="input-group">
-              <input id="searchTextField_start" type="text" class="form-control" placeholder="Enter a bus stop or an address">
-              <!-- Hidden fields are for storing lat lon not for showing -->
-              <input type="hidden" id="start_lat" />
-              <input type="hidden" id="start_lng" />
-            </div>
-            <label>&nbsp;To:&nbsp;</label>
-            <div class="input-group">
-              <input id="searchTextField_destination" type="text" class="form-control" placeholder="Enter a bus stop or an address">
-              <!-- Hidden fields are for storing lat lon not for showing -->
-              <input type="hidden" id="stop_lat" />
-              <input type="hidden" id="stop_lng" />
-         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-         
-            <label>Travel Date and Time:</label><input type='text' class="form-control" id='datetimepicker4' />
+  <!-- Tab panes -->
+  <div class="tab-content col-md-6">
+    <!-- This code is for the journey planner tab -->
+    <div id="journey-planner" class="container tab-pane active">
+      <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#floating-panel" id="JP-btn">Hide Planner</button>
+      <div id="floating-panel" class="card col-md-8 collapse-show">
+              <h3 class="card-title">Journey Planner  <i class="fas fa-cloud">15C</i></h3>
+              <form id="form1" class="form">
+                <div class="form-group">
 
-          <!-- Script for the Date Time Picker -->
-          <script type="text/javascript"> 
-          var today = new Date();
-          var end = new Date('12/31/2020');
-              $(function () {
-                  $('#datetimepicker4').datetimepicker({
-                      minDate: today,
-                      maxDate: end,
-                      format: 'DD/MM/YY H:mm A',
-                  });
-              });
-              </script>
-        </form>
+                  <label>From:</label>
+                    <input id="searchTextField_start" onClick="this.select();" type="text" class="form-control" placeholder="Enter a bus stop or an address">
+                    <!-- Hidden fields are for storing lat lon not for showing -->
+                    <input type="hidden" id="start_lat" />
+                    <input type="hidden" id="start_lng" />
+                    <input type="hidden" id="start_destination" />
+                    
+               
+                  <label>To:</label>
+                    <input id="searchTextField_destination" type="text" onClick="this.select()" class="form-control" placeholder="Enter a bus stop or an address">
+                    <!-- Hidden fields are for storing lat lon not for showing -->
+                    <input type="hidden" id="stop_lat" />
+                    <input type="hidden" id="stop_lng" />
+                    <input type="hidden" id="stop_destination" />
+               <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+               
+                  <label>Travel Date and Time:</label>
+                  <div class="input-group date" data-provide="datepicker">
+                    <!-- <input type="text" class="form-control" id="datetimepicker4"> -->
+                    <input type="text" class="form-control datetimepicker-input" onClick="this.select()" id="datetimepicker4" data-toggle="datetimepicker" data-target="#datetimepicker4"/>
+                </div>
+                    </div>
+              </form>
+                      <!-- Submit button for the journey plannner -->
+<input id="submit-btn" type="button" form="form1" class="btn btn-warning" value="Submit" onclick="myFunction()" style="margin-top: 10px; margin-bottom: 10px;">
+<!-- sac: this is where the share my trip link pops up -->
 
-      
-        <input id="submit" type="button" form="form1" class="btn btn-warning btn-info btn-lg" value="Submit" onclick="myFunction()" style="margin-top: 10px; margin-bottom: 10px;">
-        <div id='precitionResult'></div>
+<small id = "share_trip" style="visibility: hidden;" class="text-muted">Share My Trip
+    <a class = "ml-2" href="#" onclick="get_shareable_link()" data-toggle="modal" data-target="#sharable_link">Click here</a>
+</small>
+<!-- ----- -->
+            <div id="directions" class="card">  
+             
+                <h3>Directions <button type="btn btn-white" class="close text-white" aria-label="Close" id="close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </h3>  
+                
+                <!-- <button class="btn btn-primary" id="close">Close</button> -->
+                <div class="d-inline-flex p-2">
+                  <script src="{% static 'bus/js/journey_time_prediction.js' %}"></script>
+                  
+                  <!-- Here is the code for the predition algorithm -->
+                  <p id="precitionResult" class="font-weight-bolder"> ...</p>
+                </div>
+                <br>
+                <!-- <div class="class=d-inline-flex">
+                <p id="busbus">..</p>
+              </div> -->
+            
+                <i class="fas fa-bus d-inline-flex p-2" style='color:green;'><p id="test1"></p></i>
+                <p id="test">..</p>
+                <i class='fas fa-map-pin d-inline-flex p-2' style='color:#b91700'><p id="test2"></p></i>
+                </div>
+              </div>
+              </div>
+    <!-- This code is for the Tourism tab -->
+    <div id="tourism" class="container tab-pane fade">
+      <div class="card col-md-4" id="tourism-card">
+     
+        <h3 class="card-title">Tourism</h3>
+        <p id="ok">hi</p>
+        
+        <form id="form2">
+          <input type="text" class="form-control" id="route">
+          <input type="hidden" id="stop_lat" />
+          <input type="hidden" id="stop_lng" />
+          <button class="btn btn-warning" form="form2" onclick="getLocation()">Try It</button>
+</form>
+          <div class="card-body">
+      <p>Guess what it's tourism time</p>
+          <img src="{% static 'DublinAirport.jpeg' %}" class="rounded" alt="Airport">
+              The airport<input type="button" class="btn btn-warning btn-info btn-sm" value="Find Route">
+          <img src="{% static 'Guinness.jpeg' %}" class="rounded" alt="Black Gates">
+              Guinness Store House<input type="button" class="btn btn-warning btn-info btn-sm" value="Find Route">
+             
+          <img src="{% static 'NGI.jpeg' %}" class="rounded" alt="National Gallery">
+              National Gallery of Ireland<input type="button" class="btn btn-warning btn-info btn-sm" value="Find Route">
+          <img src="{% static 'NLM.jpeg' %}" class="rounded" alt="Leprechaun">
+              National Leprechaun Museum<input type="button" class="btn btn-warning btn-info btn-sm" value="Find Route">
+    </div>
           </div>
-
-        <button type="button" class="btn btn-light" data-toggle="collapse" data-target="#floating-panel">Hide Search</button>
-
-<input type="button" form="form1" class="btn btn-warning btn-info" value="Submit" onclick="myFunction()" style="margin-top: 10px; margin-bottom: 10px;">
-</div>   
+    </div>
+    <!-- This code is for the twitter tab -->
+    <div id="twitter" class="container tab-pane fade">
+      <div class="card col-md-12" id="twitter-card">
+      <h3 class="card-title">Dublin Bus Twitter</h3>
+        Tweet tweet
+      </div>   
+     </div>
+  </div>
 </div>
-</div>
 
-<!-- This code below will one day be the pop up journey guide that tells you step by step things -->
-<!-- <div id="floating-panel2">  
-  <p id="test"></p>
-    </div> -->
 
-    <script>
-      function myFunction() {
-        var input1 = document.getElementById("searchTextField_start").value;
-        var input2 = document.getElementById("searchTextField_destination").value;
-        var input3 = document.getElementById("datetimepicker4").value;
-        document.getElementById("test").innerHTML = "The starting destination is: " + input1 + " and the destination is " + input2 + " and the time and date is " + input3;
-      }
-      </script>
     <div><div id="map"> hello </div></div>
-        </div>
-        <script src="https://cdn.jsdelivr.net/momentjs/2.14.1/moment.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js"></script>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/css/bootstrap-datetimepicker.min.css">
 
 
+<!-- modal -->
+
+<!-- Modal -->
+<div class="modal fade" id="sharable_link" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Sharable Link generated</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p id="link_paragraph" style="word-wrap: break-word;"></p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-warning" onclick="copy_link()" data-dismiss="modal">Copy to clipboard</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--  -->
+
+
+ 
+        <script src="{% static 'bus/js/tourist.js' %}"></script>
+        <script src="{% static 'bus/js/input.js' %}"></script>
 <!--Jquery for map-->
-<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <!--Script for Map and Marker 01-->
 
 <script src="{% static 'bus/js/map_init.js' %}"></script>
@@ -84,7 +163,48 @@ src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCFtH8qWuX2LGmHcicY-vLHfYu
 
 </script>
 <script src="{% static 'bus/js/map_auto_complete_text.js' %}"></script>
-<script src="{% static 'bus/js/journey_time_prediction.js' %}"></script>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.0/moment.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.0-alpha14/css/tempusdominus-bootstrap-4.min.css" />
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.0-alpha14/js/tempusdominus-bootstrap-4.min.js"></script>
+
+<!-- This is for share link the js is in html page as we get some data from django which is used in js -->
+<!-- This method currently is vulnerable to cross-site scripting -->
+{% if position %}
+<script>
+document.addEventListener('DOMContentLoaded', function(event) {
+  //the event occurred
+    console.log("event:1")
+   var data = JSON.parse("{{position|escapejs}}"); 
+    // console.log(data)
+    document.getElementById('start_lat').value = data["start_lat"]
+    document.getElementById('start_lng').value = data["start_lng"]
+    document.getElementById('stop_lat').value = data["stop_lat"]
+    document.getElementById('stop_lng').value = data["stop_lng"]
+
+    addMarker(parseFloat(document.getElementById('start_lat').value),parseFloat(document.getElementById('start_lng').value))
+    addMarker(parseFloat(document.getElementById('stop_lat').value),parseFloat(document.getElementById('stop_lng').value))
+
+    document.getElementById("searchTextField_start").value=data["start"];
+    document.getElementById("searchTextField_destination").value=data["stop"];
+    console.log("event:2")
+
+// The resaon for using timeout is to create a parallel run as executing two functions simultaionsly due to
+// async programing is generating a bug and delay also makes better UX
+    setTimeout(function(){showRoutes()},100);
+    // showRoutes();
+    setTimeout(function(){predict()},2000);
+    
+    setTimeout(function(){myFunction()},2500);
+    setTimeout(function(){ $('#directions').show({
+        bottom: '-550px',
+        height:'500px',
+        position: 'absolute',
+      });},3000)
+
+    })
+    document.getElementById("share_trip").style.visibility="visible"
+</script>
+{% endif %}
 
 {% endblock %}

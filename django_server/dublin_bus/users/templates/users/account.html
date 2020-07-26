@@ -3,16 +3,130 @@
 
 {% block content %}
 {% load crispy_forms_tags %}
-    <div class="content-section">
+
+  <div class ="row">
+    <div class="col-md-6">
+      
       <div class="media">
-        <img class="rounded-circle account-img" src="{{ user.profile.image.url }}">
+        <img class="rounded-circle account-img" style="height:100px; width:100px; object-fit: cover;" src="{{ user.profile.image.url }}">
         <div class="media-body">
           <h2 class="account-heading">{{ user.username }}</h2>
-          <p class="text-secondary">{{ user.email }}</p>
-          <p class="text-secondary">Leap card Balance: {{ user.profile.leap_balance }}</p>
-
+          <!-- <p class="text-secondary">{{ user.email }}</p> -->
+          <!-- <p class="text-secondary">Leap card Balance: {{ user.profile.leap_balance }}</p> -->
+          <p class="text-secondary">Leap card Balance: {{ balance }}</p>
+        </div>
+    </div>
+    {% if is_registered  %}
+    <h3 class="col-md-12"> Leap Card Details</h3>
+    <div class="card">
+      <div class="card-body">
+    <table class="tabl table-hover" style="overflow: hidden;">
+      <tbody>
+        <tr>
+          <th scope="row"> Card Balance: </th>
+          <td> {{ balance }} </td>
+        </tr>
+        <tr>
+          <th scope="row"> Card Number: </th>
+          <td>{{ profile.leap_card_number }}</td>
+        </tr>
+        <tr>
+          <th scope="row"> Card Status: </th>
+          <td>{{ profile.leap_card_status }}</td>
+        </tr>
+        <tr>
+          <th scope="row"> Card type: </th>
+          <td>{{ profile.leap_card_type }}</td>
+        </tr>
+        <tr>
+          <th scope="row"> Credit Status: </th>
+          <td>{{ profile.leap_credit_status }}</td>
+        </tr>
+        <tr>
+          <th scope="row"> Auto top-up: </th>
+          <td>{{ profile.leap_auto_topup  }}</td>
+        </tr>
+        <tr>
+          <th scope="row"> Expiry date:  </th>
+          <td>{{ profile.leap_expiry_date }}</td>
+        </tr>
+        <tr>
+          <th scope="row"> Card Issue Date: </th>
+          <td>{{ profile.leap_issue_date }}</td>
+        </tr>
+      </tbody>
+   
+      <!-- <div class="card-body">Card Balance: {{ balance }}</div>
+      <div class="card-body">Card Number: {{ profile.leap_card_number }}</div>
+      <div class="card-body">Card Status: {{ profile.leap_card_status }}</div>
+      <div class="card-body">Card type: {{ profile.leap_card_type }}</div>
+      <div class="card-body">Credit Status: {{ profile.leap_credit_status }}</div>
+      <div class="card-body">Auto top-up: {{ profile.leap_auto_topup }}</div>
+      <div class="card-body">Expiry date: {{ profile.leap_expiry_date }}</div>
+      <div class="card-body">Card Issue Date: {{ profile.leap_issue_date }}</div>
+    </div> -->
+  </table>
+  </div>
+  </div>
+ <br>
+ <h3>Favourite Routes</h3>
+  <div class="card">
+    <div class="card-body">
+      If I had any favourite routes, this is where they would go? 
+    </div>
+  </div>
+</div>
+    {% endif %} 
+  
+        <!-- new forms here -->
+      
+      <div class="row">
+        <div class="col-md-12">
+        <form method="POST" enctype="multipart/form-data" novalidate>
+          {% csrf_token %}
+        
+            
+          <fieldset class="form-group">
+              <h3> Account Information</h3>
+              <div class="card">
+                <div class="card-body">
+              {{ user_form|crispy }}
+             
+            </div>
+          </div>
+          <br>
+              <h3> Leap Card Account</h3>
+              <div class="card">
+                <div class="card-body">
+              {% if not is_registered  %}
+            <div><p class="text-danger">You have not set the leap card details. Set it to get leapcard details</p></div>
+              {% else %}
+              <div><p class="text-success">Your account can be synced with your leap-card.</p></div>
+                 <div><p class="text-success">Fill in your leap card account details and click 'Get Balance' to see
+                  your current leap balance</p></div>
+                
+                
+              
+              {% endif %}
+              
+              {{ account_form|crispy }}
+            
+          </fieldset>
+          <div class = "form-group">
+              <button class="btn btn-warning btn-lg" type="submit" name="account">Update</button>
+              {% if user.profile.leap_username %}
+            <button class="btn btn-primary btn-lg" type="submit" name="balance">Get Balance</button>
+              {% endif %}
+          </div>
         </div>
       </div>
+      </form>
+   
+      </div>
     </div>
+      
+    
+    </div>
+
 
 {% endblock content %}
