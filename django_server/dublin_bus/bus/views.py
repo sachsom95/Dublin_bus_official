@@ -6,19 +6,18 @@ import json
 import pandas as pd 
 import os
 
-
-
 # sac: share logic here
-def share(request,start_lat,start_lng,stop_lat,stop_lng):
+def share(request,start_lat,start_lng,stop_lat,stop_lng,start,stop):
     position_data ={"start_lat":start_lat,
     "start_lng":start_lng,
     "stop_lat":stop_lat,
-    "stop_lng":stop_lng}
+    "stop_lng":stop_lng,
+    "start":start,
+    "stop":stop}
 
     json_position_data = json.dumps(position_data)
     context= {"position":json_position_data}
     return render(request, 'bus/index.html',context)
-
 
 # end sac share logic
 
@@ -97,9 +96,5 @@ def prediction(request):
         # if no appropriate model found use google time prediction
         time_prediction = google_pred
 
-    
-
-
     # test_data = true_df.to_json()
-    
     return JsonResponse({'prediction': time_prediction})

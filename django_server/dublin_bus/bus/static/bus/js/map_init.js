@@ -62,9 +62,13 @@ let options = {
 
 
 function showRoutes() {
+    // console.log("came to shwoRoutes")
+    // console.log("Markers"+markers[0].position)
+    console.log("event:3")
     var directionsService = new google.maps.DirectionsService;
 
     directionsService.route({
+
         // The origin is the passed in marker's position.
         origin: markers[0].position,
         // The destination is user entered address.
@@ -80,8 +84,11 @@ function showRoutes() {
 
 
     }, function(response, status) {
-        if (status === google.maps.DirectionsStatus.OK) {
 
+        
+        console.log("event:4")
+        if (status === google.maps.DirectionsStatus.OK) {
+            console.log("event:5")
             arr = response.routes[0].legs[0].arrival_time.text;
             dep = response.routes[0].legs[0].departure_time.text;
             duration_time = response.routes[0].legs[0].steps[0].duration.text;
@@ -93,18 +100,18 @@ function showRoutes() {
 
             // console.log("your arrival time is " + arr);
             // console.log("your departure time is " + dep);
-            console.log(route2);
-            console.log(response);
-            console.log("Bus number: " + bus);
+            // console.log(route2);
+            // console.log(response);
+            // console.log("Bus number: " + bus);
             // console.log(duration_time);
        
             for (i=0; i < route2.steps.length; i++) {
                 stepList.push(route2.steps[i].instructions);
                 durationList.push(route2.steps[i].duration.text)
-                console.log(stepList);
-               
+
             }
-            
+            console.log("stepList:"+stepList);
+
             route = response['routes'][0]['legs'];
             // console.log(route)
             

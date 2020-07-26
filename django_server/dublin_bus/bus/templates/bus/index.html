@@ -1,6 +1,5 @@
 {% extends 'bus/base_layout.html' %}
 {% load static %} 
-
 {% block content %}
 
 <div class="container">
@@ -173,15 +172,36 @@ src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCFtH8qWuX2LGmHcicY-vLHfYu
 <!-- This method currently is vulnerable to cross-site scripting -->
 {% if position %}
 <script>
+document.addEventListener('DOMContentLoaded', function(event) {
+  //the event occurred
+    console.log("event:1")
    var data = JSON.parse("{{position|escapejs}}"); 
-    console.log(data)
+    // console.log(data)
     document.getElementById('start_lat').value = data["start_lat"]
     document.getElementById('start_lng').value = data["start_lng"]
     document.getElementById('stop_lat').value = data["stop_lat"]
     document.getElementById('stop_lng').value = data["stop_lng"]
+
     addMarker(parseFloat(document.getElementById('start_lat').value),parseFloat(document.getElementById('start_lng').value))
     addMarker(parseFloat(document.getElementById('stop_lat').value),parseFloat(document.getElementById('stop_lng').value))
-    showRoutes()
+
+    document.getElementById("searchTextField_start").value=data["start"];
+    document.getElementById("searchTextField_destination").value=data["stop"];
+    console.log("event:2")
+
+// The resaon for using timeout is to create a parallel run as executing two functions simultaionsly due to
+// async programing is generating a bug and delay also makes better UX
+    setTimeout(function(){showRoutes()},100);
+    // showRoutes();
+    setTimeout(function(){myFunction()},2000);
+    setTimeout(function(){ $('#directions').show({
+        bottom: '-550px',
+        height:'500px',
+        position: 'absolute',
+      });},2500)
+
+    })
+    document.getElementById("share_trip").style.visibility="visible"
 </script>
 {% endif %}
 

@@ -52,9 +52,11 @@ function get_shareable_link()
 {
     
     let link = window.location.href +"share/"+document.getElementById("start_lat").value+"/"+
-    document.getElementById("start_lng").value+"/"+document.getElementById("stop_lat").value+"/"+document.getElementById("stop_lng").value
+    document.getElementById("start_lng").value+"/"+document.getElementById("stop_lat").value+"/"+document.getElementById("stop_lng").value+"/"+
+    document.getElementById("searchTextField_start").value+"/"+document.getElementById("searchTextField_destination").value
     document.getElementById("link_paragraph").innerHTML = link
 }
+
 
 function copy_link()
 {
