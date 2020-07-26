@@ -64,7 +64,7 @@ function myFunction() {
   document.getElementById("test1").innerHTML = " Start: " + input1; 
   document.getElementById("test2").innerHTML = " Destination: " + input2;
   document.getElementById("test").innerHTML = text;
-  document.getElementById("busbus").innerHTML = "Suggested Bus: " + bus + " towards " + headsign;
+  // document.getElementById("busbus").innerHTML = "Suggested Bus: " + bus + " towards " + headsign;
 }
 
   // Below is the code for the direction planner
