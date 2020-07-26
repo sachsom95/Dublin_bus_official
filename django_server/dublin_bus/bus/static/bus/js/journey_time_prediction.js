@@ -10,8 +10,8 @@ function secondsToHms(d) {
     // var sDisplay = s > 0 ? s + (s == 1 ? " second" : " seconds") : "";
     return hDisplay + mDisplay; 
 }
-
-$( "#submit-btn" ).click(predict())
+// @ben sachin here, so i had to make the prediction into a modular function see it below as predict()
+$( "#submit-btn" ).click(function(){predict()});
 
 // $( "#submit-btn" ).click(function() {
 //     // let x = 0;
@@ -52,7 +52,6 @@ $( "#submit-btn" ).click(predict())
 
 function predict(){
 
-
     var time_prediction = 0
     console.log(route)
     for (i=0; i<route[0]['steps'].length;i++){
@@ -88,9 +87,6 @@ function predict(){
 
 
 }
-
-
-
 
 function get_shareable_link()
 {
