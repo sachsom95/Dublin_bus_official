@@ -193,12 +193,14 @@ document.addEventListener('DOMContentLoaded', function(event) {
 // async programing is generating a bug and delay also makes better UX
     setTimeout(function(){showRoutes()},100);
     // showRoutes();
-    setTimeout(function(){myFunction()},2000);
+    setTimeout(function(){predict()},2000);
+    
+    setTimeout(function(){myFunction()},2500);
     setTimeout(function(){ $('#directions').show({
         bottom: '-550px',
         height:'500px',
         position: 'absolute',
-      });},2500)
+      });},3000)
 
     })
     document.getElementById("share_trip").style.visibility="visible"
