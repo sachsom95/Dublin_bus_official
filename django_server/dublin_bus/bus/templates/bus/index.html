@@ -22,7 +22,7 @@
     <div id="journey-planner" class="container tab-pane active">
       <button type="button" class="btn btn-primary btn-block" data-toggle="collapse" data-target="#floating-panel" id="JP-btn">Hide Planner</button>
       <div id="floating-panel" class="card col-md-12 collapse-show">
-              <h3 class="card-title">Journey Planner  <i class="fas fa-cloud">15C</i></h3>
+              <h3 class="card-title">Journey Planner  {{weather_info.temp}}&#8451<img src="http://openweathermap.org/img/wn/{{weather_info.weather_icon}}@2x.png"></h3>
               <form id="form1" class="form">
                 <div class="form-group">
 

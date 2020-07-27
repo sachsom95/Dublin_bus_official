@@ -23,7 +23,6 @@ urlpatterns = [
     path('',views.home,name="home"),
     path('tourism/', views.tourism, name="tourism"),
     path('prediction/', views.prediction, name="prediction"),
-    path('test/', views.covid_and_weather, name="covid_and_weather"),
 ]
 
 # Patch notes:sachin
