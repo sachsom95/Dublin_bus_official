@@ -10,13 +10,23 @@ directionsDisplay = new google.maps.DirectionsRenderer();
 let start_marker;
 let end_marker;
 const Guinness = document.querySelector('#Guinness');
-let destination = new google.maps.LatLng(53.3419905,-6.2954444);
+const art = document.querySelector('#art');
+const Leprechaun = document.querySelector('#Leprechaun');
+let listo = [Guinness, art, Leprechaun];
+let GSH = new google.maps.LatLng(53.3419905,-6.2954444); //guinness store house
+let NGI = new google.maps.LatLng(53.3418283,-6.2540045); // national gallery ireland
+let NLM = new google.maps.LatLng(53.3476142,-6.268542); // national leprechaun
 Guinness.addEventListener('click', getLocation);
+art.addEventListener('click', getLocation);
+Leprechaun.addEventListener('click', getLocation);
 
 // this function uses geolocation to find an approximate location of the user.
 function getLocation(){
     navigator.geolocation.getCurrentPosition(function(position){
-        var pos = new google.maps.LatLng(position.coords.latitude, position.coords.longitude); // this is the user's location! 
+        var pos = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+        var acc=position.coords.accuracy;
+        console.log("The accuracy in meters is: " + acc);
+// this is the user's location! 
         initMap(pos); // the location is then passed to the initMap function to be found on the map! 
     });
 }
@@ -29,11 +39,20 @@ function initMap(location){
     });
 
     directionsDisplay.setMap(map);
-    
-
-    calcRoute(location, destination); // this call the calcRoute function and passes the current location and desired destination to the function
+    for( var i = 0 ; i < listo.length; i++){
+        if (listo[i].matches('Guinness')) {
+            calcRoute(location, GSH);
+        }else if (listo[i].matches('art')){
+            calcRoute(location, NGI);
+        }else{
+            calcRoute(location, NLM)
+        }
+    }
+  
+    // calcRoute(location, GSH); // this call the calcRoute function and passes the current location and desired destination to the function
+    // calcRoute(location, NGI);
+    // calcRoute(location, NLM);
 }
-
 
 // Here is the calculation function that creates the path on the map between the user and the destination 
 function calcRoute(start,destination){
