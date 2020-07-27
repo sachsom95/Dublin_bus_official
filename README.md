@@ -1,7 +1,8 @@
 # Dublin Bus Project
 
 ### This is Dublin Buses a webapp Every Dubliners crave for. 
- Get the best bus journey predictions modeled on 2018 Dublin bus dataset.
+Get the best bus journey predictions modeled on 2018 Dublin bus dataset.
+***
 ![Dublin Bus](https://github.com/sachsom95/Dublin_bus_official/blob/master/readme_content/dublin_bus_intro.gif)
 
 
