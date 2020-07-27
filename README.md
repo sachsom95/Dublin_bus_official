@@ -1,6 +1,10 @@
+
+[![forthebadge made-with-python](http://ForTheBadge.com/images/badges/made-with-python.svg)](https://www.python.org/)
+
 # Dublin Bus Project
 NOTE : FOR ALL THINGS TECH LOOK AT OUR 
 [Wiki!!](https://github.com/sachsom95/Dublin_bus_official/wiki)
+
 
 ### This is Dublin Buses a webapp Every Dubliners crave for. 
 Get the best bus journey predictions modeled on 2018 Dublin bus dataset.
