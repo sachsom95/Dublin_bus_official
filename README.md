@@ -1,5 +1,5 @@
 # Dublin Bus Project
-NOTE : FOR ALL THINGS TECH LOOK AT OUR WIKI https://github.com/sachsom95/Dublin_bus_official/wiki - automatic!
+NOTE : FOR ALL THINGS TECH LOOK AT OUR 
 [Wiki!!](https://github.com/sachsom95/Dublin_bus_official/wiki)
 
 ### This is Dublin Buses a webapp Every Dubliners crave for. 
