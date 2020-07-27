@@ -1,4 +1,6 @@
 # Dublin Bus Project
+NOTE : FOR ALL THINGS TECH LOOK AT OUR WIKI https://github.com/sachsom95/Dublin_bus_official/wiki - automatic!
+[Wiki!!](https://github.com/sachsom95/Dublin_bus_official/wiki)
 
 ### This is Dublin Buses a webapp Every Dubliners crave for. 
 Get the best bus journey predictions modeled on 2018 Dublin bus dataset.
