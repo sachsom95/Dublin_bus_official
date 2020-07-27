@@ -71,7 +71,7 @@ function myFunction() {
   document.getElementById("test1").innerHTML = " Start: " + input1; 
   document.getElementById("test2").innerHTML = " Destination: " + input2;
   document.getElementById("test").innerHTML = text;
-  // console.log("----->>>CAME TO myFunction<<<<-----")
+
   // document.getElementById("busbus").innerHTML = "Suggested Bus: " + bus + " towards " + headsign;
 }
 

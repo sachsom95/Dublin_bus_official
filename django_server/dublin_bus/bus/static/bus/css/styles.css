@@ -103,6 +103,7 @@ p, input, label {
     height:800px;
     width:100%;
 }
+
  #floating-panel {
     position: relative;
     z-index: 4;
@@ -143,6 +144,9 @@ p, input, label {
   #twitter-card{
     background-color: #fff;
     border: 1px solid#252d5a;
+    height: 500px;
+    overflow: scroll;
+    
   }
   /* SACHIN TESTING ACCOUNTS PART  @stacy this was for the 
   accounts section the html is in users/template/accounts.html just for testing*/
