@@ -1,7 +1,7 @@
 {% extends 'bus/base_layout.html' %}
 {% load static %} 
-
 {% block content %}
+
 <div class="container">
   <!-- Nav tabs -->
   <ul class="nav nav-tabs" role="tablist">
@@ -31,12 +31,15 @@
                     <!-- Hidden fields are for storing lat lon not for showing -->
                     <input type="hidden" id="start_lat" />
                     <input type="hidden" id="start_lng" />
+                    <input type="hidden" id="start_destination" />
+                    
                
                   <label>To:</label>
                     <input id="searchTextField_destination" type="text" onClick="this.select()" class="form-control" placeholder="Enter a bus stop or an address">
                     <!-- Hidden fields are for storing lat lon not for showing -->
                     <input type="hidden" id="stop_lat" />
                     <input type="hidden" id="stop_lng" />
+                    <input type="hidden" id="stop_destination" />
                <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
                
                   <label>Travel Date and Time:</label>
@@ -48,12 +51,19 @@
               </form>
                       <!-- Submit button for the journey plannner -->
 <input id="submit-btn" type="button" form="form1" class="btn btn-warning" value="Submit" onclick="myFunction()" style="margin-top: 10px; margin-bottom: 10px;">
-          
+<!-- sac: this is where the share my trip link pops up -->
+
+<small id = "share_trip" style="visibility: hidden;" class="text-muted">Share My Trip
+    <a class = "ml-2" href="#" onclick="get_shareable_link()" data-toggle="modal" data-target="#sharable_link">Click here</a>
+</small>
+<!-- ----- -->
             <div id="directions" class="card">  
              
                 <h3>Directions <button type="btn btn-white" class="close text-white" aria-label="Close" id="close">
                   <span aria-hidden="true">&times;</span>
-                </button></h3>  
+                </button>
+              </h3>  
+                
                 <!-- <button class="btn btn-primary" id="close">Close</button> -->
                 <div class="d-inline-flex p-2">
                   <script src="{% static 'bus/js/journey_time_prediction.js' %}"></script>
@@ -100,6 +110,34 @@
 </div>
    
     <div><div id="map"> hello </div></div>
+
+
+<!-- modal -->
+
+<!-- Modal -->
+<div class="modal fade" id="sharable_link" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Sharable Link generated</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p id="link_paragraph" style="word-wrap: break-word;"></p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-warning" onclick="copy_link()" data-dismiss="modal">Copy to clipboard</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--  -->
+
+
  
         
         <script src="{% static 'bus/js/input.js' %}"></script>
@@ -120,5 +158,44 @@ src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCFtH8qWuX2LGmHcicY-vLHfYu
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.0/moment.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.0-alpha14/css/tempusdominus-bootstrap-4.min.css" />
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.0-alpha14/js/tempusdominus-bootstrap-4.min.js"></script>
+
+<!-- This is for share link the js is in html page as we get some data from django which is used in js -->
+<!-- This method currently is vulnerable to cross-site scripting -->
+{% if position %}
+<script>
+document.addEventListener('DOMContentLoaded', function(event) {
+  //the event occurred
+    console.log("event:1")
+   var data = JSON.parse("{{position|escapejs}}"); 
+    // console.log(data)
+    document.getElementById('start_lat').value = data["start_lat"]
+    document.getElementById('start_lng').value = data["start_lng"]
+    document.getElementById('stop_lat').value = data["stop_lat"]
+    document.getElementById('stop_lng').value = data["stop_lng"]
+
+    addMarker(parseFloat(document.getElementById('start_lat').value),parseFloat(document.getElementById('start_lng').value))
+    addMarker(parseFloat(document.getElementById('stop_lat').value),parseFloat(document.getElementById('stop_lng').value))
+
+    document.getElementById("searchTextField_start").value=data["start"];
+    document.getElementById("searchTextField_destination").value=data["stop"];
+    console.log("event:2")
+
+// The resaon for using timeout is to create a parallel run as executing two functions simultaionsly due to
+// async programing is generating a bug and delay also makes better UX
+    setTimeout(function(){showRoutes()},100);
+    // showRoutes();
+    setTimeout(function(){predict()},2000);
+    
+    setTimeout(function(){myFunction()},2500);
+    setTimeout(function(){ $('#directions').show({
+        bottom: '-550px',
+        height:'500px',
+        position: 'absolute',
+      });},3000)
+
+    })
+    document.getElementById("share_trip").style.visibility="visible"
+</script>
+{% endif %}
 
 {% endblock %}
