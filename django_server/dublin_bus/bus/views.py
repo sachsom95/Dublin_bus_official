@@ -5,6 +5,7 @@ import pickle
 import json
 import pandas as pd 
 import os
+from .models import Currentweather, Forecastweather, Covid
 
 # sac: share logic here
 def share(request,start_lat,start_lng,stop_lat,stop_lng,start,stop):
@@ -23,7 +24,15 @@ def share(request,start_lat,start_lng,stop_lat,stop_lng,start,stop):
 
 # Create your views here.
 def home(request):
-    return render(request, 'bus/index.html')
+    weather = Currentweather.objects.all()[0]
+    # print(weather)
+    forecast = Forecastweather.objects.all()
+    # print(forecast)
+    cov_info = Covid.objects.all().order_by('-Date')[0]
+    # print(cov_info)
+    cov_chart = Covid.objects.all().order_by('Date')
+    # print(cov_chart)
+    return render(request, 'bus/index.html',{ 'weather_info':weather, 'forecast':forecast, 'covid':cov_info,'covid_chart':cov_chart})
 
 def tourism(request):
     return render(request, 'bus/tourism.html')
@@ -98,3 +107,6 @@ def prediction(request):
 
     # test_data = true_df.to_json()
     return JsonResponse({'prediction': time_prediction})
+
+
+
