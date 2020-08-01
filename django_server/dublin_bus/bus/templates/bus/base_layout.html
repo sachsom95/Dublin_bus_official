@@ -47,6 +47,7 @@
         <li class="nav-item">
           <a class="nav-link" href="{% url 'logout' %}">Logout</a>
         </li>
+        
       <div>
           <img src="{{ user.profile.image.url }}" alt="profile pic" style="height:90px; width:90px; object-fit: cover;" class="img-thumbnail float-right rounded-circle">
         </div>
@@ -112,32 +113,9 @@
                                                         <div class="modal-body">
                                                 <div class="content" style="height:590px ;overflow:auto;padding:2px 30px;margin:0px 5px">
                                                 <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js" integrity="sha256-R4pqcOYV8lt7snxMQO/HSbVCFRPMdrhAFMH+vr9giYI=" crossorigin="anonymous"></script>
-                                                <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
-                                                <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
                                                     <div id="notice"><p>Note: The data of covid-19 updates every 24 hours in our database</p></div>
                                                     <section class="header">
-                                                                                    <style>
-                                                                                        .small-columns{
-                                                                                            text-align:center;
-                                                                                            color: #252d5a;
-                                                                                            padding: 4px 4px;
-                                                                                        }
-                                                                                        .header{
-                                                                                            background-color: #D0D0D0;
-                                                                                        }
-                                                                                        .main-content-row{
-                                                                                            background-color: #F0F0F0;
-                                                                                        }
-                                                                                        .perc{
-                                                                                            color: #252d5a;
-                                                                                            font-family: "Bitstream Vera Sans Mono", Monaco, "Courier New", Courier, monospace;
-                                                                                            font-size: large;
-                                                                                        }
-                                                                                        .small-stat-box{
-                                                                                            background-color: #c8c8c8;
-                                                                                            padding: 3px 3px;
-                                                                                        }
-                                                                                    </style>
                                                     <div class="small-columns">
                                                         <div class="row-stat-boxes">
                                                             <div class="small-stat-box">

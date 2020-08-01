@@ -1,5 +1,5 @@
 {% extends 'bus/base_layout.html' %}
-{% load static %}
+{% load static %} 
 {% block content %}
 
 <div class="container">
@@ -20,9 +20,9 @@
   <div class="tab-content col-md-6">
     <!-- This code is for the journey planner tab -->
     <div id="journey-planner" class="container tab-pane active">
-      <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#floating-panel" id="JP-btn">Hide Planner</button>
+      <button type="button" class="btn btn-primary" data-toggle="collapse" id="JP-btn">Hide Planner</button>
       <div id="floating-panel" class="card col-md-8 collapse-show">
-              <h3 class="card-title">Journey Planner {{weather_info.temp}}&#8451<img src="http://openweathermap.org/img/wn/{{weather_info.weather_icon}}@2x.png"></h3>
+              <h3 class="card-title">Journey Planner  <i class="fas fa-cloud">15C</i></h3>
               <form id="form1" class="form">
                 <div class="form-group">
 
@@ -32,15 +32,15 @@
                     <input type="hidden" id="start_lat" />
                     <input type="hidden" id="start_lng" />
                     <input type="hidden" id="start_destination" />
-
-
+                    
+               
                   <label>To:</label>
                     <input id="searchTextField_destination" type="text" onClick="this.select()" class="form-control" placeholder="Enter a bus stop or an address">
                     <!-- Hidden fields are for storing lat lon not for showing -->
                     <input type="hidden" id="stop_lat" />
                     <input type="hidden" id="stop_lng" />
                     <input type="hidden" id="stop_destination" />
-               <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+               <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script> -->
                
                   <label>Travel Date and Time:</label>
                   <div class="input-group date" data-provide="datepicker">
@@ -57,17 +57,17 @@
     <a class = "ml-2" href="#" onclick="get_shareable_link()" data-toggle="modal" data-target="#sharable_link">Click here</a>
 </small>
 <!-- ----- -->
-            <div id="directions" class="card">
-
+            <div id="directions" class="card">  
+             
                 <h3>Directions <button type="btn btn-white" class="close text-white" aria-label="Close" id="close">
                   <span aria-hidden="true">&times;</span>
                 </button>
-              </h3>
-
+              </h3>  
+                
                 <!-- <button class="btn btn-primary" id="close">Close</button> -->
                 <div class="d-inline-flex p-2">
                   <script src="{% static 'bus/js/journey_time_prediction.js' %}"></script>
-
+                  
                   <!-- Here is the code for the predition algorithm -->
                   <p id="precitionResult" class="font-weight-bolder"> ...</p>
                 </div>
@@ -75,7 +75,7 @@
                 <!-- <div class="class=d-inline-flex">
                 <p id="busbus">..</p>
               </div> -->
-
+            
                 <i class="fas fa-bus d-inline-flex p-2" style='color:green;'><p id="test1"></p></i>
                 <p id="test">..</p>
                 <i class='fas fa-map-pin d-inline-flex p-2' style='color:#b91700'><p id="test2"></p></i>
@@ -102,13 +102,13 @@
     <div id="twitter" class="container tab-pane fade">
       <div class="col-md-8" id="twitter-card">
       <h3 class="card-title">Dublin Bus Twitter</h3>
-      <a class="twitter-timeline" href="https://twitter.com/dublinbusnews?ref_src=twsrc%5Etfw">Tweets by dublinbusnews</a>
+      <a class="twitter-timeline" href="https://twitter.com/dublinbusnews?ref_src=twsrc%5Etfw">Tweets by dublinbusnews</a> 
       <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
       </div>   
      </div>
   </div>
 </div>
-
+   
     <div><div id="map"> hello </div></div>
 
 
@@ -138,13 +138,14 @@
 <!--  -->
 
 
-
-
-        <script src="{% static 'bus/js/input.js' %}"></script>
+ 
+        
+<script src="{% static 'bus/js/input.js' %}"></script>
 <!--Jquery for map-->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<!-- I have commented this out because it is possibly redundant with the jquery in the base_layout head -->
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> -->
 <!--Script for Map and Marker 01-->
-
+ 
 <script src="{% static 'bus/js/map_init.js' %}"></script>
 
  <!--MAPS API-->
@@ -152,7 +153,7 @@
 src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCFtH8qWuX2LGmHcicY-vLHfYuB7D6WI7Y&libraries=places&callback=initMap" >
 
 </script>
-<script src="{% static 'bus/js/tourist.js' %}"></script>
+<script src="{% static 'bus/js/tourist.js' %}"></script>  
 <script src="{% static 'bus/js/map_auto_complete_text.js' %}"></script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.0/moment.min.js"></script>
@@ -166,7 +167,7 @@ src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCFtH8qWuX2LGmHcicY-vLHfYu
 document.addEventListener('DOMContentLoaded', function(event) {
   //the event occurred
     console.log("event:1")
-   var data = JSON.parse("{{position|escapejs}}");
+   var data = JSON.parse("{{position|escapejs}}"); 
     // console.log(data)
     document.getElementById('start_lat').value = data["start_lat"]
     document.getElementById('start_lng').value = data["start_lng"]
@@ -185,7 +186,7 @@ document.addEventListener('DOMContentLoaded', function(event) {
     setTimeout(function(){showRoutes()},100);
     // showRoutes();
     setTimeout(function(){predict()},2000);
-
+    
     setTimeout(function(){myFunction()},2500);
     setTimeout(function(){ $('#directions').show({
         bottom: '-550px',

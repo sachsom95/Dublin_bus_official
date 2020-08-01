@@ -162,3 +162,26 @@ p, input, label {
   }
 
   /* END OF SACHIN ACCOUNT CSS */
+
+  /* This is for the covid modal */
+  .small-columns{
+    text-align:center;
+    color: #252d5a;
+    padding: 4px 4px;
+}
+.header{
+    background-color: #D0D0D0;
+}
+.main-content-row{
+    background-color: #F0F0F0;
+}
+.perc{
+    color: #252d5a;
+    font-family: Orienta, sans-serif;
+    font-size: large;
+}
+.small-stat-box{
+    background-color: #c8c8c8;
+    padding: 3px 3px;
+}
+/* End of covifd modal  */
