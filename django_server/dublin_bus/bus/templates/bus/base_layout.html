@@ -99,22 +99,22 @@
 
 <!-- ##################################### code for covid dash board  ##################-->
                                             <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                                                <div class="modal-dialog" style="width:80%">
-                                                    <div class="modal-content" style="width:900px">
-                                                        <div class="modal-header">
-                                                            <h2 class="modal-title" id="myModalLabel">
-                                                                Covid-19 Detailed Information. Hope you stay safe!
-                                                            </h2>
-                                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content" style="width:52vmax">
+                                                        <div class="modal-header" style="background-color: #252D5A">
+                                                            <h4 class="modal-title" id="myModalLabel" style="color:#F8FAFB">
+                                                                Covid-19 Info
+                                                            </h4>
+                                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true" style="color:#F8FAFB">
                                                                 &times;
                                                             </button>
                                                         </div>
                                                         <div class="modal-body">
-                                                <div class="content" style="height:590px ;overflow:auto;padding:2px 30px;margin:0px 5px">
+                                                <div class="content" style="height:585px ;overflow:auto">
                                                 <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js" integrity="sha256-R4pqcOYV8lt7snxMQO/HSbVCFRPMdrhAFMH+vr9giYI=" crossorigin="anonymous"></script>
                                                 <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
                                                 <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
-                                                    <div id="notice"><p>Note: The data of covid-19 updates every 24 hours in our database</p></div>
+                                                    <div id="notice"><p>Data updates every 24 hours in our database</p></div>
                                                     <section class="header">
                                                                                     <style>
                                                                                         .small-columns{
@@ -122,20 +122,10 @@
                                                                                             color: #252d5a;
                                                                                             padding: 4px 4px;
                                                                                         }
-                                                                                        .header{
-                                                                                            background-color: #D0D0D0;
-                                                                                        }
-                                                                                        .main-content-row{
-                                                                                            background-color: #F0F0F0;
-                                                                                        }
                                                                                         .perc{
                                                                                             color: #252d5a;
                                                                                             font-family: "Bitstream Vera Sans Mono", Monaco, "Courier New", Courier, monospace;
                                                                                             font-size: large;
-                                                                                        }
-                                                                                        .small-stat-box{
-                                                                                            background-color: #c8c8c8;
-                                                                                            padding: 3px 3px;
                                                                                         }
                                                                                     </style>
                                                     <div class="small-columns">
@@ -188,29 +178,29 @@
 
                                                     <section class="main-content-row">
                                                     <div class="small-columns-divider">
-                                                        <h4>Daily confirmed cases &amp; deaths</h4>
-                                                        <div class="chart-container point-container" style="width:100%;height:330px;">
+                                                        <h5>Daily confirmed &amp; deaths</h5>
+                                                        <div class="chart-container point-container" style="width:800px;height:330px;overflow-x:auto">
                                                             <canvas id="dailyconfirmedcases"></canvas>
                                                         </div>
                                                     </div>
 
                                                     <div class="small-columns-divider">
-                                                        <h4>Total confirmed cases &amp; deaths</h4>
-                                                        <div class="chart-container point-container" style="width:100%;height:330px;">
+                                                        <h5>Total confirmed &amp; deaths</h5>
+                                                        <div class="chart-container point-container" style="width:800px;height:330px;overflow-x:auto">
                                                             <canvas id="totalconfirmedcases" ></canvas>
                                                         </div>
                                                     </div>
 
                                                     <div class="small-columns-divider">
-                                                        <h4>Total number of cases requiring hospitalisation &amp; ICU</h4>
-                                                        <div class="chart-container point-container" style="width:100%;height:330px;">
+                                                        <h5>Total requiring hospitalisation &amp; ICU</h5>
+                                                        <div class="chart-container point-container" style="width:800px;height:330px;overflow-x:auto">
                                                             <canvas id="hospitalcases"></canvas>
                                                         </div>
                                                     </div>
 
                                                     <div class="small-columns-divider">
-                                                        <h4>% Known mode of transmission since 16/03/2020</h4>
-                                                        <div class="chart-container point-container" style="width:100%;height:330px;">
+                                                        <h5>% Known mode of transmission</h5>
+                                                        <div class="chart-container point-container" style="width:800px;height:330px;overflow-x:auto">
                                                             <canvas id="transmissioncases"></canvas>
                                                         </div>
                                                     </div>
@@ -229,13 +219,17 @@
                                                             data: [{% for item in covid_chart %}'{{item.ConfirmedCovidCases}}',{% endfor %}],
                                                             borderColor: ['rgb(212, 36, 36)'],
                                                             pointBackgroundColor: 'rgb(212, 36, 36)',
-                                                            borderWidth: 2},
+                                                            borderWidth: 2,
+                                                            pointRadius: 1,
+                                                            pointhitRadius:1},
                                                             {
                                                             label: 'Daily Confirmed Deaths',
                                                             data: [{% for item in covid_chart %}'{{item.ConfirmedCovidDeaths}}',{% endfor %}],
                                                             borderColor: ['rgb(34, 43, 201)'],
                                                             pointBackgroundColor: 'rgb(34, 43, 201)',
-                                                            borderWidth: 2}
+                                                            borderWidth: 2,
+                                                            pointRadius: 1,
+                                                            pointhitRadius:1}
                                                             ]
                                                     },
                                                     options: {
@@ -267,13 +261,17 @@
                                                             data: [{% for item in covid_chart %}'{{item.TotalConfirmedCovidCases}}',{% endfor %}],
                                                             borderColor: ['rgb(212, 36, 36)'],
                                                             pointBackgroundColor: 'rgb(212, 36, 36)',
-                                                            borderWidth: 2},
+                                                            borderWidth: 2,
+                                                            pointRadius: 1,
+                                                            pointhitRadius:1},
                                                             {
                                                             label: 'Total Confirmed Deaths',
                                                             data: [{% for item in covid_chart %}'{{item.TotalCovidDeaths}}',{% endfor %}],
                                                             borderColor: ['rgb(34, 43, 201)'],
                                                             pointBackgroundColor: 'rgb(34, 43, 201)',
-                                                            borderWidth: 2}
+                                                            borderWidth: 2,
+                                                            pointRadius: 1,
+                                                            pointhitRadius:1}
                                                             ]
                                                     },
                                                     options: {
@@ -305,13 +303,17 @@
                                                             data: [{% for item in covid_chart|slice:"16:" %}'{{item.HospitalisedCovidCases}}',{% endfor %}],
                                                             borderColor: ['rgb(212, 36, 36)'],
                                                             pointBackgroundColor: 'rgb(212, 36, 36)',
-                                                            borderWidth: 2},
+                                                            borderWidth: 2,
+                                                            pointRadius: 1,
+                                                            pointhitRadius:1},
                                                             {
                                                             label: 'Requiring ICU Cases',
                                                             data: [{% for item in covid_chart|slice:"16:" %}'{{item.RequiringICUCovidCases}}',{% endfor %}],
                                                             borderColor: ['rgb(34, 43, 201)'],
                                                             pointBackgroundColor: 'rgb(34, 43, 201)',
-                                                            borderWidth: 2}
+                                                            borderWidth: 2,
+                                                            pointRadius: 1,
+                                                            pointhitRadius:1}
                                                             ]
                                                     },
                                                     options: {
@@ -343,19 +345,25 @@
                                                             data: [{% for item in covid_chart|slice:"14:" %}'{{item.CommunityTransmission}}',{% endfor %}],
                                                             borderColor: ['rgb(212, 36, 36)'],
                                                             pointBackgroundColor: 'rgb(212, 36, 36)',
-                                                            borderWidth: 2},
+                                                            borderWidth: 2,
+                                                            pointRadius: 1,
+                                                            pointhitRadius:1},
                                                             {
                                                             label: 'Close Contact',
                                                             data: [{% for item in covid_chart|slice:"14:" %}'{{item.CloseContact}}',{% endfor %}],
                                                             borderColor: ['rgb(34, 43, 201)'],
                                                             pointBackgroundColor: 'rgb(34, 43, 201)',
-                                                            borderWidth: 2},
+                                                            borderWidth: 2,
+                                                            pointRadius: 1,
+                                                            pointhitRadius:1},
                                                             {
                                                             label: 'Travel Abroad',
                                                             data: [{% for item in covid_chart|slice:"14:" %}'{{item.TravelAbroad}}',{% endfor %}],
                                                             borderColor: ['rgb(52, 163, 74)'],
                                                             pointBackgroundColor: 'rgb(52, 163, 74)',
-                                                            borderWidth: 2}
+                                                            borderWidth: 2,
+                                                            pointRadius: 1,
+                                                            pointhitRadius:1}
                                                             ]
                                                     },
                                                     options: {
@@ -380,7 +388,7 @@
                                                 </div>
                                                         </div>
                                                         <div class="modal-footer">
-                                                            <button type="button" class="btn btn-default" data-dismiss="modal">The pandemic is not over yet. Hope you stay safe!</button>
+                                                            <button type="button" class="btn btn-default" data-dismiss="modal" style="background-color:#FFC107">Pandemic is not over yet. Stay safe!</button>
                                                         </div>
                                                     </div><!-- /.modal-content -->
                                                 </div><!-- /.modal -->
