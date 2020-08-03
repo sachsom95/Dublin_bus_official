@@ -22,7 +22,6 @@ h3, h1{
 
 p, input, label {
     font-family:Orienta, sans-serif;
-    /* padding-top: 10px; */
 }
 
 .footer-basic {
@@ -110,13 +109,23 @@ p, input, label {
     border: 1px solid#252d5a;
     font-family: Orienta, sans-serif; 
   }
-  #floating-panel2 {
+  #tourism {
     position: absolute;
     z-index: 5;
-    border: 1px solid#252d5a;
     font-family: Orienta, sans-serif; 
   }
   #directions {
+    position: static;
+    z-index: 5;
+    background-color: #fff;
+    border: 1px solid#252d5a;
+    font-family: Orienta, sans-serif;
+    display: none;
+    height: 33%;
+    overflow: auto;
+
+  }
+  #tourism-directions {
     position: static;
     z-index: 5;
     background-color: #fff;
@@ -135,10 +144,12 @@ p, input, label {
     z-index: 5;
   }
   #tourism-card{
-      position: auto;
+      position: relative;
       z-index: 4;
       border: 1px solid#252d5a;
       font-family: Orienta, sans-serif; 
+      height: 500px;
+      overflow: scroll;
 
   }
   #twitter-card{
@@ -185,3 +196,12 @@ p, input, label {
     padding: 3px 3px;
 }
 /* End of covifd modal  */
+
+
+#infowindow-content {
+    display: none;
+  }
+  
+  #map #infowindow-content {
+    display: inline;
+  }
