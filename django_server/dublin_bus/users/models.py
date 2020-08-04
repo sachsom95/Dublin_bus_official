@@ -49,3 +49,11 @@ class Profile(models.Model):
     leap_auto_topup = models.CharField(max_length=50,default='',blank=True)
     def __str__(self):
         return f'{self.user.username} Profile'
+
+class FavouriteDestination(models.Model):
+    user = models.ForeignKey(User,on_delete=models.CASCADE)
+    name = models.CharField(max_length=50,default='',blank=True)
+    lat = models.DecimalField(max_digits=10,decimal_places=6, default=0)
+    lng = models.DecimalField(max_digits=10,decimal_places=6, default=0)
+    def __str__(self):
+        return self.user.username + ': ' + self.name

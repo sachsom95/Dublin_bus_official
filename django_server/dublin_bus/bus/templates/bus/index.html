@@ -23,6 +23,9 @@
       <button type="button" class="btn btn-primary" data-toggle="collapse" id="JP-btn">Hide Planner</button>
       <div id="floating-panel" class="card col-md-8 collapse-show">
               <h3 class="card-title">Journey Planner  <i class="fas fa-cloud">15C</i></h3>
+              <!-- {% if user.is_authenticated %} -->
+              <!-- <span> {% print(user.user_id) %} </span> -->
+              <!-- {% endif %} -->
               <form id="form1" class="form">
                 <div class="form-group">
 
@@ -40,6 +43,10 @@
                     <input type="hidden" id="stop_lat" />
                     <input type="hidden" id="stop_lng" />
                     <input type="hidden" id="stop_destination" />
+                    {% if user.is_authenticated %}
+                    <input id='favDestBtn' type='button' class="btn btn-primary btn-sm" onclick='saveFavDestination()' value="Save Favourite Destination"></button> <br>
+                    <p id='FavDestResult'></p>
+                    {% endif %}
                <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script> -->
                
                   <label>Travel Date and Time:</label>
@@ -141,6 +148,7 @@
  
         
 <script src="{% static 'bus/js/input.js' %}"></script>
+<script src="{% static 'bus/js/create_fav_destination.js' %}"></script>
 <!--Jquery for map-->
 <!-- I have commented this out because it is possibly redundant with the jquery in the base_layout head -->
 <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> -->

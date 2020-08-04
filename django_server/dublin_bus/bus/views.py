@@ -6,6 +6,8 @@ import json
 import pandas as pd 
 import os
 from .models import Currentweather, Forecastweather, Covid
+from users.models import FavouriteDestination
+from django.contrib.auth.models import User
 
 # sac: share logic here
 def share(request,start_lat,start_lng,stop_lat,stop_lng,start,stop):
@@ -107,6 +109,13 @@ def prediction(request):
 
     # test_data = true_df.to_json()
     return JsonResponse({'prediction': time_prediction})
+
+def addFavDest(request):
+    current_user = request.user
+    dest_name,dest_lat,dest_lng = request.GET['name'],request.GET['lat'],request.GET['lng']
+    dest_obj = FavouriteDestination.objects.create(user_id= current_user.id, name=dest_name, lat=dest_lat,lng=dest_lng)
+    return JsonResponse({'success': 'success'})
+
 
 
 
