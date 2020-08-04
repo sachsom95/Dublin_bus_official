@@ -8,6 +8,8 @@ import os
 from .models import Currentweather, Forecastweather, Covid
 from users.models import FavouriteDestination
 from django.contrib.auth.models import User
+# from rest_framework import serializers
+from django.core import serializers
 
 # sac: share logic here
 def share(request,start_lat,start_lng,stop_lat,stop_lng,start,stop):
@@ -34,7 +36,13 @@ def home(request):
     # print(cov_info)
     cov_chart = Covid.objects.all().order_by('Date')
     # print(cov_chart)
-    return render(request, 'bus/index.html',{ 'weather_info':weather, 'forecast':forecast, 'covid':cov_info,'covid_chart':cov_chart})
+    if request.user.is_authenticated:
+        destinations = FavouriteDestination.objects.filter(user=request.user)
+        json_destinations = serializers.serialize('json', destinations)
+    else:
+        destinations = {}
+        json_destinations = {}
+    return render(request, 'bus/index.html',{ 'weather_info':weather, 'forecast':forecast, 'covid':cov_info,'covid_chart':cov_chart,'destinations':destinations,'json_destinations':json_destinations})
 
 def tourism(request):
     return render(request, 'bus/tourism.html')

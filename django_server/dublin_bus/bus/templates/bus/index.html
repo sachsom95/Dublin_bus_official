@@ -1,7 +1,6 @@
 {% extends 'bus/base_layout.html' %}
 {% load static %} 
 {% block content %}
-
 <div class="container">
   <!-- Nav tabs -->
   <ul class="nav nav-tabs" role="tablist">
@@ -23,9 +22,16 @@
       <button type="button" class="btn btn-primary" data-toggle="collapse" id="JP-btn">Hide Planner</button>
       <div id="floating-panel" class="card col-md-8 collapse-show">
               <h3 class="card-title">Journey Planner  <i class="fas fa-cloud">15C</i></h3>
-              <!-- {% if user.is_authenticated %} -->
-              <!-- <span> {% print(user.user_id) %} </span> -->
-              <!-- {% endif %} -->
+              {% if user.is_authenticated %}
+              <span>Take me to:
+              <select id='favDestSelect'> 
+                {% for destination in destinations %}
+                  <option>{{ destination.name }}</option>
+                {% endfor %}
+              </select>
+              <button onclick='getCurLocation()'>Go!</button>
+            </span>
+              {% endif %}
               <form id="form1" class="form">
                 <div class="form-group">
 
@@ -44,7 +50,7 @@
                     <input type="hidden" id="stop_lng" />
                     <input type="hidden" id="stop_destination" />
                     {% if user.is_authenticated %}
-                    <input id='favDestBtn' type='button' class="btn btn-primary btn-sm" onclick='saveFavDestination()' value="Save Favourite Destination"></button> <br>
+                    <input id='favDestBtn' type='button' class="btn btn-primary btn-sm" onclick="saveFavDestination()" value="Save Favourite Destination"></button> <br>
                     <p id='FavDestResult'></p>
                     {% endif %}
                <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script> -->
@@ -145,10 +151,12 @@
 <!--  -->
 
 
- 
+ <!-- loading json object with user's saved destinations into global variable. Result created by django queryset serializer is weird so had to do some .replace shenanigans -->
+<script>
+  var json_destinations = JSON.parse('{{ json_destinations }}'.replace(/&quot;/g,'"'));
+</script>
         
 <script src="{% static 'bus/js/input.js' %}"></script>
-<script src="{% static 'bus/js/create_fav_destination.js' %}"></script>
 <!--Jquery for map-->
 <!-- I have commented this out because it is possibly redundant with the jquery in the base_layout head -->
 <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> -->
@@ -163,6 +171,7 @@ src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCFtH8qWuX2LGmHcicY-vLHfYu
 </script>
 <script src="{% static 'bus/js/tourist.js' %}"></script>  
 <script src="{% static 'bus/js/map_auto_complete_text.js' %}"></script>
+<script src="{% static 'bus/js/create_fav_destination.js' %}"></script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.0/moment.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.0-alpha14/css/tempusdominus-bootstrap-4.min.css" />
