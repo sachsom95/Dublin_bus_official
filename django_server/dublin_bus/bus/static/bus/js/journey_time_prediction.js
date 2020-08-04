@@ -12,6 +12,7 @@ function secondsToHms(d) {
 }
 // @ben sachin here, so i had to make the prediction into a modular function see it below as predict()
 $( "#submit-btn" ).click(function(){predict()});
+$( "#tourist-submit" ).click(function(){predict()});
 
 // $( "#submit-btn" ).click(function() {
 //     // let x = 0;
@@ -82,6 +83,8 @@ function predict(){
     // alert('Your bus journey will take' + time_prediction + 'seconds')
     // console.log(parseInt(time_prediction))
     document.getElementById("precitionResult").innerHTML = "Your bus journey(s) will take: " + secondsToHms(time_prediction)
+    document.getElementById("tourist_predictions").innerHTML = "Your bus journey(s) will take: " + secondsToHms(time_prediction)
+
     // sachin: this here is for geting the sharable link
     document.getElementById("share_trip").style.visibility="visible"
 

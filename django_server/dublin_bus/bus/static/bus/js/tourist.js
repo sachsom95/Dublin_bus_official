@@ -10,38 +10,28 @@ directionsDisplay = new google.maps.DirectionsRenderer();
 let start_marker;
 let end_marker ;
 let destination;
-let GST = new google.maps.LatLng(53.341978,-6.2889051);
 let marker;
-// const Guinness = document.querySelector('#GSH');
-// Guinness.addEventListener('click', getLocation);
-// const GSH = document.querySelector('#GSH');
-// GSH.addEventListener('click', Guinness);
 
-
-google.maps.event.addListener(map, 'click', function(event) {
-    placeMarker(event.latLng); 
-    // console.log(event.latLng);
-});
-
+//this places a marker on the map when a user clicks on a certain location
 function placeMarker(location) {
     marker = new google.maps.Marker({
         position: location, 
         map: map,
-        draggable: true,
     });
-   
+
 }
-google.maps.event.addListener(map, 'click', function(mapsMouseEvent) {
-// Create a destination point by clicking on a map
+
+//This listens for when a user clicks on the map and then it passes the event to the place marker function 
+google.maps.event.addListener(map, 'click', function(event) {
     directionsDisplay.setMap(map);
-    destination = mapsMouseEvent.latLng;
-    // location.reload();
-  });
-  google.maps.event.addListener(map, 'click', getLocation, calcRoute);
-  directionsDisplay.setMap(map); 
-
-
-
+    placeMarker(event.latLng);
+    navigator.geolocation.getCurrentPosition(function(position){
+    var here = new google.maps.LatLng(position.coords.latitude, position.coords.longitude); 
+    destination = event.latLng;
+    calcRoute(here, destination);
+});
+});
+    
 // this function uses geolocation to find an approximate location of the user.
 function getLocation(){
     navigator.geolocation.getCurrentPosition(function(position){
@@ -99,16 +89,18 @@ function Guinness(){
     GST = new google.maps.LatLng(53.341978,-6.2889051);
     navigator.geolocation.getCurrentPosition(function(position){
         var here = new google.maps.LatLng(position.coords.latitude, position.coords.longitude); 
-        directionsDisplay.setMap(map);
         calcRoute(here, GST);
+        directionsDisplay.setMap(map);
+        
 });
 }
 function Trinity(){
     Trin = new google.maps.LatLng(53.3437935,-6.2567656);
     navigator.geolocation.getCurrentPosition(function(position){
         var here = new google.maps.LatLng(position.coords.latitude, position.coords.longitude); 
-        directionsDisplay.setMap(map);
         calcRoute(here, Trin);
+        directionsDisplay.setMap(map);
+        
 });
 }
 function Grafton(){
