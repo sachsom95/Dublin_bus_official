@@ -129,6 +129,18 @@ def addFavDest(request):
         result = dest_name + " saved as favourite destination"
     return JsonResponse({'result': result})
 
+def delFavDest(request):
+    current_user = request.user
+    dest_name = request.GET['name']
+    print(dest_name)
+    try:
+        FavouriteDestination.objects.filter(user_id= current_user.id, name=dest_name).delete()
+    except:
+        result = "Something went wrong " + dest_name + " not removed"
+    else:
+        result = dest_name + " removed from favourite destinations"
+    return JsonResponse({'result': result})
+
 
 
 

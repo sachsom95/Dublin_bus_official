@@ -69,3 +69,21 @@ function getCurLocation(){
         routeToFavDestination(cur_location)
     });
 }
+
+
+function deleteFavDestination(destination_name){
+    console.log(destination_name)
+    $.ajax({
+        url: '/delete_fav_destination/',
+        type: 'GET',
+        async: false,
+        data: {'name': destination_name},
+        success: function (data) {
+            // console.log(data.result)
+            document.getElementById('deletion_result').innerHTML = data.result
+
+        }
+
+    })
+
+}
