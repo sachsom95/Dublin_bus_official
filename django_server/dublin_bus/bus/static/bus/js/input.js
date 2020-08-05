@@ -27,7 +27,6 @@ $(document).ready(function () {
 // This Jquery function should change the text on the show/hide menu button when pressed 
 $(document).ready(function(){
   $("#JP-btn").click(function(){
-   //prevents the need to double click
     $('#floating-panel').toggle();
     if($('#floating-panel').is(':visible')) {
         $(this).html('Hide Planner');
@@ -36,7 +35,16 @@ $(document).ready(function(){
     }
 });
 });
-
+$(document).ready(function(){
+  $("#tourist-btn").click(function(){
+    $('#tourism-card').toggle();
+    if($('#tourism-card').is(':visible')) {
+        $(this).html('Hide');
+    } else {
+        $(this).html('Show');
+    }
+});
+});
 
 
 // This function takes the values entered into the intputs on the index page and re prints them out. 
@@ -91,3 +99,24 @@ function myFunction() {
         position: 'absolute',
       });
     });
+// this is for the tourist panel 
+    //first we show the planner
+  //   $('#').click(function(){
+  //     $('#tourism-directions').show({
+  //       bottom: '-550px',
+  //       height:'500px',
+  //       position: 'absolute',
+  //     });
+  //   });
+  //   //then we can close the planner
+  //  $("#close-tourism").click(function(){
+  //     $("#tourism-directions").hide();
+  //   });
+  //   //then we can animate the planner each time!
+  //   $('#').click(function() {
+  //     $('#tourism-directions').animate({
+  //       bottom: '-550px',
+  //       height: '500px',
+  //       position: 'absolute',
+  //     });
+  //   });
