@@ -121,8 +121,13 @@ def prediction(request):
 def addFavDest(request):
     current_user = request.user
     dest_name,dest_lat,dest_lng = request.GET['name'],request.GET['lat'],request.GET['lng']
-    dest_obj = FavouriteDestination.objects.create(user_id= current_user.id, name=dest_name, lat=dest_lat,lng=dest_lng)
-    return JsonResponse({'success': 'success'})
+    try:
+        FavouriteDestination.objects.create(user_id= current_user.id, name=dest_name, lat=dest_lat,lng=dest_lng)
+    except:
+        result = "Something went wrong, if you have already added '"+ dest_name +"' as a favourite destination please delete it using the account page before replacing it"
+    else:
+        result = dest_name + " saved as favourite destination"
+    return JsonResponse({'result': result})
 
 
 

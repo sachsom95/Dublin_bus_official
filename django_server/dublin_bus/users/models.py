@@ -52,8 +52,10 @@ class Profile(models.Model):
 
 class FavouriteDestination(models.Model):
     user = models.ForeignKey(User,on_delete=models.CASCADE)
-    name = models.CharField(max_length=50,default='',blank=True,unique=True)
+    name = models.CharField(max_length=50)
     lat = models.DecimalField(max_digits=10,decimal_places=6, default=0)
     lng = models.DecimalField(max_digits=10,decimal_places=6, default=0)
     def __str__(self):
         return self.user.username + ': ' + self.name
+    class Meta:
+       unique_together = ["user", "name"]

@@ -19,12 +19,12 @@ function saveFavDestination(){
                 async: false,
                 data: {'name': dest_name, 'lat': lat,'lng':lng},
                 success: function (data) {
-                        time_prediction = parseInt(time_prediction) + parseInt(data.prediction)
-                        console.log(data.prediction)
+                    // console.log(data.result)
+                    document.getElementById('FavDestResult').innerHTML = data.result
+
                 }
         
             })
-            document.getElementById('FavDestResult').innerHTML = '"' + dest_name + '"' + ' saved as favourite destination'
         }
     }
 
