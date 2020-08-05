@@ -52,28 +52,13 @@ function routeToFavDestination(cur_location){
     setTimeout(function(){showRoutes()},100);
     setTimeout(function(){predict()},2000);
     setTimeout(function(){myFunction()},2500);
-    // document.getElementById("test1").innerHTML += " Start: Your location"; 
-    // document.getElementById("test2").innerHTML += " Destination: " + chosen_destination;
+    setTimeout(function(){document.getElementById("test1").innerHTML = " Start: Your location"},2600);
+    setTimeout(function(){document.getElementById("test2").innerHTML = " End: " + chosen_destination},2600);
     setTimeout(function(){ $('#directions').show({
         bottom: '-550px',
         height:'500px',
         position: 'absolute',
-      });},3000)
-
-    // steps = showRoutes()
-    console.log(steps)
-    // console.log(route)
-    // console.log(stepList)
-    // myFunction()
-
-
-
-    // console.log(stepList)
-    // $('#directions').show({
-    //     bottom: '-550px',
-    //     height:'500px',
-    //     position: 'absolute',
-    // });
+      });},2800)
 
 }
 
