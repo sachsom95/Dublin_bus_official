@@ -1,0 +1,132 @@
+
+#splashbackground {
+    position: fixed;
+    ocapacity: 0.8;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 110%;
+    /*margin-top: -200px;*/
+    z-index: 8;
+    background-color: #ebbc00;
+}
+#splashcontent {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    left: 0px;
+    top: 0px;
+    margin-top: -300px;
+}
+
+#splashbackground h2 {
+    position: relative;
+    top: 50%;
+    /*line-height: 100px;*/
+    font-size: 50px;
+    width: 100%;
+    text-align: center;
+    color: transparent;
+    animation: blurFadeInOut 5s ease-in backwards;
+}
+#splashbackground h5 {
+    position: relative;
+    top: 50%;
+    /*line-height: 30px;*/
+    /*font-size: 30px;*/
+    width: 100%;
+    text-align: center;
+    color: transparent;
+    animation: blurFadeInOut 3.5s ease-in backwards;
+}
+/*.splashcontent h1 {*/
+/*    position: relative;*/
+/*    top: 50%;*/
+/*    line-height: 100px;*/
+/*    height: 100px;*/
+/*    font-size: 100px;*/
+/*    width: 100%;*/
+/*    text-align: center;*/
+/*    color: transparent;*/
+/*    animation: blurFadeIn 2s ease-in backwards;*/
+/*}*/
+
+#splashbackground h2.frame-1 {
+    animation-delay: 0s;
+}
+#splashbackground h5.frame-2 {
+    animation-delay: 0.5s;
+}
+#splashbackground h2.frame-3 {
+    color: black;
+    animation: blurFadeIn 2s ease-in backwards;
+    animation-delay: 3.5s;
+}
+
+/*.splashcontent h2.frame-1 {*/
+/*    animation: none;*/
+/*    color: black;*/
+/*    text-shadow: 0px 0px 1px #fff;*/
+/*}*/
+/*.splashcontent h2.frame-1 span {*/
+/*    animation: blurFadeInOut 3s ease-in 0.5s backwards;*/
+/*    color: transparent;*/
+/*    text-shadow: 0px 0px 1px #fff;*/
+/*}*/
+/*.splashcontent h2.frame-1 span:nth-child(2) {*/
+/*    animation-delay: 2s;*/
+/*}*/
+
+
+
+
+
+@keyframes blurFadeIn{
+    0%{
+        opacity: 0;
+        text-shadow: 0px 0px 40px #fff;
+        transform: scale(1.3);
+    }
+    50%{
+        opacity: 0.5;
+        text-shadow: 0px 0px 10px #fff;
+        transform: scale(1.1);
+    }
+    100%{
+        opacity: 1;
+        text-shadow: 0px 0px 1px #fff;
+        transform: scale(1);
+    }
+}
+@keyframes blurFadeInOut{
+    0%{
+        opacity: 0;
+        text-shadow: 0px 0px 40px #fff;
+        transform: scale(1.3);
+    }
+    5%{
+        opacity: 0.5;
+        text-shadow: 0px 0px 10px #fff;
+        transform: scale(1.1);
+    }
+    10%{
+        opacity: 1;
+        text-shadow: 0px 0px 1px #fff;
+        transform: scale(1);
+    }
+    90%{
+        opacity: 1;
+        text-shadow: 0px 0px 1px #fff;
+        transform: scale(1);
+    }
+    95%{
+        opacity: 0.5;
+        text-shadow: 0px 0px 10px #fff;
+        transform: scale(1.1);
+    }
+    100%{
+        opacity: 0;
+        text-shadow: 0px 0px 40px #fff;
+        transform: scale(1.3);
+    }
+}
