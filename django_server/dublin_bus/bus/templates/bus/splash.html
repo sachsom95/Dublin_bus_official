@@ -1,0 +1,74 @@
+{% load static %}
+
+<!--###### here is the splash page, if you enter the website first time of the day, it will show a splash screen. but if you have entered this website already, it won't show again today-->
+<script>
+// $(document).ready(function() {
+//     Cookies.remove('noShowSplash');
+// })
+$(document).ready(function() {
+    if (Cookies.get('noShowSplash')) {
+        $("#splashbackground").hide();
+    }
+    else {
+        $("#splashbackground").show();
+        Cookies.set('noShowSplash', true, { expires: 1 });
+    }
+});
+$(document).ready(function(){
+  $("#splashbackground").click(function(){
+    $(this).fadeOut(1000);
+  });
+});
+</script>
+
+<div id="splashbackground" style="display:none">
+    <div id="splashcontent">
+        <h2 class="frame-1">Dublin Bus Project Group 8</h2>
+        <h5 class="frame-2">Powered by Group 8 Members: Ben , CHEN PENG, Sachin Soman, Stacy </h5>
+        <h2 class="frame-3">Click Anywhere to Start Your Journey in Dublin!</h2>
+    </div>
+</div>
+
+
+
+<script>
+// $(document).ready(function(){
+//     $("#splashbackground *").prop('disabled',true);
+// });
+// $("#splashbackground *").prop('disabled',true);
+// var nodes = document.getElementById("splashbackground").getElementsByTagName('*');
+// for(var i = 0; i < nodes.length; i++){
+//      nodes[i].disabled = true;
+// }
+// document.getElementById("splashbackground").disable = true;
+// document.getElementsByClassName("splashcontent").disabled = true;
+// $("#mydiv")
+//   .css({"pointer-events" : "none" , "opacity" :  "0.4"})
+//   .attr("tabindex" , "-1");
+// const splash = document.querySelector('#splashbackground');
+// document.addEventListener('DOMContentLoaded',(e) =>{
+//     setTimeout(()=>{
+//         splash.classList.add('display-none')
+//     },2000)
+// } )
+// $(document).ready(function(){
+//   $("#splashbackground").click(function(){
+//     $(this).fadeOut(1000);
+//   });
+// });
+
+// $(document).ready(function() {
+//     if (Cookies.get('noShowSplash')) {
+//         $("#splashbackground").hide();
+//     }
+//     else {
+//         $("#splashbackground").click(function() {
+//             $(this).fadeOut(1000);
+//             Cookies.set('noShowSplash', true, { expires: 2 });
+//         });
+//     }
+// });
+
+</script>
+
+
