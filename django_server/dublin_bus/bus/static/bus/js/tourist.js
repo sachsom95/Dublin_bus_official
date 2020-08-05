@@ -20,8 +20,6 @@ function placeMarker(location) {
     });
     markers.push(marker);
     console.log(markers);
-
-
 }
 
 //This listens for when a user clicks on the map and then it passes the event to the place marker function 
@@ -32,11 +30,10 @@ google.maps.event.addListener(map, 'click', function(event) {
     var here = new google.maps.LatLng(position.coords.latitude, position.coords.longitude); 
     destination = event.latLng;
     calcRoute(here, destination);
-    removeMarker();
     console.log(markers);
 
 });
-
+removeMarker();
 });
     
 // this function uses geolocation to find an approximate location of the user.
