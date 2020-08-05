@@ -62,9 +62,7 @@ function initMap(location){
 // Code altered from the google maps API
 function Search_tourist(){
     const geocoder = new google.maps.Geocoder();
-    document.getElementById("tourist-submit").addEventListener("click", () => {
-      geocodeAddress(geocoder, map);
-    });
+    geocodeAddress(geocoder, map);
     function geocodeAddress(geocoder, resultsMap) {
     const address = document.getElementById("address").value;
     geocoder.geocode({ address: address }, (results, status) => {
