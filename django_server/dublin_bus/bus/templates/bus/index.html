@@ -1,7 +1,6 @@
 {% extends 'bus/base_layout.html' %}
 {% load static %} 
 {% block content %}
-
 <div class="container">
   <!-- Nav tabs -->
   <ul class="nav nav-tabs" role="tablist">
@@ -17,12 +16,34 @@
   </ul>
 
   <!-- Tab panes -->
-  <div class="tab-content col-md-6">
+  <div class="tab-content">
     <!-- This code is for the journey planner tab -->
     <div id="journey-planner" class="container tab-pane active">
       <button type="button" class="btn btn-primary" data-toggle="collapse" id="JP-btn">Hide Planner</button>
       <div id="floating-panel" class="card col-md-8 collapse-show">
-              <h3 class="card-title">Journey Planner  <i class="fas fa-cloud">15C</i></h3>
+              <h3 class="card-title">Journey Planner {{weather_info.temp}}&#8451<img src="http://openweathermap.org/img/wn/{{weather_info.weather_icon}}@2x.png"></h3>
+                <!-- ############################## weather notice #####################-->
+                {% if forecast %}
+                    <div class="alert alert-secondary alert-dismissible fade show" role="alert">
+                      <strong>Weather Notice</strong> There could be {{forecast.weather_description}} at around {{forecast.dt_iso|slice:"11:16"}} on {{forecast.dt_iso|slice:"5:10"}}
+                      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                {% else %}
+                    {# Here is a comment which means do nothing. #}
+                {% endif %}
+                <!-- ############################## weather notice #####################-->
+                {% if user.is_authenticated and destinations|length > 0 %}
+                <span>Take me to:
+                <select id='favDestSelect'> 
+                  {% for destination in destinations %}
+                    <option>{{ destination.name }}</option>
+                  {% endfor %}
+                </select>
+                <button class="btn btn-warning btn-xs" onclick='getCurLocation()'>Go!</button>
+                </span><br>
+                {% endif %}
               <form id="form1" class="form">
                 <div class="form-group">
 
@@ -40,6 +61,10 @@
                     <input type="hidden" id="stop_lat" />
                     <input type="hidden" id="stop_lng" />
                     <input type="hidden" id="stop_destination" />
+                    {% if user.is_authenticated %}
+                    <input id='favDestBtn' type='button' class="btn btn-primary btn-sm" onclick="saveFavDestination()" value="Save Favourite Destination"> <br>
+                    <p id='FavDestResult'></p>
+                    {% endif %}
                <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script> -->
                
                   <label>Travel Date and Time:</label>
@@ -84,17 +109,55 @@
               </div>
     <!-- This code is for the Tourism tab -->
     <div id="tourism" class="container tab-pane fade">
+      <button type="button" class="btn btn-primary" data-toggle="collapse" id="tourist-btn">Hide Planner</button>
       <div class="card col-md-8" id="tourism-card">
         <h3 class="card-title">Tourism</h3>
+        
           <div id="locationList"></div>
           <div class="card-body">
-          <img src="{% static 'Guinness.jpeg' %}" class="img-fluid rounded" alt="Black Gates">
-          <button type="button" class="btn btn-warning btn-info btn-sm" id="Guinness">Directions to Guinness!</button><br>
+            <a href="https://www.planetware.com/tourist-attractions-/dublin-irl-db-dub.htm" target="_blank">Need inspiration? Click here for trip ideas</a>
+            <p>Click anywhere on the map to be routed to that location</p>
+            <p id="tourist_predictions">Your bus journey(s) will take: </p>
+            <p><b>Search for attractions:</b></p>
+            <input id="address" onClick="this.select();" type="textbox" class="form-control" placeholder="Enter a location">
+                <!-- Hidden fields are for storing lat lon not for showing -->
+                <input type="hidden" id="stop_lat" />
+                <input type="hidden" id="stop_lng" />
+                <input type="hidden" id="stop_destination" />
+            <input id="tourist-submit" type="button" form="form2" onclick="Search_tourist();" class="btn btn-warning" value="Submit" style="margin-top: 10px; margin-bottom: 10px;">
+            <p><b>Suggested Places:</b></p>
+            <img src="{% static 'Guinness.jpeg' %}" class="img-fluid rounded" alt="Black Gates">
+            <button type="button" class="btn btn-primary" id="GSH" onclick="Guinness()">Take me to the Guinness Factory</button><br>
+            <img src="{% static 'TCD.jpeg' %}" class="img-fluid rounded" alt="Trinity College">
+            <button type="button" class="btn btn-primary" id="trin_uni" onclick="Trinity()">Take me to Trinity College</button><br>
+            <img src="{% static 'grafton.jpg' %}" class="img-fluid rounded" alt="Grafton Street">
+            <button type="button" class="btn btn-primary" id="Grafton_st" onclick="Grafton()">Take me to Grafton Street</button><br>
+            <img src="{% static 'NGI.jpeg' %}" class="img-fluid rounded" alt="National Gallery">
+            <button type="button" class="btn btn-primary" id="Nat_gal_Ire" onclick="NGI()">Take me to the National Gallery</button><br> 
+
+            <div id="tourism-directions" class="card">  
              
-          <img src="{% static 'NGI.jpeg' %}" class="img-fluid rounded" alt="National Gallery">
-        <button type="button" class="btn btn-warning btn-info btn-sm" id="art">Directions to NGI</button><br>
-          <img src="{% static 'NLM.jpeg' %}" class="img-fluid rounded" alt="Leprechaun">
-             <button type="button" class="btn btn-warning btn-info btn-sm" id="Leprechaun">Directions to the National Leprechaun Museum</button><br>
+              <h3>Directions <button type="btn btn-white" class="close text-white" aria-label="Close" id="close-tourism">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </h3>  
+              
+              <!-- <button class="btn btn-primary" id="close">Close</button> -->
+              <div class="d-inline-flex p-2">
+                <script src="{% static 'bus/js/journey_time_prediction.js' %}"></script>
+                
+                <!-- Here is the code for the predition algorithm -->
+                <p id="precitionResult" class="font-weight-bolder"> ...</p>
+              </div>
+              <br>
+              <!-- <div class="class=d-inline-flex">
+              <p id="busbus">..</p>
+            </div> -->
+          
+              <i class="fas fa-bus d-inline-flex p-2" style='color:green;'><p id="test1"></p></i>
+              <p id="test">..</p>
+              <i class='fas fa-map-pin d-inline-flex p-2' style='color:#b91700'><p id="test2"></p></i>
+              </div>
     </div>
           </div>
     </div>
@@ -108,9 +171,14 @@
      </div>
   </div>
 </div>
-   
-    <div><div id="map"> hello </div></div>
-
+   <!-- This code displays the map -->
+    <div id="map"> hello </div>
+    <div id="infowindow-content">
+      <img id="place-icon" src="" height="16" width="16" />
+      <span id="place-name" class="title"></span><br />
+      Place ID <span id="place-id"></span><br />
+      <span id="place-address"></span>
+    </div>
 
 <!-- modal -->
 
@@ -138,7 +206,10 @@
 <!--  -->
 
 
- 
+ <!-- loading json object with user's saved destinations into global variable. Result created by django queryset serializer is weird so had to do some .replace shenanigans -->
+<script>
+  var json_destinations = JSON.parse('{{ json_destinations }}'.replace(/&quot;/g,'"'));
+</script>
         
 <script src="{% static 'bus/js/input.js' %}"></script>
 <!--Jquery for map-->
@@ -149,12 +220,14 @@
 <script src="{% static 'bus/js/map_init.js' %}"></script>
 
  <!--MAPS API-->
+ <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
 <script 
 src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCFtH8qWuX2LGmHcicY-vLHfYuB7D6WI7Y&libraries=places&callback=initMap" >
 
 </script>
 <script src="{% static 'bus/js/tourist.js' %}"></script>  
 <script src="{% static 'bus/js/map_auto_complete_text.js' %}"></script>
+<script src="{% static 'bus/js/create_fav_destination.js' %}"></script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.0/moment.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.0-alpha14/css/tempusdominus-bootstrap-4.min.css" />
@@ -198,5 +271,6 @@ document.addEventListener('DOMContentLoaded', function(event) {
     document.getElementById("share_trip").style.visibility="visible"
 </script>
 {% endif %}
+
 
 {% endblock %}

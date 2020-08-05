@@ -24,6 +24,8 @@ urlpatterns = [
     path('tourism/', views.tourism, name="tourism"),
     path('prediction/', views.prediction, name="prediction"),
     path('share/<start_lat>/<start_lng>/<stop_lat>/<stop_lng>/<start>/<stop>/', views.share, name="share"),
+    path('add_fav_destination/', views.addFavDest, name="addFavDest"),
+    path('delete_fav_destination/', views.delFavDest, name="delFavDest"),
 ]
 
 # Patch notes:sachin
