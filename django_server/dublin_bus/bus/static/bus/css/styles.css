@@ -110,7 +110,7 @@ p, input, label {
     font-family: Orienta, sans-serif; 
   }
   #tourism {
-    position: absolute;
+    position: relative;
     z-index: 5;
     font-family: Orienta, sans-serif; 
   }
