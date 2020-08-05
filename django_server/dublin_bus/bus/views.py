@@ -30,7 +30,11 @@ def share(request,start_lat,start_lng,stop_lat,stop_lng,start,stop):
 def home(request):
     weather = Currentweather.objects.all()[0]
     # print(weather)
-    forecast = Forecastweather.objects.all()
+    forecast_raw = Forecastweather.objects.filter(weather_description__icontains='rain')[1:9]
+    if forecast_raw:
+        forecast = forecast_raw[0]
+    else:
+        forecast = forecast_raw
     # print(forecast)
     cov_info = Covid.objects.all().order_by('-Date')[0]
     # print(cov_info)
