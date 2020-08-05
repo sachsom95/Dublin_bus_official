@@ -1,4 +1,4 @@
-src="{% static 'bus/js/map_init.js' %}"
+// src="{% static 'bus/js/map_init.js' %}"
 
 // Author: Stacy 
 // This JQuery Function creates the date and time picker as well as limits the dates selectable by having the minimum date always be today.
@@ -25,9 +25,9 @@ $(document).ready(function () {
 });
 });
 // This Jquery function should change the text on the show/hide menu button when pressed 
-
-  $("#JP-btn").click(function(e){
-    e.preventDefault(); //prevents the need to double click
+$(document).ready(function(){
+  $("#JP-btn").click(function(){
+   //prevents the need to double click
     $('#floating-panel').toggle();
     if($('#floating-panel').is(':visible')) {
         $(this).html('Hide Planner');
@@ -35,15 +35,10 @@ $(document).ready(function () {
         $(this).html('Show Planner');
     }
 });
-$("#BS-btn").click(function(e){
-  e.preventDefault(); //prevents the need to double click
-  $('#searchStopNumber').toggle();
-  if($('#searchStopNumber').is(':visible')) {
-      $(this).html('Hide Search');
-  } else {
-      $(this).html('Show Search');
-  }
 });
+
+
+
 // This function takes the values entered into the intputs on the index page and re prints them out. 
 function stepListBuilder() {
   console.log("event:7")
