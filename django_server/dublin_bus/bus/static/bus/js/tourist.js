@@ -18,9 +18,8 @@ function placeMarker(location) {
         position: location, 
         map: map,
     });
-    markers.push(marker);
-    console.log(markers);
 }
+
 
 //This listens for when a user clicks on the map and then it passes the event to the place marker function 
 google.maps.event.addListener(map, 'click', function(event) {
@@ -30,10 +29,8 @@ google.maps.event.addListener(map, 'click', function(event) {
     var here = new google.maps.LatLng(position.coords.latitude, position.coords.longitude); 
     destination = event.latLng;
     calcRoute(here, destination);
-    console.log(markers);
-
 });
-removeMarker();
+
 });
     
 // this function uses geolocation to find an approximate location of the user.
@@ -74,9 +71,9 @@ function Search_tourist(){
       }
    
     // var there = results[0].geometry.location;
-    console.log("hello hello hello" + resultsMap);
+    // console.log("hello hello hello" + resultsMap);
     there = results[0].geometry.location;
-    console.log(geocoder);
+    // console.log(geocoder);
     navigator.geolocation.getCurrentPosition(function(position){
         var here = new google.maps.LatLng(position.coords.latitude, position.coords.longitude); 
         directionsDisplay.setMap(map); 
