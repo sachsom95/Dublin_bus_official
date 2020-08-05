@@ -18,6 +18,9 @@ function placeMarker(location) {
         position: location, 
         map: map,
     });
+    markers.push(marker);
+    console.log(markers);
+
 
 }
 
@@ -29,7 +32,11 @@ google.maps.event.addListener(map, 'click', function(event) {
     var here = new google.maps.LatLng(position.coords.latitude, position.coords.longitude); 
     destination = event.latLng;
     calcRoute(here, destination);
+    removeMarker();
+    console.log(markers);
+
 });
+
 });
     
 // this function uses geolocation to find an approximate location of the user.
