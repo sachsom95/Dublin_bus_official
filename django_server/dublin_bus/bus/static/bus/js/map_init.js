@@ -20,7 +20,7 @@ let dep;
 let i;
 let stepList = [];
 let text= '';
-let durationList = [];
+var durationList = [];
 let bus;
 let headsign;
 var route;
@@ -60,6 +60,8 @@ let options = {
     }
 
 function showRoutes() {
+    // remove any markers currently present first
+
     // console.log("came to shwoRoutes")
     // console.log("Markers"+markers[0].position)
     console.log("event:3")

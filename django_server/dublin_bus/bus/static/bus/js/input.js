@@ -65,6 +65,7 @@ function myFunction() {
   text = ''; //start with an empty list each time
   counter = 1; //start with counter at 1 each time
   var input1 = document.getElementById("searchTextField_start").value;
+  console.log(input1)
   var input2 = document.getElementById("searchTextField_destination").value;
   // console.log("----------stepList-----------")
   // console.log(stepList)
