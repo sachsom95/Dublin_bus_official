@@ -2,7 +2,6 @@
 {% load static %} 
 {% block content %}
 
-<div class="container">
   <!-- Nav tabs -->
   <ul class="nav nav-tabs" role="tablist">
     <li class="nav-item">
@@ -21,13 +20,18 @@
     <!-- This code is for the journey planner tab -->
     <div id="journey-planner" class="container tab-pane active">
       <button type="button" class="btn btn-primary" data-toggle="collapse" id="JP-btn">Hide Planner</button>
-      <div id="floating-panel" class="card col-md-8 collapse-show">
-
-              <h3 class="card-title">Journey Planner {{weather_info.temp}}&#8451<img src="http://openweathermap.org/img/wn/{{weather_info.weather_icon}}@2x.png"></h3>
+      <div id="floating-panel" class="card col-sm-8 collapse-show">
+              <h3>Journey Planner </h3>
+              <div class="col-sm-12" style="text-align:center; border: 1px solid#252d5a; border-radius: 15px;">
+                <b>Current Dublin Weather: </b>
+                {{weather_info.temp}}&#8451    
+                <img src="http://openweathermap.org/img/wn/{{weather_info.weather_icon}}@2x.png" style="background-color: lightslategray; border-radius: 30px; height: 50px;">
+            
+              </div>
                 <!-- ############################## weather notice #####################-->
                 {% if forecast %}
                     <div class="alert alert-secondary alert-dismissible fade show" role="alert">
-                      <strong>Weather Notice</strong> There could be {{forecast.weather_description}} at around {{forecast.dt_iso|slice:"11:16"}} on {{forecast.dt_iso|slice:"5:10"}}
+                      <strong>Weather Notice: </strong> There could be {{forecast.weather_description}} at around {{forecast.dt_iso|slice:"11:16"}} on {{forecast.dt_iso|slice:"5:10"}}
                       <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                       </button>
@@ -99,67 +103,44 @@
     <!-- This code is for the Tourism tab -->
     <div id="tourism" class="container tab-pane fade">
       <button type="button" class="btn btn-primary" data-toggle="collapse" id="tourist-btn">Hide Planner</button>
-      <div class="card col-md-4" id="tourism-card">
-        <h3 class="card-title">Tourism</h3>
-        
-          <div id="locationList"></div>
-          <div class="card-body">
+      <div class="col-md-12">
+       <div class="card col-sm-4 collapse-show" id="tourism-card">
+        <h3>Tourism</h3>
+            <h2>Explore Dublin</h2>
+            <p>Click anywhere on the map to be routed to that location.</p>
             <a href="https://www.planetware.com/tourist-attractions-/dublin-irl-db-dub.htm" target="_blank">Need inspiration? Click here for trip ideas</a>
-            <p>Click anywhere on the map to be routed to that location</p>
-            <p id="tourist_predictions">Your bus journey(s) will take: </p>
             <p><b>Search for attractions:</b></p>
             <input id="address" onClick="this.select();" type="textbox" class="form-control" placeholder="Enter a location">
                 <!-- Hidden fields are for storing lat lon not for showing -->
                 <input type="hidden" id="stop_lat" />
                 <input type="hidden" id="stop_lng" />
                 <input type="hidden" id="stop_destination" />
-            <input id="tourist-submit" type="button" form="form2" onclick="Search_tourist();" class="btn btn-warning" value="Submit" style="margin-top: 10px; margin-bottom: 10px;">
+            <input id="tourist-submit" type="button" onclick="Search_tourist();" class="btn btn-warning" value="Submit" style="margin-top: 10px; margin-bottom: 10px;">
             <p><b>Suggested Places:</b></p>
             <img src="{% static 'Guinness.jpeg' %}" class="img-fluid rounded" alt="Black Gates">
-            <button type="button" class="btn btn-primary" id="GSH" onclick="Guinness()">Take me to the Guinness Factory</button><br>
+            <button type="button" class="btn btn-primary" id="GSH" onclick="Guinness()" style="margin-top: 10px; margin-bottom: 10px;">Take me to the Guinness Factory</button><br>
             <img src="{% static 'TCD.jpeg' %}" class="img-fluid rounded" alt="Trinity College">
-            <button type="button" class="btn btn-primary" id="trin_uni" onclick="Trinity()">Take me to Trinity College</button><br>
+            <button type="button" class="btn btn-primary" id="trin_uni" onclick="Trinity()" style="margin-top: 10px; margin-bottom: 10px;">Take me to Trinity College</button><br>
             <img src="{% static 'grafton.jpg' %}" class="img-fluid rounded" alt="Grafton Street">
-            <button type="button" class="btn btn-primary" id="Grafton_st" onclick="Grafton()">Take me to Grafton Street</button><br>
+            <button type="button" class="btn btn-primary" id="Grafton_st" onclick="Grafton()" style="margin-top: 10px; margin-bottom: 10px;">Take me to Grafton Street</button><br>
             <img src="{% static 'NGI.jpeg' %}" class="img-fluid rounded" alt="National Gallery">
-            <button type="button" class="btn btn-primary" id="Nat_gal_Ire" onclick="NGI()">Take me to the National Gallery</button><br> 
-
-            <div id="tourism-directions" class="card">  
-             
-              <h3>Directions <button type="btn btn-white" class="close text-white" aria-label="Close" id="close-tourism">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </h3>  
-              
-              <!-- <button class="btn btn-primary" id="close">Close</button> -->
-              <div class="d-inline-flex p-2">
-                <script src="{% static 'bus/js/journey_time_prediction.js' %}"></script>
-                
-                <!-- Here is the code for the predition algorithm -->
-                <p id="precitionResult" class="font-weight-bolder"> ...</p>
-              </div>
-              <br>
-              <!-- <div class="class=d-inline-flex">
-              <p id="busbus">..</p>
-            </div> -->
-          
-              <i class="fas fa-bus d-inline-flex p-2" style='color:green;'><p id="test1"></p></i>
-              <p id="test">..</p>
-              <i class='fas fa-map-pin d-inline-flex p-2' style='color:#b91700'><p id="test2"></p></i>
-              </div>
-    </div>
+            <button type="button" class="btn btn-primary" id="Nat_gal_Ire" onclick="NGI()" style="margin-top: 10px; margin-bottom: 10px;">Take me to the National Gallery</button><br> 
+ 
+          </div>
           </div>
     </div>
     <!-- This code is for the twitter tab -->
     <div id="twitter" class="container tab-pane fade">
-      <div class="col-md-12" id="twitter-card">
+    <div class="col-md-12">
+      <div class="col-md-12 collapse-show" id="twitter-card">
       <h3>Dublin Bus Twitter</h3>
       <a class="twitter-timeline" href="https://twitter.com/dublinbusnews?ref_src=twsrc%5Etfw">Tweets by dublinbusnews</a> 
       <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
       </div>   
+      </div>
      </div>
   </div>
-</div>
+
    <!-- This code displays the map -->
     <div id="map"> hello </div>
 

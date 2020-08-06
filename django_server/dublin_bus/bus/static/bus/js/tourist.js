@@ -142,7 +142,9 @@ function calcRoute(start,destination){
                 map: map,
              
             });
-        }
+        }else{
+            window.alert('Directions request failed due to ' + status);
+        };
     })
 
 }
