@@ -11,6 +11,8 @@ $(document).ready(function () {
         maxDate: end,
         format: 'DD/MM/YY LT',
         date: moment(),
+        minDate: moment({h:5}),
+        maxDate: moment({h:24}),
         icons:{
           time:'far fa-clock',
           date: 'fa fa-calendar',

@@ -18,10 +18,6 @@ function placeMarker(location) {
         position: location, 
         map: map,
     });
-    markers.push(marker);
-    console.log(markers);
-
-
 }
 
 //This listens for when a user clicks on the map and then it passes the event to the place marker function 
@@ -32,9 +28,6 @@ google.maps.event.addListener(map, 'click', function(event) {
     var here = new google.maps.LatLng(position.coords.latitude, position.coords.longitude); 
     destination = event.latLng;
     calcRoute(here, destination);
-    removeMarker();
-    console.log(markers);
-
 });
 
 });
@@ -62,9 +55,7 @@ function initMap(location){
 // Code altered from the google maps API
 function Search_tourist(){
     const geocoder = new google.maps.Geocoder();
-    document.getElementById("tourist-submit").addEventListener("click", () => {
-      geocodeAddress(geocoder, map);
-    });
+    geocodeAddress(geocoder, map);
     function geocodeAddress(geocoder, resultsMap) {
     const address = document.getElementById("address").value;
     geocoder.geocode({ address: address }, (results, status) => {
@@ -79,9 +70,9 @@ function Search_tourist(){
       }
    
     // var there = results[0].geometry.location;
-    console.log("hello hello hello" + resultsMap);
+    // console.log("hello hello hello" + resultsMap);
     there = results[0].geometry.location;
-    console.log(geocoder);
+    // console.log(geocoder);
     navigator.geolocation.getCurrentPosition(function(position){
         var here = new google.maps.LatLng(position.coords.latitude, position.coords.longitude); 
         directionsDisplay.setMap(map); 
@@ -151,7 +142,9 @@ function calcRoute(start,destination){
                 map: map,
              
             });
-        }
+        }else{
+            window.alert('Directions request failed due to ' + status);
+        };
     })
 
 }
