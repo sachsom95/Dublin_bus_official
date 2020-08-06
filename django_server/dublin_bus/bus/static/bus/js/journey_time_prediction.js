@@ -1,4 +1,4 @@
-
+var prediction_steps = {};
 function secondsToHms(d) {
     d = Number(d);
     var h = Math.floor(d / 3600);
@@ -52,8 +52,10 @@ $( "#submit-btn" ).click(function(){predict()});
 function predict(){
 
     var time_prediction = 0
-    console.log(route)
-    for (i=0; i<route[0]['steps'].length;i++){
+    // console.log(route)
+    for (var i=0; i<route[0]['steps'].length;i++){
+        prediction_steps[i+1] = 0;
+        // console.log(prediction_steps)
         if (route[0]['steps'][i]['travel_mode'] == "TRANSIT"){
             var line = route[0]['steps'][i]['transit']['line']['short_name'];
             var dep_lat = JSON.parse(JSON.stringify(route[0]['steps'][i]['transit']['departure_stop']['location']))['lat']
@@ -72,7 +74,8 @@ function predict(){
                 data: {'line': line,'dep_lat':dep_lat,'dep_lng':dep_lng,'arr_lat':arr_lat,'arr_lng':arr_lng,'google_pred':google_pred},
                 success: function (data) {
                         time_prediction = parseInt(time_prediction) + parseInt(data.prediction)
-                        console.log(data.prediction)
+                        prediction_steps[i+1] = secondsToHms(data.prediction)
+                        // console.log(data.prediction)
                 }
         
             })

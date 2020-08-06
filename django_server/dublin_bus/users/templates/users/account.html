@@ -112,6 +112,22 @@
               {{ account_form|crispy }}
             
           </fieldset>
+
+          <div class=form-group>
+            <h3> Favourite Routes </h3>
+            <div class="card">
+              <div>
+              {% for destination in fav_destinations %} 
+              <div> 
+                <span style='margin-left: 5px;'><b>{{ destination.name }} </span></b>
+                <!-- <input style='float: right;' class="btn btn-danger btn-sm" id= '{{destination.name}}' onclick='deleteFavDestination(this.id)'value="Delete"> -->
+                <button style='float: right;' class="btn btn-danger btn-sm" id= {{destination.name}} onclick='deleteFavDestination(this.id)'> Delete</button>
+              </div> <br>
+              {% endfor %}
+              <p id='deletion_result'> </p>
+            </div>
+          </div>
+
           <div class = "form-group">
               <button class="btn btn-warning btn-lg" type="submit" name="account">Update</button>
               {% if user.profile.leap_username %}
@@ -127,6 +143,6 @@
       
     
     </div>
-
+  <script src="{% static 'bus/js/create_fav_destination.js' %}"></script>
 
 {% endblock content %}

@@ -206,6 +206,13 @@ p, input, label {
 }
 /* End of covifd modal  */
 
+/* adding extra small button group since no longer available in bootstrap 4 */
+.btn-group-xs > .btn, .btn-xs {
+    padding: .25rem .4rem;
+    font-size: .875rem;
+    line-height: .9;
+    border-radius: .2rem;
+  }
 
 #infowindow-content {
     display: none;
