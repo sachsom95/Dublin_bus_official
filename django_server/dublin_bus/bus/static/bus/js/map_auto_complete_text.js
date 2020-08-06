@@ -26,7 +26,7 @@ function auto_suggest_location() {
     //getting the id of form field to pass to autocomplete magic function
     let input_start = document.getElementById('searchTextField_start');
     let input_destination = document.getElementById('searchTextField_destination');
-    let tourist_destination = document.getElementById('route');
+    let tourist_destination = document.getElementById('address');
 
     let autocomplete_input_start = new google.maps.places.Autocomplete(input_start,options);
     let autocomplete_input_destination = new google.maps.places.Autocomplete(input_destination,options);
@@ -37,7 +37,7 @@ function auto_suggest_location() {
          start = autocomplete_input_start.getPlace();
          has_entered_start = true
         document.getElementById('start_destination').value = start
-        console.log(document.getElementById('start_destination').value)
+        // console.log(document.getElementById('start_destination').value)
         document.getElementById('start_lat').value = start.geometry.location.lat();
         document.getElementById('start_lng').value = start.geometry.location.lng();
         if(has_entered_stop && has_entered_start){
