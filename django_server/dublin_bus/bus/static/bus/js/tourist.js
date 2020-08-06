@@ -20,7 +20,6 @@ function placeMarker(location) {
     });
 }
 
-
 //This listens for when a user clicks on the map and then it passes the event to the place marker function 
 google.maps.event.addListener(map, 'click', function(event) {
     directionsDisplay.setMap(map);
