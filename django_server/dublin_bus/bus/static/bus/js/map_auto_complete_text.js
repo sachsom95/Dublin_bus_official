@@ -37,7 +37,7 @@ function auto_suggest_location() {
          start = autocomplete_input_start.getPlace();
          has_entered_start = true
         document.getElementById('start_destination').value = start
-        console.log(document.getElementById('start_destination').value)
+        // console.log(document.getElementById('start_destination').value)
         document.getElementById('start_lat').value = start.geometry.location.lat();
         document.getElementById('start_lng').value = start.geometry.location.lng();
         if(has_entered_stop && has_entered_start){
