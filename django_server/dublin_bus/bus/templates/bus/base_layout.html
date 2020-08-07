@@ -53,13 +53,10 @@
         </li>
         
         <li class="nav-item">
-          <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+          <a class="nav-link col-md-8" href="{% url 'logout' %}">Logout</a>
         </li>
-        
-      <div>
-          <img src="{{ user.profile.image.url }}" alt="profile pic" style="height:90px; width:90px; object-fit: cover;" class="img-thumbnail float-right rounded-circle">
-        </div>
-
+  
+      </ul>
         <!-- SHOW THIS NAV IF NOT LOGGED IN -->
         {% else %}
         <li class="nav-item">
@@ -71,11 +68,15 @@
 
             <a class="nav-link" href="{% url 'register' %}">Sign Up</a>
           </li>
-
+        </ul>
         {% endif %}
-      </ul>
+      
     </div>
+ <div>
+      <img src="{{ user.profile.image.url }}" alt="profile pic" id="user-pic" style="height:90px; width:90px; object-fit: cover;" class="img-thumbnail float-right rounded-circle">
+  </div>
   </nav>
+
     <div class="wrapper">
         {% if messages %}
         {% for messages in messages %}
@@ -98,285 +99,6 @@
         <p class="copyright" style="font-family: Orienta, sans-serif;">Group 8 © 2020</p>
     </footer>
 </div>
-
-
-
-
-
-
-<!-- ##################################### code for covid dash board  ##################-->
-                                            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                                                <div class="modal-dialog" style="width:80%">
-                                                    <div class="modal-content" style="width:900px">
-                                                        <div class="modal-header">
-                                                            <h2 class="modal-title" id="myModalLabel">
-                                                                Covid-19 Detailed Information. Hope you stay safe!
-                                                            </h2>
-                                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-                                                                &times;
-                                                            </button>
-                                                        </div>
-                                                        <div class="modal-body">
-                                                <div class="content" style="height:590px ;overflow:auto;padding:2px 30px;margin:0px 5px">
-                                                <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js" integrity="sha256-R4pqcOYV8lt7snxMQO/HSbVCFRPMdrhAFMH+vr9giYI=" crossorigin="anonymous"></script>
-
-                                                    <div id="notice"><p>Note: The data of covid-19 updates every 24 hours in our database</p></div>
-                                                    <section class="header">
-                                                    <div class="small-columns">
-                                                        <div class="row-stat-boxes">
-                                                            <div class="small-stat-box">
-                                                                <div>
-                                                                    <span class="perc">Total Cases: </span>
-                                                                    <span class="perc">{{covid.TotalConfirmedCovidCases}}</span>
-                                                                </div>
-                                                            </div>
-                                                            <div class="small-stat-box">
-                                                                <div>
-                                                                    <span class="perc">Latest Daily Cases: </span>
-                                                                    <span class="perc">{{covid.ConfirmedCovidCases}}</span>
-                                                                </div>
-                                                            </div>
-                                                            <div class="small-stat-box">
-                                                                <div>
-                                                                    <span class="perc">Total Deaths: </span>
-                                                                    <span class="perc">{{covid.TotalCovidDeaths}}</span>
-                                                                </div>
-                                                            </div>
-                                                            <div class="small-stat-box">
-                                                                <div>
-                                                                    <span class="perc">Latest Daily Deaths: </span>
-                                                                    <span class="perc">{{covid.ConfirmedCovidDeaths}}</span>
-                                                                </div>
-                                                            </div>
-                                                            <div class="small-stat-box">
-                                                                <div>
-                                                                <span class="perc">Total Hospitalised: </span>
-                                                                <span class="perc">{{covid.HospitalisedCovidCases}}</span>
-                                                                </div>
-                                                            </div>
-                                                            <div class="small-stat-box">
-                                                                <div>
-                                                                    <span class="perc">Total Treated in ICU: </span>
-                                                                    <span class="perc">{{covid.RequiringICUCovidCases}}</span>
-                                                                </div>
-                                                            </div>
-                                                            <div class="small-stat-box">
-                                                                <div>
-                                                                    <span class="perc">Community Transmission: </span>
-                                                                    <span class="perc">{{covid.CommunityTransmission}}</span>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    </section>
-
-                                                    <section class="main-content-row">
-                                                    <div class="small-columns-divider">
-                                                        <h4>Daily confirmed cases &amp; deaths</h4>
-                                                        <div class="chart-container point-container" style="width:100%;height:330px;">
-                                                            <canvas id="dailyconfirmedcases"></canvas>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="small-columns-divider">
-                                                        <h4>Total confirmed cases &amp; deaths</h4>
-                                                        <div class="chart-container point-container" style="width:100%;height:330px;">
-                                                            <canvas id="totalconfirmedcases" ></canvas>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="small-columns-divider">
-                                                        <h4>Total number of cases requiring hospitalisation &amp; ICU</h4>
-                                                        <div class="chart-container point-container" style="width:100%;height:330px;">
-                                                            <canvas id="hospitalcases"></canvas>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="small-columns-divider">
-                                                        <h4>% Known mode of transmission since 16/03/2020</h4>
-                                                        <div class="chart-container point-container" style="width:100%;height:330px;">
-                                                            <canvas id="transmissioncases"></canvas>
-                                                        </div>
-                                                    </div>
-                                                    </section>
-
-                                                <script>
-                                                Chart.defaults.global.elements.line.fill = false;
-                                                var ctx1 = document.getElementById('dailyconfirmedcases').getContext('2d');
-                                                var dailyconfirmedcases = new Chart(ctx1, {
-                                                    type: 'line',
-                                                    data: {
-                                                        labels: [ {% for item in covid_chart %}'{{item.Date}}',{% endfor %}],
-                                                        datasets: [
-                                                            {
-                                                            label: 'Daily Confirmed Cases',
-                                                            data: [{% for item in covid_chart %}'{{item.ConfirmedCovidCases}}',{% endfor %}],
-                                                            borderColor: ['rgb(212, 36, 36)'],
-                                                            pointBackgroundColor: 'rgb(212, 36, 36)',
-                                                            borderWidth: 2},
-                                                            {
-                                                            label: 'Daily Confirmed Deaths',
-                                                            data: [{% for item in covid_chart %}'{{item.ConfirmedCovidDeaths}}',{% endfor %}],
-                                                            borderColor: ['rgb(34, 43, 201)'],
-                                                            pointBackgroundColor: 'rgb(34, 43, 201)',
-                                                            borderWidth: 2}
-                                                            ]
-                                                    },
-                                                    options: {
-                                                        responsive: true,
-                                                        maintainAspectRatio: false,
-                                                        scales: {
-                                                            xAxes: [{
-                                                                ticks: {
-                                                                    maxTicksLimit: 29,
-                                                                    autoskip: true
-                                                                }
-                                                            }],
-                                                            yAxes: [{
-                                                                ticks: {
-                                                                    beginAtZero: true
-                                                                }
-                                                            }]
-                                                        }
-                                                    }
-                                                });
-
-                                                var ctx2 = document.getElementById('totalconfirmedcases').getContext('2d');
-                                                var totalconfirmedcases = new Chart(ctx2, {
-                                                    type: 'line',
-                                                    data: {
-                                                        labels: [ {% for item in covid_chart %}'{{item.Date}}',{% endfor %}],
-                                                        datasets: [{
-                                                            label: 'Total Confirmed Cases',
-                                                            data: [{% for item in covid_chart %}'{{item.TotalConfirmedCovidCases}}',{% endfor %}],
-                                                            borderColor: ['rgb(212, 36, 36)'],
-                                                            pointBackgroundColor: 'rgb(212, 36, 36)',
-                                                            borderWidth: 2},
-                                                            {
-                                                            label: 'Total Confirmed Deaths',
-                                                            data: [{% for item in covid_chart %}'{{item.TotalCovidDeaths}}',{% endfor %}],
-                                                            borderColor: ['rgb(34, 43, 201)'],
-                                                            pointBackgroundColor: 'rgb(34, 43, 201)',
-                                                            borderWidth: 2}
-                                                            ]
-                                                    },
-                                                    options: {
-                                                        responsive: true,
-                                                        maintainAspectRatio: false,
-                                                        scales: {
-                                                            xAxes: [{
-                                                                ticks: {
-                                                                    maxTicksLimit: 29,
-                                                                    autoskip: true
-                                                                }
-                                                            }],
-                                                            yAxes: [{
-                                                                ticks: {
-                                                                    beginAtZero: true
-                                                                }
-                                                            }]
-                                                        }
-                                                    }
-                                                });
-
-                                                var ctx3 = document.getElementById('hospitalcases').getContext('2d');
-                                                var hospitalcases = new Chart(ctx3, {
-                                                    type: 'line',
-                                                    data: {
-                                                        labels: [ {% for item in covid_chart|slice:"16:" %}'{{item.Date}}',{% endfor %}],
-                                                        datasets: [{
-                                                            label: 'Hospitalisation Cases',
-                                                            data: [{% for item in covid_chart|slice:"16:" %}'{{item.HospitalisedCovidCases}}',{% endfor %}],
-                                                            borderColor: ['rgb(212, 36, 36)'],
-                                                            pointBackgroundColor: 'rgb(212, 36, 36)',
-                                                            borderWidth: 2},
-                                                            {
-                                                            label: 'Requiring ICU Cases',
-                                                            data: [{% for item in covid_chart|slice:"16:" %}'{{item.RequiringICUCovidCases}}',{% endfor %}],
-                                                            borderColor: ['rgb(34, 43, 201)'],
-                                                            pointBackgroundColor: 'rgb(34, 43, 201)',
-                                                            borderWidth: 2}
-                                                            ]
-                                                    },
-                                                    options: {
-                                                        responsive: true,
-                                                        maintainAspectRatio: false,
-                                                        scales: {
-                                                            xAxes: [{
-                                                                ticks: {
-                                                                    maxTicksLimit: 29,
-                                                                    autoskip: true
-                                                                }
-                                                            }],
-                                                            yAxes: [{
-                                                                ticks: {
-                                                                    beginAtZero: true
-                                                                }
-                                                            }]
-                                                        }
-                                                    }
-                                                });
-
-                                                var ctx4 = document.getElementById('transmissioncases').getContext('2d');
-                                                var transmissioncases = new Chart(ctx4, {
-                                                    type: 'line',
-                                                    data: {
-                                                        labels: [ {% for item in covid_chart|slice:"14:" %}'{{item.Date}}',{% endfor %}],
-                                                        datasets: [{
-                                                            label: 'Community Transmission',
-                                                            data: [{% for item in covid_chart|slice:"14:" %}'{{item.CommunityTransmission}}',{% endfor %}],
-                                                            borderColor: ['rgb(212, 36, 36)'],
-                                                            pointBackgroundColor: 'rgb(212, 36, 36)',
-                                                            borderWidth: 2},
-                                                            {
-                                                            label: 'Close Contact',
-                                                            data: [{% for item in covid_chart|slice:"14:" %}'{{item.CloseContact}}',{% endfor %}],
-                                                            borderColor: ['rgb(34, 43, 201)'],
-                                                            pointBackgroundColor: 'rgb(34, 43, 201)',
-                                                            borderWidth: 2},
-                                                            {
-                                                            label: 'Travel Abroad',
-                                                            data: [{% for item in covid_chart|slice:"14:" %}'{{item.TravelAbroad}}',{% endfor %}],
-                                                            borderColor: ['rgb(52, 163, 74)'],
-                                                            pointBackgroundColor: 'rgb(52, 163, 74)',
-                                                            borderWidth: 2}
-                                                            ]
-                                                    },
-                                                    options: {
-                                                        responsive: true,
-                                                        maintainAspectRatio: false,
-                                                        scales: {
-                                                            xAxes: [{
-                                                                ticks: {
-                                                                    maxTicksLimit: 29,
-                                                                    autoskip: true
-                                                                }
-                                                            }],
-                                                            yAxes: [{
-                                                                ticks: {
-                                                                    beginAtZero: true
-                                                                }
-                                                            }]
-                                                        }
-                                                    }
-                                                });
-                                                </script>
-                                                </div>
-                                                        </div>
-                                                        <div class="modal-footer">
-                                                            <button type="button" class="btn btn-default" data-dismiss="modal">The pandemic is not over yet. Hope you stay safe!</button>
-                                                        </div>
-                                                    </div><!-- /.modal-content -->
-                                                </div><!-- /.modal -->
-                                            </div>
-<!-- ##################################### code for covid dash board  ##################-->
-
-
-
-
-
-
-
 
 </body>
 </html>
