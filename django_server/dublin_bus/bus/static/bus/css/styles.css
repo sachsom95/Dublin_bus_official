@@ -221,3 +221,7 @@ p, input, label {
   #map #infowindow-content {
     display: inline;
   }
+  #fav-route{
+    overflow: scroll;
+    height: 300px;
+  }

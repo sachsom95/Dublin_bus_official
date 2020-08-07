@@ -41,7 +41,7 @@
                 <!-- ############################## weather notice #####################-->
 
                 {% if user.is_authenticated and destinations|length > 0 %}
-                <span>Take me to:
+                <span style="margin-top: 10px; font-weight: bold;">Take me to:
                 <select id='favDestSelect'> 
                   {% for destination in destinations %}
                     <option>{{ destination.name }}</option>
@@ -54,7 +54,7 @@
               <form id="form1" class="form">
                 <div class="form-group">
 
-                  <label>From:</label>
+                  <label style="font-weight: bold;">From:</label>
                     <input id="searchTextField_start" onClick="this.select();" type="text" class="form-control" placeholder="Enter a bus stop or an address">
                     <!-- Hidden fields are for storing lat lon not for showing -->
                     <input type="hidden" id="start_lat" />
@@ -62,7 +62,7 @@
                     <input type="hidden" id="start_destination" />
                     
                
-                  <label>To:</label>
+                  <label style="font-weight: bold;">To:</label>
                     <input id="searchTextField_destination" type="text" onClick="this.select()" class="form-control" placeholder="Enter a bus stop or an address">
                     <!-- Hidden fields are for storing lat lon not for showing -->
                     <input type="hidden" id="stop_lat" />
@@ -78,7 +78,7 @@
                <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script> -->
 
                
-                  <label>Travel Date and Time:</label>
+                  <label style="font-weight: bold;">Travel Date and Time:</label>
                   <div class="input-group date" data-provide="datepicker">
                     <!-- <input type="text" class="form-control" id="datetimepicker4"> -->
                     <input type="text" class="form-control datetimepicker-input" onClick="this.select()" id="datetimepicker4" data-toggle="datetimepicker" data-target="#datetimepicker4"/>
