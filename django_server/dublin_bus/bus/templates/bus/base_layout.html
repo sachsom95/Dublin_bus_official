@@ -72,11 +72,13 @@
         {% endif %}
       
     </div>
+    {% if user.is_authenticated %}
  <div>
       <img src="{{ user.profile.image.url }}" alt="profile pic" id="user-pic" style="height:90px; width:90px; object-fit: cover;" class="img-thumbnail float-right rounded-circle">
   </div>
+  {% endif %}
   </nav>
-
+  
     <div class="wrapper">
         {% if messages %}
         {% for messages in messages %}
