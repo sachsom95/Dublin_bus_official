@@ -20,7 +20,7 @@ let dep;
 let i;
 let stepList = [];
 let text= '';
-let durationList = [];
+var durationList = [];
 let bus;
 let headsign;
 var route;
@@ -60,9 +60,11 @@ let options = {
     }
 
 function showRoutes() {
+    // remove any markers currently present first
+
     // console.log("came to shwoRoutes")
     // console.log("Markers"+markers[0].position)
-    console.log("event:3")
+    // console.log("event:3")
     var directionsService = new google.maps.DirectionsService;
 
     directionsService.route({
@@ -84,9 +86,9 @@ function showRoutes() {
     }, function(response, status) {
 
         
-        console.log("event:4")
+        // console.log("event:4")
         if (status === google.maps.DirectionsStatus.OK) {
-            console.log("event:5")
+            // console.log("event:5")
             arr = response.routes[0].legs[0].arrival_time.text;
             dep = response.routes[0].legs[0].departure_time.text;
             duration_time = response.routes[0].legs[0].steps[0].duration.text;
@@ -103,10 +105,10 @@ function showRoutes() {
             for (i=0; i < route2.steps.length; i++) {
                 stepList.push(route2.steps[i].instructions);
                 durationList.push(route2.steps[i].duration.text)
-                console.log("this is: " + stepList);
+                // console.log("this is: " + stepList);
                
             }
-            console.log("stepList:"+stepList);
+            // console.log("stepList:"+stepList);
 
             route = response['routes'][0]['legs'];
             // console.log(route)
@@ -130,7 +132,7 @@ function showRoutes() {
 
 // this Jquery will check if user has typed something new in text field and reset the map
 $(document).on('change', '#searchTextField_start, #searchTextField_destination', function () {
-    console.log(`came to change event :${markers.length}`)
+    // console.log(`came to change event :${markers.length}`)
     /*
     we check for marker length to be 2 this ensures that the reset will happen only after
     the initial start and stop was provided. we dont want the map to be reset just after
@@ -139,7 +141,7 @@ $(document).on('change', '#searchTextField_start, #searchTextField_destination',
     */
     if(markers.length ===2)
     {
-        console.log(`inside the remove marker: ${markers.length}`)
+        // console.log(`inside the remove marker: ${markers.length}`)
         removeMarker();
         directionsDisplay.setMap(null);
 

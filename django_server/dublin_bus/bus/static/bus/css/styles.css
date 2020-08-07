@@ -8,21 +8,20 @@ h3, h1{
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
-    padding-left: 50px;
-    padding-right: 50px;
+    /* padding-left: 50px;
+    padding-right: 50px; */
     
 }
 #col2 {
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
-    padding-left: 50px;
-    padding-right: 50px;    
+    /* padding-left: 50px;
+    padding-right: 50px;     */
 }
 
 p, input, label {
     font-family:Orienta, sans-serif;
-    /* padding-top: 10px; */
 }
 
 .footer-basic {
@@ -109,14 +108,23 @@ p, input, label {
     z-index: 4;
     border: 1px solid#252d5a;
     font-family: Orienta, sans-serif; 
+    overflow: scroll;
+    background-color: #fff;
+    width: inherit;
   }
-  #floating-panel2 {
-    position: absolute;
-    z-index: 5;
-    border: 1px solid#252d5a;
-    font-family: Orienta, sans-serif; 
-  }
+
   #directions {
+    position: static;
+    z-index: 5;
+    background-color: #fff;
+    border: 1px solid#252d5a;
+    font-family: Orienta, sans-serif;
+    display: none;
+    height: 33%;
+    overflow: scroll;
+
+  }
+  /* #tourism-directions {
     position: static;
     z-index: 5;
     background-color: #fff;
@@ -126,27 +134,39 @@ p, input, label {
     height: 33%;
     overflow: auto;
 
-  }
+  } */
   #test2, #test3, #test {
     font-family: Orienta, sans-serif;
   }
   .tab-content {
     position: absolute;
-    z-index: 5;
+    float: left;
   }
   #tourism-card{
-      position: auto;
+      position: relative;
       z-index: 4;
       border: 1px solid#252d5a;
       font-family: Orienta, sans-serif; 
+      height: 500px;
+      width: inherit;
+      overflow: scroll;
+      background-color: #fff;
 
   }
+
   #twitter-card{
+    position: relative;
     background-color: #fff;
     border: 1px solid#252d5a;
     height: 500px;
+    width: inherit;
     overflow: scroll;
+    z-index: 4;
     
+  }
+  #tourist-btn, #JP-btn {
+      position: relative;
+      z-index: 5;
   }
   /* SACHIN TESTING ACCOUNTS PART  @stacy this was for the 
   accounts section the html is in users/template/accounts.html just for testing*/
@@ -185,3 +205,19 @@ p, input, label {
     padding: 3px 3px;
 }
 /* End of covifd modal  */
+
+/* adding extra small button group since no longer available in bootstrap 4 */
+.btn-group-xs > .btn, .btn-xs {
+    padding: .25rem .4rem;
+    font-size: .875rem;
+    line-height: .9;
+    border-radius: .2rem;
+  }
+
+#infowindow-content {
+    display: none;
+  }
+  
+  #map #infowindow-content {
+    display: inline;
+  }

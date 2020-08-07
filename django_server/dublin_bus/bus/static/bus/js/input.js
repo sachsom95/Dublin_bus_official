@@ -11,6 +11,8 @@ $(document).ready(function () {
         maxDate: end,
         format: 'DD/MM/YY LT',
         date: moment(),
+        minDate: moment({h:5}),
+        maxDate: moment({h:24}),
         icons:{
           time:'far fa-clock',
           date: 'fa fa-calendar',
@@ -27,7 +29,6 @@ $(document).ready(function () {
 // This Jquery function should change the text on the show/hide menu button when pressed 
 $(document).ready(function(){
   $("#JP-btn").click(function(){
-   //prevents the need to double click
     $('#floating-panel').toggle();
     if($('#floating-panel').is(':visible')) {
         $(this).html('Hide Planner');
@@ -36,16 +37,29 @@ $(document).ready(function(){
     }
 });
 });
-
+$(document).ready(function(){
+  $("#tourist-btn").click(function(){
+    $('#tourism-card').toggle();
+    if($('#tourism-card').is(':visible')) {
+        $(this).html('Hide');
+    } else {
+        $(this).html('Show');
+    }
+});
+});
 
 
 // This function takes the values entered into the intputs on the index page and re prints them out. 
 function stepListBuilder() {
-  console.log("event:7")
+  // console.log("event:7")
   // console.log("came to stepListBuilder and stepList.length is"+stepList.length)
-  for (i=0; i < stepList.length; i++ && counter <= stepList.length){
-    
-    text += "<ul class='list-group'><li class='list-group-item'>" + "<span class='badge badge-primary badge-pill'>" + "Step: " + counter +  "</span>" + " " + stepList[i] + " " + "(Duration: " + durationList[i] + ")" + "</li></ul>";
+  for (i=0; i < stepList.length; i++ && counter <= stepList.length){ 
+    if (prediction_steps[i+1] == 0){
+      text += "<ul class='list-group'><li class='list-group-item'>" + "<span class='badge badge-primary badge-pill'>" + "Step: " + counter +  "</span>" + " " + stepList[i] + " " + "(Duration: " + durationList[i] + ")" + "</li></ul>";
+    }
+    else{
+      text += "<ul class='list-group'><li class='list-group-item'>" + "<span class='badge badge-primary badge-pill'>" + "Step: " + counter +  "</span>" + " " + stepList[i] + " " + "(Duration: " + prediction_steps[i+1] + ")" + "</li></ul>";
+    }
     counter += 1;
     }
     stepList = []; 
@@ -53,20 +67,29 @@ function stepListBuilder() {
 }
 
 function myFunction() {
-  console.log("event:6")
+  // console.log("event:6")
   text = ''; //start with an empty list each time
   counter = 1; //start with counter at 1 each time
   var input1 = document.getElementById("searchTextField_start").value;
+  // console.log(input1)
   var input2 = document.getElementById("searchTextField_destination").value;
+  // setTimeout(function(){pred_steps = prediction_steps},100);
+  // console.log(pred_steps)
+  // console.log(line)
   // console.log("----------stepList-----------")
   // console.log(stepList)
-  stepListBuilder();
+  // stepListBuilder();
+  setTimeout(function(){stepListBuilder()},10);
   // console.log(stepList)
-  document.getElementById("test").innerHTML = ' ';
-  document.getElementById("test1").innerHTML = " Start: " + input1; 
-  document.getElementById("test2").innerHTML = " Destination: " + input2;
-  document.getElementById("test").innerHTML = text;
 
+  // document.getElementById("test").innerHTML = ' ';
+  // document.getElementById("test1").innerHTML = " Start: " + input1; 
+  // document.getElementById("test2").innerHTML = " Destination: " + input2;
+  // document.getElementById("test").innerHTML = text;
+  setTimeout(function(){document.getElementById("test").innerHTML = ' '},20);
+  setTimeout(function(){document.getElementById("test1").innerHTML = " Start: " + input1},20);
+  setTimeout(function(){document.getElementById("test2").innerHTML = " Destination: " + input2},20);
+  setTimeout(function(){document.getElementById("test").innerHTML = text},20);
   // document.getElementById("busbus").innerHTML = "Suggested Bus: " + bus + " towards " + headsign;
 }
 
@@ -91,3 +114,24 @@ function myFunction() {
         position: 'absolute',
       });
     });
+// this is for the tourist panel 
+    //first we show the planner
+  //   $('#').click(function(){
+  //     $('#tourism-directions').show({
+  //       bottom: '-550px',
+  //       height:'500px',
+  //       position: 'absolute',
+  //     });
+  //   });
+  //   //then we can close the planner
+  //  $("#close-tourism").click(function(){
+  //     $("#tourism-directions").hide();
+  //   });
+  //   //then we can animate the planner each time!
+  //   $('#').click(function() {
+  //     $('#tourism-directions').animate({
+  //       bottom: '-550px',
+  //       height: '500px',
+  //       position: 'absolute',
+  //     });
+  //   });
