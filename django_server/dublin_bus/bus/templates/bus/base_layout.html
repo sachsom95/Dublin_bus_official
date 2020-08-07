@@ -53,13 +53,10 @@
         </li>
         
         <li class="nav-item">
-          <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+          <a class="nav-link col-md-8" href="{% url 'logout' %}">Logout</a>
         </li>
-        
-      <div>
-          <img src="{{ user.profile.image.url }}" alt="profile pic" style="height:90px; width:90px; object-fit: cover;" class="img-thumbnail float-right rounded-circle">
-        </div>
-
+  
+      </ul>
         <!-- SHOW THIS NAV IF NOT LOGGED IN -->
         {% else %}
         <li class="nav-item">
@@ -71,11 +68,15 @@
 
             <a class="nav-link" href="{% url 'register' %}">Sign Up</a>
           </li>
-
+        </ul>
         {% endif %}
-      </ul>
+      
     </div>
+ <div>
+      <img src="{{ user.profile.image.url }}" alt="profile pic" id="user-pic" style="height:90px; width:90px; object-fit: cover;" class="img-thumbnail float-right rounded-circle">
+  </div>
   </nav>
+
     <div class="wrapper">
         {% if messages %}
         {% for messages in messages %}

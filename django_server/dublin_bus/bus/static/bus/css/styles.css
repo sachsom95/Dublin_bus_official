@@ -8,16 +8,16 @@ h3, h1{
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
-    /* padding-left: 50px;
-    padding-right: 50px; */
+    padding-left: 50px;
+    padding-right: 50px;
     
 }
 #col2 {
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
-    /* padding-left: 50px;
-    padding-right: 50px;     */
+    padding-left: 50px;
+    padding-right: 50px;    
 }
 
 p, input, label {
