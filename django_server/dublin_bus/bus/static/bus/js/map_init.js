@@ -25,6 +25,7 @@ let bus;
 let headsign;
 var route;
 
+
 // default options of map which will open at dublin with zoom of 13
 let options = {
     zoom:13,

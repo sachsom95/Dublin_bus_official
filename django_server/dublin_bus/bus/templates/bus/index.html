@@ -55,7 +55,7 @@
                 <div class="form-group">
 
                   <label style="font-weight: bold;">From:</label>
-                    <input id="searchTextField_start" onClick="this.select();" type="text" class="form-control" placeholder="Enter a bus stop or an address">
+                    <input id="searchTextField_start" onClick="this.select();" type="text" class="form-control" placeholder="Enter an address">
                     <!-- Hidden fields are for storing lat lon not for showing -->
                     <input type="hidden" id="start_lat" />
                     <input type="hidden" id="start_lng" />
@@ -63,7 +63,7 @@
                     
                
                   <label style="font-weight: bold;">To:</label>
-                    <input id="searchTextField_destination" type="text" onClick="this.select()" class="form-control" placeholder="Enter a bus stop or an address">
+                    <input id="searchTextField_destination" type="text" onClick="this.select()" class="form-control" placeholder="Enter an address">
                     <!-- Hidden fields are for storing lat lon not for showing -->
                     <input type="hidden" id="stop_lat" />
                     <input type="hidden" id="stop_lng" />
@@ -136,13 +136,13 @@
             <input id="tourist-submit" type="button" onclick="Search_tourist();" class="btn btn-warning" value="Submit" style="margin-top: 10px; margin-bottom: 10px;">
             <p><b>Suggested Places:</b></p>
             <img src="{% static 'Guinness.jpeg' %}" class="img-fluid rounded" alt="Black Gates">
-            <button type="button" class="btn btn-primary" id="GSH" onclick="Guinness()" style="margin-top: 10px; margin-bottom: 10px;">Take me to the Guinness Factory</button><br>
+            <button type="button" class="btn btn-primary" id="GSH" onclick="Guinness()" value="Submit" style="margin-top: 10px; margin-bottom: 10px;">Take me to the Guinness Factory</button><br>
             <img src="{% static 'TCD.jpeg' %}" class="img-fluid rounded" alt="Trinity College">
-            <button type="button" class="btn btn-primary" id="trin_uni" onclick="Trinity()" style="margin-top: 10px; margin-bottom: 10px;">Take me to Trinity College</button><br>
+            <button type="button" class="btn btn-primary" id="trin_uni" onclick="Trinity()" value="Submit" style="margin-top: 10px; margin-bottom: 10px;">Take me to Trinity College</button><br>
             <img src="{% static 'grafton.jpg' %}" class="img-fluid rounded" alt="Grafton Street">
-            <button type="button" class="btn btn-primary" id="Grafton_st" onclick="Grafton()" style="margin-top: 10px; margin-bottom: 10px;">Take me to Grafton Street</button><br>
+            <button type="button" class="btn btn-primary" id="Grafton_st" onclick="Grafton()"  value="Submit" style="margin-top: 10px; margin-bottom: 10px;">Take me to Grafton Street</button><br>
             <img src="{% static 'NGI.jpeg' %}" class="img-fluid rounded" alt="National Gallery">
-            <button type="button" class="btn btn-primary" id="Nat_gal_Ire" onclick="NGI()" style="margin-top: 10px; margin-bottom: 10px;">Take me to the National Gallery</button><br> 
+            <button type="button" class="btn btn-primary" id="Nat_gal_Ire" onclick="NGI()"  value="Submit" style="margin-top: 10px; margin-bottom: 10px;">Take me to the National Gallery</button><br> 
  
           </div>
           </div>
