@@ -45,22 +45,27 @@ def account(request):
             request.POST, request.FILES, instance=request.user.profile
         )
         # saving if the post request is valid
-        print("user_form.is_valid():", user_form.is_valid())
-        print("account_form.is_valid():", account_form.is_valid())
+        # print("user_form.is_valid():", user_form.is_valid())
+        # print("account_form.is_valid():", account_form.is_valid())
         if user_form.is_valid() and account_form.is_valid():
-
-            print("user_form.is_valid():", user_form.is_valid())
-            print("account_form.is_valid():", account_form.is_valid())
-            print("SAVE INItiATEd")
-
+            # print("user_form.is_valid():", user_form.is_valid())
+            # print("account_form.is_valid():", account_form.is_valid())
+            # print("SAVE INItiATEd")
             user_form.save()
             # This is commit = False is untill i encrypt password
             commit = account_form.save(commit=False)
             # ---->> ENCRYPTION PROCESS STARTS HERE<<<------
-            file = open("key.key", "rb")
-            key = file.read()
-            file.close()
+            try:
+                file = open("key.key", "rb")
+                key = file.read()
+                file.close()
+            except FileNotFoundError as err:
+                raise FileNotFoundError(
+                    "File not found see if the file is in correct path should be in base dublin_bus folder",
+                    err,
+                )
 
+            # account_form.data["leap_password"] getting it directly from form as we are not saving the data
             encrypted_password = account_form.data["leap_password"].encode()
             f = Fernet(key)
             encrypted_password = f.encrypt(encrypted_password)
@@ -109,29 +114,31 @@ def account(request):
         # instantiating both the forms
         print("came to balance")
         # ----->>> DECRYPTION STARTS HERE <<<-------
-        file = open("key.key", "rb")
-        key = file.read()
-        file.close()
+        try:
+            print("came to try clause")
+            file = open("key.key", "rb")
+            key = file.read()
+            file.close()
+        except FileNotFoundError as err:
+            raise FileNotFoundError(
+                "File not found see if the file is in correct path should be in base dublin_bus folder",
+                err,
+            )
 
         x = User.objects.get(username=request.user)
         z = x.profile
         encrypted_password = z.leap_password_binary
-        print("encrypted password:", encrypted_password)
-        print(type(encrypted_password))
+        # print("encrypted password:", encrypted_password)
+        # print(type(encrypted_password))
         # encrypted_password = bytes(encrypted_password, "utf-8")
         # print(type(encrypted_password))
-
         f = Fernet(key)
         decrypted_password = f.decrypt(encrypted_password)
-        print("decrypted password:", decrypted_password)
-
+        # print("decrypted password:", decrypted_password)
         decrypted_password = decrypted_password.decode("utf-8")
-        print("decrypted password:", decrypted_password)
-
+        # print("decrypted password:", decrypted_password)
         balance = vars(get_leap(request.user.profile.leap_username, decrypted_password))
-
         z.leap_balance = balance["balance"]
-
         z.save(update_fields=["leap_balance"])
         # # We any way need to pass an instance of form
         user_form = UserUpdateForm(instance=request.user)
