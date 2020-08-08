@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Currentweather,Forecastweather,Covid
+from .models import Currentweather, Forecastweather, Covid
 
 # Register your models here.
 admin.site.register(Currentweather)

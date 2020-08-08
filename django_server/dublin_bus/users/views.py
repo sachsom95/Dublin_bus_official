@@ -52,13 +52,6 @@ def account(request):
             print("user_form.is_valid():", user_form.is_valid())
             print("account_form.is_valid():", account_form.is_valid())
             print("SAVE INItiATEd")
-            # so to get the current user I just get it from requests which seems to work or use form data like in register
-            balance = vars(
-                get_leap(
-                    request.user.profile.leap_username,
-                    request.user.profile.leap_password,
-                )
-            )
 
             user_form.save()
             # This is commit = False is untill i encrypt password
@@ -67,12 +60,20 @@ def account(request):
             file = open("key.key", "rb")
             key = file.read()
             file.close()
-            encrypted_password = request.user.profile.leap_password.encode()
+
+            encrypted_password = account_form.data["leap_password"].encode()
             f = Fernet(key)
             encrypted_password = f.encrypt(encrypted_password)
             commit.leap_password_binary = encrypted_password
             # ---->> END OF ENCRYPTION BLOCK <<<---------
             commit.save()
+            # so to get the current user I just get it from requests which seems to work or use form data like in register
+            balance = vars(
+                get_leap(
+                    request.user.profile.leap_username,
+                    f.decrypt(encrypted_password).decode("utf-8"),
+                )
+            )
             x = User.objects.get(username=request.user)
             z = x.profile
             z.leap_balance = balance["balance"]
