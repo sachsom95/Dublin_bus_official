@@ -19,6 +19,7 @@ from django.core import serializers
 
 # Cryptography if not found do pip install cryptography
 from cryptography.fernet import Fernet
+import os
 
 
 def register(request):
@@ -57,6 +58,10 @@ def account(request):
             # ---->> ENCRYPTION PROCESS STARTS HERE<<<------
             try:
                 file = open("key.key", "rb")
+                if os.stat("key.key").st_size == 0:
+                    raise Exception(
+                        "file is empty you may need to enter the key Sachin gave you"
+                    )
                 key = file.read()
                 file.close()
             except FileNotFoundError as err:
@@ -117,6 +122,10 @@ def account(request):
         try:
             print("came to try clause")
             file = open("key.key", "rb")
+            if os.stat("key.key").st_size == 0:
+                raise Exception(
+                    "file is empty you may need to enter the key Sachin gave you"
+                )
             key = file.read()
             file.close()
         except FileNotFoundError as err:
