@@ -26,6 +26,7 @@ defusedxml=0.6.0=pypi_0
 django=3.0.3=pypi_0
 django-crispy-forms=1.9.1=pypi_0
 django-crontab=0.7.1=pypi_0
+django-simpleui=2020.7=pypi_0
 dnspython=1.16.0=pypi_0
 email-validator=1.1.1=pypi_0
 entrypoints=0.3=pypi_0
