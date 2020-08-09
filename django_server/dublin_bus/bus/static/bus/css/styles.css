@@ -8,16 +8,16 @@ h3, h1{
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
-    /* padding-left: 50px;
-    padding-right: 50px; */
+    padding-left: 50px;
+    padding-right: 50px;
     
 }
 #col2 {
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
-    /* padding-left: 50px;
-    padding-right: 50px;     */
+    padding-left: 50px;
+    padding-right: 50px;    
 }
 
 p, input, label {
@@ -110,7 +110,7 @@ p, input, label {
     font-family: Orienta, sans-serif; 
     overflow: scroll;
     background-color: #fff;
-    width: inherit;
+
   }
 
   #directions {
@@ -220,4 +220,8 @@ p, input, label {
   
   #map #infowindow-content {
     display: inline;
+  }
+  #fav-route{
+    overflow: scroll;
+    height: 300px;
   }
