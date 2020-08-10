@@ -68,7 +68,7 @@
                     <input type="hidden" id="stop_lat" />
                     <input type="hidden" id="stop_lng" />
                     <input type="hidden" id="stop_destination" />
-
+<!-- Without this one, it doesn't seem like the date time picker will let you pick the time -->
                <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 
                     {% if user.is_authenticated %}
@@ -207,7 +207,7 @@ src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAyA0tKPCh7ZSeNURx9Lvn-Y2A
 <script src="{% static 'bus/js/map_auto_complete_text.js' %}"></script>
 <script src="{% static 'bus/js/create_fav_destination.js' %}"></script>
 
-<!-- these are the library calls for the date time picker -->
+<!-- these are the library calls for the date time picker NECESSARY FOR DATE TIME PICKER FUNCTIONALITY-->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.0/moment.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.0-alpha14/css/tempusdominus-bootstrap-4.min.css" />
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.0-alpha14/js/tempusdominus-bootstrap-4.min.js"></script>
