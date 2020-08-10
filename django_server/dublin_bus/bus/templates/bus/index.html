@@ -68,15 +68,13 @@
                     <input type="hidden" id="stop_lat" />
                     <input type="hidden" id="stop_lng" />
                     <input type="hidden" id="stop_destination" />
-
+<!-- Without this one, it doesn't seem like the date time picker will let you pick the time -->
                <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 
                     {% if user.is_authenticated %}
                     <input id='favDestBtn' type='button' class="btn btn-primary btn-sm" onclick="saveFavDestination()" value="Save Favourite Destination" style="margin-top: 10px; margin-bottom: 10px;"> <br>
                     <p id='FavDestResult'></p>
                     {% endif %}
-               <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script> -->
-
                
                   <label style="font-weight: bold;">Travel Date and Time:</label>
                   <div class="input-group date" data-provide="datepicker">
@@ -121,8 +119,7 @@
     <!-- This code is for the Tourism tab -->
     <div id="tourism" class="container tab-pane fade">
       <button type="button" class="btn btn-danger" data-toggle="collapse" id="tourist-btn">Hide Planner</button>
-      <div class="col-md-12">
-       <div class="card col-sm-8 collapse-show" id="tourism-card">
+       <div class="collapse-show col-md-8" id="tourism-card">
         <h3>Tourism</h3>
             <h2>Explore Dublin</h2>
             <p>Click anywhere on the map to be routed to that location.</p>
@@ -133,18 +130,17 @@
                 <input type="hidden" id="stop_lat" />
                 <input type="hidden" id="stop_lng" />
                 <input type="hidden" id="stop_destination" />
-            <input id="tourist-submit" type="button" onclick="Search_tourist();" class="btn btn-warning" value="Submit" style="margin-top: 10px; margin-bottom: 10px;">
+                
+            <input id="tourist-submit" type="button" onclick="Search_tourist();" class="btn btn-warning block" value="Submit" style="margin-top: 10px; margin-bottom: 10px;">        
             <p><b>Suggested Places:</b></p>
             <img src="{% static 'Guinness.jpeg' %}" class="img-fluid rounded" alt="Black Gates">
-            <button type="button" class="btn btn-primary" id="GSH" onclick="Guinness()" value="Submit" style="margin-top: 10px; margin-bottom: 10px;">Take me to the Guinness Factory</button><br>
+            <button type="button" class="btn btn-primary block" id="GSH" onclick="Guinness()" value="Submit" style="margin-top: 10px; margin-bottom: 10px;">Take me to the Guinness Factory</button>
             <img src="{% static 'TCD.jpeg' %}" class="img-fluid rounded" alt="Trinity College">
-            <button type="button" class="btn btn-primary" id="trin_uni" onclick="Trinity()" value="Submit" style="margin-top: 10px; margin-bottom: 10px;">Take me to Trinity College</button><br>
+            <button type="button" class="btn btn-primary block" id="trin_uni" onclick="Trinity()" value="Submit" style="margin-top: 10px; margin-bottom: 10px;">Take me to Trinity College</button>
             <img src="{% static 'grafton.jpg' %}" class="img-fluid rounded" alt="Grafton Street">
-            <button type="button" class="btn btn-primary" id="Grafton_st" onclick="Grafton()"  value="Submit" style="margin-top: 10px; margin-bottom: 10px;">Take me to Grafton Street</button><br>
+            <button type="button" class="btn btn-primary block" id="Grafton_st" onclick="Grafton()"  value="Submit" style="margin-top: 10px; margin-bottom: 10px;">Take me to Grafton Street</button>
             <img src="{% static 'NGI.jpeg' %}" class="img-fluid rounded" alt="National Gallery">
-            <button type="button" class="btn btn-primary" id="Nat_gal_Ire" onclick="NGI()"  value="Submit" style="margin-top: 10px; margin-bottom: 10px;">Take me to the National Gallery</button><br> 
- 
-          </div>
+            <button type="button" class="btn btn-primary block" id="Nat_gal_Ire" onclick="NGI()"  value="Submit" style="margin-top: 10px; margin-bottom: 10px;">Take me to the National Gallery</button>
           </div>
     </div>
     <!-- This code is for the twitter tab -->
@@ -211,6 +207,7 @@ src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAyA0tKPCh7ZSeNURx9Lvn-Y2A
 <script src="{% static 'bus/js/map_auto_complete_text.js' %}"></script>
 <script src="{% static 'bus/js/create_fav_destination.js' %}"></script>
 
+<!-- these are the library calls for the date time picker NECESSARY FOR DATE TIME PICKER FUNCTIONALITY-->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.0/moment.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.0-alpha14/css/tempusdominus-bootstrap-4.min.css" />
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.0-alpha14/js/tempusdominus-bootstrap-4.min.js"></script>
