@@ -41,13 +41,18 @@ def account(request):
     # user_form = UserUpdateForm(instance=request.user)
     # account_form = ProfileUpdateForm()
     if request.method == "POST" and "account" in request.POST:
+        print(request.POST)
         user_form = UserUpdateForm(request.POST, instance=request.user)
+        print(user_form)
         account_form = ProfileUpdateForm(
             request.POST, request.FILES, instance=request.user.profile
         )
+        print(account_form)
         # saving if the post request is valid
         # print("user_form.is_valid():", user_form.is_valid())
         # print("account_form.is_valid():", account_form.is_valid())
+        print(user_form.is_valid())
+        print(account_form.is_valid())
         if user_form.is_valid() and account_form.is_valid():
             # print("user_form.is_valid():", user_form.is_valid())
             # print("account_form.is_valid():", account_form.is_valid())
@@ -116,6 +121,7 @@ def account(request):
             return redirect("account")
     # the elif is checking which button is pressed whether we pressed the show balance or update buttons
     elif request.method == "POST" and "balance" in request.POST:
+        print(request.POST)
         # instantiating both the forms
         print("came to balance")
         # ----->>> DECRYPTION STARTS HERE <<<-------
