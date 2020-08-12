@@ -11,7 +11,7 @@ from django.contrib.auth.decorators import login_required
 
 # leap_card
 from .leap_card import get_leap
-from .models import Profile
+from .models import Profile,FavouriteDestination
 from django.contrib.auth.models import User
 
 # For passing the profile as a python serialized ob
@@ -170,6 +170,7 @@ def account(request):
         # Serialization was cool but it kinda put all unnecessary keys as well so back to basics
         # 'profile' : serializers.serialize( "python", Profile.objects.filter(user_id=request.user.id) )
         "profile": Profile.objects.get(user_id=request.user.id),
+        "fav_destinations" : FavouriteDestination.objects.filter(user=request.user)
     }
 
     return render(request, "users/account.html", context)
