@@ -3,5 +3,5 @@
 __pycache__/
 .vscode/settings.json
 db.sqlite3
-django_server/dublin_bus/key.key
+django_server/key.key
 django_server/dublin_bus/db.sqlite3
