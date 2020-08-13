@@ -11,7 +11,7 @@ from django.contrib.auth.decorators import login_required
 
 # leap_card
 from .leap_card import get_leap
-from .models import Profile
+from .models import Profile,FavouriteDestination
 from django.contrib.auth.models import User
 
 # For passing the profile as a python serialized ob
@@ -48,6 +48,8 @@ def account(request):
         # saving if the post request is valid
         # print("user_form.is_valid():", user_form.is_valid())
         # print("account_form.is_valid():", account_form.is_valid())
+        # print(user_form.is_valid())
+        # print(account_form.is_valid())
         if user_form.is_valid() and account_form.is_valid():
             # print("user_form.is_valid():", user_form.is_valid())
             # print("account_form.is_valid():", account_form.is_valid())
@@ -116,6 +118,7 @@ def account(request):
             return redirect("account")
     # the elif is checking which button is pressed whether we pressed the show balance or update buttons
     elif request.method == "POST" and "balance" in request.POST:
+        print(request.POST)
         # instantiating both the forms
         print("came to balance")
         # ----->>> DECRYPTION STARTS HERE <<<-------
@@ -170,6 +173,7 @@ def account(request):
         # Serialization was cool but it kinda put all unnecessary keys as well so back to basics
         # 'profile' : serializers.serialize( "python", Profile.objects.filter(user_id=request.user.id) )
         "profile": Profile.objects.get(user_id=request.user.id),
+        "fav_destinations" : FavouriteDestination.objects.filter(user=request.user)
     }
 
     return render(request, "users/account.html", context)
