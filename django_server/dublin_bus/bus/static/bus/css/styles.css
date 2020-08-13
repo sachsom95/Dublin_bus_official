@@ -8,16 +8,16 @@ h3, h1{
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
-    /* padding-left: 50px;
-    padding-right: 50px; */
+    padding-left: 50px;
+    padding-right: 50px;
     
 }
 #col2 {
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
-    /* padding-left: 50px;
-    padding-right: 50px;     */
+    padding-left: 50px;
+    padding-right: 50px;    
 }
 
 p, input, label {
@@ -108,12 +108,11 @@ p, input, label {
     z-index: 4;
     border: 1px solid#252d5a;
     font-family: Orienta, sans-serif; 
+    overflow: scroll;
+    background-color: #fff;
+
   }
-  #tourism {
-    position: relative;
-    z-index: 5;
-    font-family: Orienta, sans-serif; 
-  }
+
   #directions {
     position: static;
     z-index: 5;
@@ -122,10 +121,10 @@ p, input, label {
     font-family: Orienta, sans-serif;
     display: none;
     height: 33%;
-    overflow: auto;
+    overflow: scroll;
 
   }
-  #tourism-directions {
+  /* #tourism-directions {
     position: static;
     z-index: 5;
     background-color: #fff;
@@ -135,13 +134,13 @@ p, input, label {
     height: 33%;
     overflow: auto;
 
-  }
+  } */
   #test2, #test3, #test {
     font-family: Orienta, sans-serif;
   }
   .tab-content {
     position: absolute;
-    z-index: 5;
+    float: left;
   }
   #tourism-card{
       position: relative;
@@ -149,15 +148,25 @@ p, input, label {
       border: 1px solid#252d5a;
       font-family: Orienta, sans-serif; 
       height: 500px;
+      width: inherit;
       overflow: scroll;
+      background-color: #fff;
 
   }
+
   #twitter-card{
+    position: relative;
     background-color: #fff;
     border: 1px solid#252d5a;
     height: 500px;
+    width: inherit;
     overflow: scroll;
+    z-index: 4;
     
+  }
+  #tourist-btn, #JP-btn {
+      position: relative;
+      z-index: 5;
   }
   /* SACHIN TESTING ACCOUNTS PART  @stacy this was for the 
   accounts section the html is in users/template/accounts.html just for testing*/
@@ -211,4 +220,21 @@ p, input, label {
   
   #map #infowindow-content {
     display: inline;
+  }
+  #fav-route{
+    overflow: scroll;
+    height: 300px;
+  }
+  .block {
+    display: block;
+    width: 100%;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    text-align: center;
+  }
+  .center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
   }
