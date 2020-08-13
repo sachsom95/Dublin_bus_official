@@ -5,3 +5,6 @@ __pycache__/
 db.sqlite3
 django_server/dublin_bus/key.key
 django_server/dublin_bus/db.sqlite3
+**/.DS_Store
+.DS_Store
+*/.DS_Store
