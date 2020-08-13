@@ -21,7 +21,19 @@ class Profile(models.Model):
     leap_auto_topup = models.CharField(max_length=50, default="", blank=True)
 
     def __str__(self):
-        return f"{self.user.username} Profile"
+        data = (
+            f"{self.leap_username},"
+            f"{self.leap_balance},"
+            f"{self.is_registered},"
+            f"{self.leap_card_number},"
+            f"{self.leap_card_status},"
+            f"{self.leap_card_type},"
+            f"{self.leap_credit_status},"
+            f"{self.leap_expiry_date},"
+            f"{self.leap_issue_date},"
+            f"{self.leap_auto_topup}"
+        )
+        return data
 
 
 class FavouriteDestination(models.Model):
