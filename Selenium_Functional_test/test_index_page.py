@@ -22,7 +22,8 @@ print("Web access test=====================================")
 driver = webdriver.Chrome('./chromedriver')
 driver.implicitly_wait(1)
 # https://group8dublinbus.xyz/
-driver.get('http://127.0.0.1:8000') # this is used to test local file
+driver.get('https://group8dublinbus.xyz/') # this is used to test server file
+# driver.get('http://127.0.0.1:8000') # this is used to test local file
 time.sleep(3)
 driver.refresh() # add this wait because i may need to skip the splash page -- the test is on traceless mode of web browser
 print("if we can get the info of this page, it means this link works")
