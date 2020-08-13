@@ -1,7 +1,7 @@
 from django.test import TestCase
 from bus.models import Currentweather, Forecastweather, Covid
 
-
+# creating dummy model instances
 class CurrentweatherModelTest(TestCase):
     @classmethod
     def setUp(cls):
@@ -233,14 +233,4 @@ class CurrentweatherModelTest(TestCase):
         )
         print("<<<<<<<<Verifying Covid Model>>>>>>")
         self.assertEquals(expected_data, str(data))
-
-    # def test_object_name_is_last_name_comma_first_name(self):
-    #     author = Author.objects.get(id=1)
-    #     expected_object_name = f"{author.last_name}, {author.first_name}"
-    #     self.assertEquals(expected_object_name, str(author))
-
-    # def test_get_absolute_url(self):
-    #     author = Author.objects.get(id=1)
-    #     # This will also fail if the urlconf is not defined.
-    #     self.assertEquals(author.get_absolute_url(), "/catalog/author/1")
 
