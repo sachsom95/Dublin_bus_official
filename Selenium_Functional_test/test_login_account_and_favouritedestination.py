@@ -109,11 +109,11 @@ driver.find_element_by_link_text('Account').click()
 time.sleep(2)
 info_username = driver.find_element_by_class_name('account-heading').text
 info_leapcard_balancee = driver.find_element_by_xpath('/html/body/div[2]/div[1]/div/div/p').text
-# info_favourite_location = driver.find_element_by_xpath('/html/body/div[2]/div[1]/div/div/p').text
+info_favourite_location = driver.find_element_by_xpath('//*[@id="fav-route"]/div/div/div/ul/li/b').text # //*[@id="fav-route"]/div/div/div/ul/li/b/text()
 print("if below info show, it means this page works")
 print("we get your username is "+info_username)
 print("Your "+info_leapcard_balancee)
-# print("Your "+info_favourite_location)
+print("Your Favourite Location:"+info_favourite_location)
 time.sleep(3)
 
 print("=================test log out==================")
