@@ -12,25 +12,6 @@ let end_marker ;
 let destination;
 let marker;
 
-//this places a marker on the map when a user clicks on a certain location
-function placeMarker(location) {
-    marker = new google.maps.Marker({
-        position: location, 
-        map: map,
-    });
-}
-
-//This listens for when a user clicks on the map and then it passes the event to the place marker function 
-google.maps.event.addListener(map, 'click', function(event) {
-    directionsDisplay.setMap(map);
-    placeMarker(event.latLng);
-    navigator.geolocation.getCurrentPosition(function(position){
-    var here = new google.maps.LatLng(position.coords.latitude, position.coords.longitude); 
-    destination = event.latLng;
-    calcRoute(here, destination);
-});
-
-});
     
 // this function uses geolocation to find an approximate location of the user.
 function getLocation(){
