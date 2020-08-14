@@ -3,16 +3,164 @@
 
 {% block content %}
 {% load crispy_forms_tags %}
-    <div class="content-section">
+
+
+
+    <div class="col-md-12">
+      
       <div class="media">
-        <img class="rounded-circle account-img" src="{{ user.profile.image.url }}">
+        <img class="rounded-circle account-img" style="height:100px; width:100px; object-fit: cover;" src="{{ user.profile.image.url }}">
         <div class="media-body">
           <h2 class="account-heading">{{ user.username }}</h2>
-          <p class="text-secondary">{{ user.email }}</p>
-          <p class="text-secondary">Leap card Balance: {{ user.profile.leap_balance }}</p>
-
+          <!-- <p class="text-secondary">{{ user.email }}</p> -->
+          <!-- <p class="text-secondary">Leap card Balance: {{ user.profile.leap_balance }}</p> -->
+          <p class="text-secondary">Leap card Balance: {{ balance }}</p>
         </div>
       </div>
+</div>
+        <!-- new forms here -->
+        <div class="row">
+        <div class="col-md-6">
+        <form method="POST" enctype="multipart/form-data" novalidate>
+          {% csrf_token %}
+        
+            
+          <fieldset class="form-group">
+              <div class="card">
+                <h3> Account Information</h3>
+                <div class="card-body">
+              {{ user_form|crispy }}
+             
+            </div>
+          </div>
+        </div>
+       
+         
+          <div class="form-group col-md-6" id="fav-route">
+            <div class="card">
+              <h3> Favourite Routes </h3>
+              <p style="padding-left: 15px;">Your favourite routes added will be shown here.</p>
+              <div>
+              {% for destination in fav_destinations %} 
+              <div> 
+                <ul class="list-group">
+                <li class="list-group-item"><b>{{ destination.name }}<button style='float:right;' class="btn btn-danger btn-sm float-right" id= {{destination.name}} onclick='deleteFavDestination(this.id)'> Delete</button>
+                </li></b>
+                <!-- <input style='float: right;' class="btn btn-danger btn-sm" id= '{{destination.name}}' onclick='deleteFavDestination(this.id)'value="Delete"> -->
+              </ul>
+
+              </div> <br>
+              {% endfor %}
+              <p id='deletion_result'> </p>
+            </div>
+          </div>
+
+        
+        </div>
+      </div>
+        <div class="row">
+            <div class="col-md-6">
+          <div class="card">
+            <h3> Leap Card Account</h3>
+            <div class="card-body">
+          {% if not is_registered  %}
+        <div><p class="text-danger" id = "form_instruction">You have not yet registered your leap card details. Please sign in with your leap-card username and password to get your leap-card information</p></div>
+        <blockquote class="blockquote text-center">
+          <div id="terms_of_use">
+          <p class="mb-0">Terms of use</p>
+          <footer class="text-muted">In order for Leap Card Function to be used the site will store username and password in encrypted format. Accept the condition to use the feature </footer>
+        </blockquote>
+        <div class="text-center">
+        <button class="btn btn-success btn-lg" id="terms_of_use_btn" type="button" onclick="show_form()"  style="margin-top: 10px;">Accept The Terms of Use</button>
+      </div>
     </div>
+          {% else %}
+          <div><p class="text-success">Your account has been synced with your leap-card.</p></div>
+             <div><p class="text-success">Fill in your leap card account details and click 'Get Balance' to see
+              your current leap balance, or update your balance.</p></div>
+              
+          {% endif %}
+            <div id = "leap_form">
+                {{ account_form|crispy }}
+            </div>
+      </fieldset>
+      <div class = "form-group">
+        {% if is_registered  %}
+        <button class="btn btn-warning btn-lg"  type="submit" name="account" style="margin-top: 10px;">Update</button>
+        {% else %}
+        <button class="btn btn-warning btn-lg" id = "leap_form_register_btn" type="submit" name="account" style="margin-top: 10px;">Register</button>
+        {% endif %}
+
+        {% if user.profile.leap_username %}
+      <button class="btn btn-primary btn-lg" type="submit" name="balance" style="margin-top: 10px;">Get Balance</button>
+        {% endif %}
+    </div>
+    </div>
+          </div>
+       
+     
+      </form>
+   
+  </div>
+  <div class="col-md-6">
+    {% if is_registered  %}
+    <div class="card">
+      <h3> Leap Card Details</h3>
+      <div class="card-body">
+    <table class="tabl table-hover" style="overflow: hidden;">
+      <tbody>
+        <tr>
+          <th scope="row"> Card Balance: </th>
+          <td> {{ balance }} </td>
+        </tr>
+        <tr>
+          <th scope="row"> Card Number: </th>
+          <td>{{ profile.leap_card_number }}</td>
+        </tr>
+        <tr>
+          <th scope="row"> Card Status: </th>
+          <td>{{ profile.leap_card_status }}</td>
+        </tr>
+        <tr>
+          <th scope="row"> Card type: </th>
+          <td>{{ profile.leap_card_type }}</td>
+        </tr>
+        <tr>
+          <th scope="row"> Credit Status: </th>
+          <td>{{ profile.leap_credit_status }}</td>
+        </tr>
+        <tr>
+          <th scope="row"> Auto top-up: </th>
+          <td>{{ profile.leap_auto_topup  }}</td>
+        </tr>
+        <tr>
+          <th scope="row"> Expiry date:  </th>
+          <td>{{ profile.leap_expiry_date }}</td>
+        </tr>
+        <tr>
+          <th scope="row"> Card Issue Date: </th>
+          <td>{{ profile.leap_issue_date }}</td>
+        </tr>
+      </tbody>
+    
+      <!-- <div class="card-body">Card Balance: {{ balance }}</div>
+      <div class="card-body">Card Number: {{ profile.leap_card_number }}</div>
+      <div class="card-body">Card Status: {{ profile.leap_card_status }}</div>
+      <div class="card-body">Card type: {{ profile.leap_card_type }}</div>
+      <div class="card-body">Credit Status: {{ profile.leap_credit_status }}</div>
+      <div class="card-body">Auto top-up: {{ profile.leap_auto_topup }}</div>
+      <div class="card-body">Expiry date: {{ profile.leap_expiry_date }}</div>
+      <div class="card-body">Card Issue Date: {{ profile.leap_issue_date }}</div>
+    </div> -->
+    </table>
+    </div>
+    </div>
+        {% endif %} 
+      </div>
+</div>
+  <script src="{% static 'bus/js/create_fav_destination.js' %}"></script>
+  {% if not is_registered  %}
+  <script src="{% static 'bus/js/user_agreement.js' %}"></script>
+  {% endif %}
 
 {% endblock content %}

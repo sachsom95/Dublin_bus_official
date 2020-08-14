@@ -1,29 +1,38 @@
 {% load static %}
-
 <!DOCTYPE html>
 <html lang="en">
-
-
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" >
+    <meta name="description" content="Dublin Bus App by Stacy, Sachin, Ben Mcabe, Chen Peng">
+    <meta name="keywords" content="Bus,Dublin Bus, Travel, Tourism, UCD, ">
+    <meta name="author" content="Chen Peng, Ben McCabe, Stacy Wandrey, Sachin Soman">  
     <title>Dublin Bus</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">   
+    <!-- Jquery file -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- I don't think the jquery below is necessary -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
+    <!-- Bootstrap things -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <!-- style for bootstrap icons -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    <!-- CSS and Favicon -->
     <link rel="shortcut icon" type="image/png" href="{% static 'favicon.ico' %}"/>
-    <link rel="stylesheet" href="{% static 'bus/css/styles.css' %}">       
+    <link rel="stylesheet" href="{% static 'bus/css/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'bus/css/splash.css' %}">
 </head>
 
-
-
 <body>
-<nav class="navbar navbar-light navbar-expand-md d-flex navigation-clean">
+{% include 'bus/splash.html' %}
+<nav class="navbar navbar-light navbar-expand-sm d-flex navigation-clean">
     <!-- Brand -->
-    <img  src="{% static 'db-logo-2.jpeg' %}" width="50" height="50">
-    <a class="navbar-brand" href="{% url 'home' %}">Dublin Bus</a>
+    
+    <a class="navbar-brand" href="{% url 'home' %}"><img  src="{% static 'db-logo-2.jpeg' %}" width="50" height="50">Dublin Bus</a>
   
     <!-- Toggler/collapsibe Button -->
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#menu">
+    <button class="navbar-toggler float-left" type="button" data-toggle="collapse" data-target="#menu">
       <span class="navbar-toggler-icon"></span>
     </button>
   
@@ -35,35 +44,48 @@
           <a class="nav-link" href="{% url 'home' %}">Home</a>
       </li>
 
+       {% if 'bus' in request.path or request.path == '/' or request.path == '' or 'share' in request.path %}
+       <li class="nav-item">
+            <a class="nav-link" data-toggle="modal" data-target="#myModal" href="#">Covid-19 Info</a>
+       </li>
+          {% include 'bus/covid.html' %}
+        {% endif %}
+
         <!-- modify navbar based on login status -->
         
         {% if user.is_authenticated %}
+        
         <li class="nav-item">
-            <a class="nav-link" href="{% url 'account' %}">Accounts</a>
+            <a class="nav-link" href="{% url 'account' %}">Account</a>
         </li>
         
         <li class="nav-item">
-          <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+          <a class="nav-link col-md-8" href="{% url 'logout' %}">Logout</a>
         </li>
-
+  
+      </ul>
         <!-- SHOW THIS NAV IF NOT LOGGED IN -->
         {% else %}
         <li class="nav-item">
+
           <a class="nav-link" href="{% url 'login' %}">Log In</a>
         </li>
 
         <li class="nav-item">
-          <a class="nav-link" href="{% url 'register' %}">Register</a>
-      </li>
 
-        <li class="nav-item">
-          <a class="nav-link" href="{% url 'tourism' %}">Tourism</a>
-        </li>
+            <a class="nav-link" href="{% url 'register' %}">Sign Up</a>
+          </li>
+        </ul>
         {% endif %}
-
-      </ul>
+      
     </div>
+    {% if user.is_authenticated %}
+ <div>
+      <img src="{{ user.profile.image.url }}" alt="profile pic" id="user-pic" style="height:90px; width:90px; object-fit: cover;" class="img-thumbnail float-right rounded-circle">
+  </div>
+  {% endif %}
   </nav>
+  
     <div class="wrapper">
         {% if messages %}
         {% for messages in messages %}
@@ -75,20 +97,15 @@
         {% block content %}
         {% endblock %}
     </div>
-</div>
 <div class="footer-basic">
     <footer>
-        <ul class="list-inline">
-            <li class="list-inline-item"><a href="{% url 'home' %}">Home</a></li>
-            <li class="list-inline-item"><a href="#">About</a></li>
-            <li class="list-inline-item"><a href="#">Terms</a></li>
-            <li class="list-inline-item"><a href="#">Privacy Policy</a></li>
-        </ul>
+        <p class="copyright" style="font-family: Orienta, sans-serif;">
+            <a href="https://drive.google.com/uc?export=download&id=155lVxVywN6jqKysRAM1o6LuyrbkGNmSP">Click to download android application of this website</a>
+            or  scan to download the app  <img  src="{% static 'app.png' %}" width="80" height="80">
+        </p>
         <p class="copyright" style="font-family: Orienta, sans-serif;">Group 8 © 2020</p>
     </footer>
 </div>
-<!-- <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script> -->
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+
 </body>
 </html>

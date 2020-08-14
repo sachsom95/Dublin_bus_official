@@ -5,11 +5,60 @@ import pickle
 import json
 import pandas as pd 
 import os
+from .models import Currentweather, Forecastweather, Covid
+from users.models import FavouriteDestination
+from django.contrib.auth.models import User
+# from rest_framework import serializers
+from django.core import serializers
 
+# sac: share logic here
+def share(request,start_lat,start_lng,stop_lat,stop_lng,start,stop):
+    position_data ={"start_lat":start_lat,
+    "start_lng":start_lng,
+    "stop_lat":stop_lat,
+    "stop_lng":stop_lng,
+    "start":start,
+    "stop":stop}
+    weather = Currentweather.objects.all()[0]
+    # print(weather)
+    forecast_raw = Forecastweather.objects.filter(weather_description__icontains='rain')[1:9]
+    if forecast_raw:
+        forecast = forecast_raw[0]
+    else:
+        forecast = forecast_raw
+    # print(forecast)
+    cov_info = Covid.objects.all().order_by('-Date')[0]
+    # print(cov_info)
+    cov_chart = Covid.objects.all().order_by('Date')
+    # print(cov_chart)
+
+    json_position_data = json.dumps(position_data)
+    #context= {"position":json_position_data}
+    return render(request, 'bus/index.html',{"position":json_position_data,'weather_info':weather, 'forecast':forecast, 'covid':cov_info,'covid_chart':cov_chart})
+
+# end sac share logic
 
 # Create your views here.
 def home(request):
-    return render(request, 'bus/index.html')
+    weather = Currentweather.objects.all()[0]
+    # print(weather)
+    forecast_raw = Forecastweather.objects.filter(weather_description__icontains='rain')[1:9]
+    if forecast_raw:
+        forecast = forecast_raw[0]
+    else:
+        forecast = forecast_raw
+    # print(forecast)
+    cov_info = Covid.objects.all().order_by('-Date')[0]
+    # print(cov_info)
+    cov_chart = Covid.objects.all().order_by('Date')
+    # print(cov_chart)
+    if request.user.is_authenticated:
+        destinations = FavouriteDestination.objects.filter(user=request.user)
+        json_destinations = serializers.serialize('json', destinations)
+    else:
+        destinations = {}
+        json_destinations = {}
+    return render(request, 'bus/index.html',{ 'weather_info':weather, 'forecast':forecast, 'covid':cov_info,'covid_chart':cov_chart,'destinations':destinations,'json_destinations':json_destinations})
 
 def tourism(request):
     return render(request, 'bus/tourism.html')
@@ -91,9 +140,32 @@ def prediction(request):
         # if no appropriate model found use google time prediction
         time_prediction = google_pred
 
-    
-
-
     # test_data = true_df.to_json()
-    
     return JsonResponse({'prediction': time_prediction})
+
+def addFavDest(request):
+    current_user = request.user
+    dest_name,dest_lat,dest_lng = request.GET['name'],request.GET['lat'],request.GET['lng']
+    try:
+        FavouriteDestination.objects.create(user_id= current_user.id, name=dest_name, lat=dest_lat,lng=dest_lng)
+    except:
+        result = "Something went wrong, if you have already added '"+ dest_name +"' as a favourite destination please delete it using the account page before replacing it"
+    else:
+        result = dest_name + " saved as favourite destination"
+    return JsonResponse({'result': result})
+
+def delFavDest(request):
+    current_user = request.user
+    dest_name = request.GET['name']
+    print(dest_name)
+    try:
+        FavouriteDestination.objects.filter(user_id= current_user.id, name=dest_name).delete()
+    except:
+        result = "Something went wrong " + dest_name + " not removed"
+    else:
+        result = dest_name + " removed from favourite destinations"
+    return JsonResponse({'result': result})
+
+
+
+
