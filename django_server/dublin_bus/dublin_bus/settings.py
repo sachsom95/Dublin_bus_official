@@ -31,6 +31,8 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'django_crontab',
+    'simpleui',
     'django.contrib.admin',
     'users.apps.UsersConfig',
     'django.contrib.auth',
@@ -40,8 +42,18 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'bus',
     'crispy_forms',
+    'dublin_bus',
     # 'corsheaders',
 ]
+
+
+CRONJOBS = (
+    ('*/30 * * * *', 'bus.crons.currentweather'),
+    ('0 */3 * * *', 'bus.crons.forecastweather'),
+    ('0 6 * * *', 'bus.crons.covid')
+)
+
+
 
 MIDDLEWARE = [
     # 'corsheaders.middleware.CorsMiddleware',
@@ -88,17 +100,11 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    },
-# 'dublin_bus': { # this is our  db, already created
-#         'ENGINE': 'django.db.backends.mysql',
-#         'NAME': 'bus_data',
-#         'USER': 'admin',
-#         'PASSWORD': 'Group8sql',
-#         'HOST': '137.43.49.25',
-#         'PORT': '3306',
-#     }
 
-}
+    }
+
+    }
+
 
 
 # Password validation
@@ -147,5 +153,21 @@ LOGIN_REDIRECT_URL = 'home'
 # reserved for logged in user
 LOGIN_URL = 'login'
 # Media paths 
-MEDIA_ROOT=os.path.join(BASE_DIR,'media')
+MEDIA_ROOT= os.path.join(BASE_DIR,'media')
 MEDIA_URL='/media/'
+
+####### this area is for simpleui in admin page
+SIMPLEUI_LOGO = '/static/bus.ico'
+SIMPLEUI_HOME_INFO = False
+SIMPLEUI_ANALYSIS = False
+SIMPLEUI_ICON = {
+    'Bus': 'fas fa-bus',
+    'Users': 'fas fa-users',
+	'Covids': 'fas fa-lungs-virus',
+    'Currentweathers': 'fas fa-cloud-sun-rain',
+    'Forecastweathers': 'fas fa-cloud-moon-rain',
+    'Favourite destinations': 'fab fa-fort-awesome',
+    'Profiles': 'fas fa-id-badge',
+}
+SIMPLEUI_HOME_TITLE = 'Dublin Bus Project Group 8'
+SIMPLEUI_DEFAULT_THEME = 'dublinbus.css'

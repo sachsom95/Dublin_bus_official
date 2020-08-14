@@ -13,7 +13,16 @@ Global variables : map,marker,directionDisplay
 //aparenlty having global variables are bad so check for improvments
 let map
 let markers=[];
-let directionsDisplay;
+var directionsDisplay;
+let route2; 
+let arr;
+let dep;
+let i;
+let stepList = [];
+let text= '';
+var durationList = [];
+let bus;
+let headsign;
 var route;
 
 
@@ -38,6 +47,7 @@ let options = {
              position: coords,
              map: map
         })
+      
         markers.push(marker)
     }
 
@@ -50,13 +60,16 @@ let options = {
         }
     }
 
-
-
-
 function showRoutes() {
+    // remove any markers currently present first
+
+    // console.log("came to shwoRoutes")
+    // console.log("Markers"+markers[0].position)
+    // console.log("event:3")
     var directionsService = new google.maps.DirectionsService;
 
     directionsService.route({
+
         // The origin is the passed in marker's position.
         origin: markers[0].position,
         // The destination is user entered address.
@@ -72,9 +85,35 @@ function showRoutes() {
 
 
     }, function(response, status) {
+
+        
+        // console.log("event:4")
         if (status === google.maps.DirectionsStatus.OK) {
+            // console.log("event:5")
+            arr = response.routes[0].legs[0].arrival_time.text;
+            dep = response.routes[0].legs[0].departure_time.text;
+            duration_time = response.routes[0].legs[0].steps[0].duration.text;
+            route2 = response.routes[0].legs[0];
+            bus = route2.steps[1].transit.line.short_name;
+            headsign = route2.steps[1].transit.headsign;
+
+      
+
+            // console.log("your arrival time is " + arr);
+            // console.log("your departure time is " + dep);
+
+       
+            for (i=0; i < route2.steps.length; i++) {
+                stepList.push(route2.steps[i].instructions);
+                durationList.push(route2.steps[i].duration.text)
+                // console.log("this is: " + stepList);
+               
+            }
+            // console.log("stepList:"+stepList);
+
             route = response['routes'][0]['legs'];
             // console.log(route)
+            
             directionsDisplay = new google.maps.DirectionsRenderer({
                 map: map,
                 directions: response,
@@ -88,28 +127,27 @@ function showRoutes() {
             window.alert('Directions request failed due to ' + status);
         }
     });
-
-
-
+    return stepList;
 }
 
 
 // this Jquery will check if user has typed something new in text field and reset the map
 $(document).on('change', '#searchTextField_start, #searchTextField_destination', function () {
-    console.log(`came to change event :${markers.length}`)
+    // console.log(`came to change event :${markers.length}`)
     /*
     we check for marker length to be 2 this ensures that the reset will happen only after
     the initial start and stop was provided. we dont want the map to be reset just after
     entering either start or stop destination
     check for better implimentation later
     */
-    if(markers.length ===2)
+//    console.log('working')
+    if(markers.length >= 2)
+    // console.log('also working')
     {
-        console.log(`inside the remove marker: ${markers.length}`)
+        // console.log(`inside the remove marker: ${markers.length}`)
         removeMarker();
         directionsDisplay.setMap(null);
 
     }
 
 });
-
