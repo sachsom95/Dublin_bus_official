@@ -50,8 +50,22 @@ $( "#submit-btn" ).click(function(){predict()});
 
 
 function predict(){
-
     var time_prediction = 0
+    console.log(route)
+    // get an array with the number of hours and minutes chosen by the user 
+    let hour_minutes = document.getElementById("datetimepicker4").value.split(" ")[1].split(":");
+    // create a total seconds variable with the seconds that have elapsed in the day for the prediction model
+    var total_seconds = 0;
+    total_seconds += hour_minutes[0] * 60 * 60
+    total_seconds += hour_minutes[1] * 60
+    console.log(total_seconds)
+    // create a date object for prediction model
+    let date = document.getElementById("datetimepicker4").value.split(" ")[0].split("/")
+    let date_obj = new Date('20'+date[2],date[1]-1,date[0])
+    // now all I really need from the date object is the day of the week so I will extract that
+    // I actually want the string representation not an integer so I'll parse the date object as a string
+    var dow = String(date_obj).split(" ")[0]
+
     // console.log(route)
     for (var i=0; i<route[0]['steps'].length;i++){
         prediction_steps[i+1] = 0;
@@ -71,11 +85,11 @@ function predict(){
                 url: '/prediction/',
                 type: 'GET',
                 async: false,
-                data: {'line': line,'dep_lat':dep_lat,'dep_lng':dep_lng,'arr_lat':arr_lat,'arr_lng':arr_lng,'google_pred':google_pred},
+                data: {'line': line,'dep_lat':dep_lat,'dep_lng':dep_lng,'arr_lat':arr_lat,'arr_lng':arr_lng,'google_pred':google_pred,'time':total_seconds,'day':dow},
                 success: function (data) {
                         time_prediction = parseInt(time_prediction) + parseInt(data.prediction)
                         prediction_steps[i+1] = secondsToHms(data.prediction)
-                        // console.log(data.prediction)
+                        console.log(data.prediction)
                 }
         
             })
