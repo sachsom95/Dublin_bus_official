@@ -42,10 +42,12 @@ function Search_tourist(){
     geocoder.geocode({ address: address }, (results, status) => {
       if (status === "OK") {
         resultsMap.setCenter(results[0].geometry.location);
-        new google.maps.Marker({
-          map: resultsMap,
-          position: results[0].geometry.location
-        });
+        // addMarker(results[0].geometry.location)
+        here = JSON.parse(JSON.stringify(results[0].geometry.location))
+        // new google.maps.Marker({
+        //   map: resultsMap,
+        //   position: results[0].geometry.location
+        // });
       } else {
         alert("Geocode was not successful for the following reason: " + status);
       }
@@ -55,9 +57,9 @@ function Search_tourist(){
     there = results[0].geometry.location;
     // console.log(geocoder);
     navigator.geolocation.getCurrentPosition(function(position){
-        var here = new google.maps.LatLng(position.coords.latitude, position.coords.longitude); 
+        // addMarker(position.coords.latitude, position.coords.longitude); 
         directionsDisplay.setMap(map); 
-        // console.log(there);
+        console.log(there);
         calcRoute(here, there);
     })
     });
