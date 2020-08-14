@@ -19,10 +19,22 @@ def share(request,start_lat,start_lng,stop_lat,stop_lng,start,stop):
     "stop_lng":stop_lng,
     "start":start,
     "stop":stop}
+    weather = Currentweather.objects.all()[0]
+    # print(weather)
+    forecast_raw = Forecastweather.objects.filter(weather_description__icontains='rain')[1:9]
+    if forecast_raw:
+        forecast = forecast_raw[0]
+    else:
+        forecast = forecast_raw
+    # print(forecast)
+    cov_info = Covid.objects.all().order_by('-Date')[0]
+    # print(cov_info)
+    cov_chart = Covid.objects.all().order_by('Date')
+    # print(cov_chart)
 
     json_position_data = json.dumps(position_data)
-    context= {"position":json_position_data}
-    return render(request, 'bus/index.html',context)
+    #context= {"position":json_position_data}
+    return render(request, 'bus/index.html',{"position":json_position_data,'weather_info':weather, 'forecast':forecast, 'covid':cov_info,'covid_chart':cov_chart})
 
 # end sac share logic
 
