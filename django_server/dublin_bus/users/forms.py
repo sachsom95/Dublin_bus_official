@@ -62,7 +62,7 @@ class ProfileUpdateForm(forms.ModelForm):
 
         if not get_leap(username, password):
             raise forms.ValidationError(
-                "Enter Leap-card Credentials to confirm Edit of Account"
+                "Enter Leap-card Credentials to confirm Edit of Account including change of Profile Picture"
             )
 
     class Meta:
