@@ -72,6 +72,7 @@ function auto_suggest_location() {
         has_entered_stop = false;
         //    generate marker and execute route as well
         stepList = [];
+        console.log('now')
         showRoutes();
       }
     }
@@ -105,38 +106,40 @@ function auto_suggest_location() {
         //generate marker and execute route as well
         // stepList is a global variable created by stacy to hold the instructions
         stepList = [];
+        console.log('now1')
         showRoutes();
       }
     }
   );
 
-  google.maps.event.addListener(
-    auto_tourism_destination,
-    "place_changed",
-    function () {
-      stop = auto_tourism_destination.getPlace();
-      has_entered_stop = true;
-      document.getElementById("stop_lat").value = stop.geometry.location.lat();
-      document.getElementById("stop_lng").value = stop.geometry.location.lng();
-      //if condition checks if both inputs have been entered before addMarker is called
-      if (has_entered_stop && has_entered_start) {
-        //the hidden inputs called and parsed as floats
-        addMarker(
-          parseFloat(document.getElementById("start_lat").value),
-          parseFloat(document.getElementById("start_lng").value)
-        );
-        addMarker(
-          parseFloat(document.getElementById("stop_lat").value),
-          parseFloat(document.getElementById("stop_lng").value)
-        );
-        //the two booleans i use to see if both the inputs have been entered after sucessfully enter bring it back to false
-        has_entered_start = false;
-        has_entered_stop = false;
-        //generate marker and execute route as well
-        showRoutes();
-      }
-    }
-  );
+  // google.maps.event.addListener(
+  //   auto_tourism_destination,
+  //   "place_changed",
+  //   function () {
+  //     stop = auto_tourism_destination.getPlace();
+  //     has_entered_stop = true;
+  //     document.getElementById("stop_lat").value = stop.geometry.location.lat();
+  //     document.getElementById("stop_lng").value = stop.geometry.location.lng();
+  //     //if condition checks if both inputs have been entered before addMarker is called
+  //     if (has_entered_stop && has_entered_start) {
+  //       //the hidden inputs called and parsed as floats
+  //       addMarker(
+  //         parseFloat(document.getElementById("start_lat").value),
+  //         parseFloat(document.getElementById("start_lng").value)
+  //       );
+  //       addMarker(
+  //         parseFloat(document.getElementById("stop_lat").value),
+  //         parseFloat(document.getElementById("stop_lng").value)
+  //       );
+  //       //the two booleans i use to see if both the inputs have been entered after sucessfully enter bring it back to false
+  //       has_entered_start = false;
+  //       has_entered_stop = false;
+  //       //generate marker and execute route as well
+  //       console.log('now2')
+  //       showRoutes();
+  //     }
+  //   }
+  // );
 }
 //call the auto_suggest_location function when the full DOM has been loaded
 google.maps.event.addDomListener(window, "load", auto_suggest_location);
