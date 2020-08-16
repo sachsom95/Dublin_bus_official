@@ -13,7 +13,7 @@ Global variables : map,marker,directionDisplay
 //aparenlty having global variables are bad so check for improvments
 let map
 let markers=[];
-let directionsDisplay;
+var directionsDisplay;
 let route2; 
 let arr;
 let dep;
@@ -140,7 +140,9 @@ $(document).on('change', '#searchTextField_start, #searchTextField_destination',
     entering either start or stop destination
     check for better implimentation later
     */
-    if(markers.length ===2)
+//    console.log('working')
+    if(markers.length >= 2)
+    // console.log('also working')
     {
         // console.log(`inside the remove marker: ${markers.length}`)
         removeMarker();
