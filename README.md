@@ -35,6 +35,12 @@ No need to access the app via browser use the APK
 
 ### Get latest tweets from dublin bus and covid updates right from the app.
 
+### APP architecture
+![Architecture](https://github.com/sachsom95/Dublin_bus_official/blob/master/Dublin_bus_architecture.png)
+
+
+
+
 ### How to run app locally
 
 Here are the steps to properly run the application:<br>
