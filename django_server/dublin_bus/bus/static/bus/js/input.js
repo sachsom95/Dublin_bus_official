@@ -122,7 +122,7 @@ function myFunction() {
   }, 20);
   setTimeout(function () {
     document.getElementById("test").innerHTML = text;
-  }, 20);
+  }, 40);
   // document.getElementById("busbus").innerHTML = "Suggested Bus: " + bus + " towards " + headsign;
 }
 
