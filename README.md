@@ -6,12 +6,9 @@ NOTE : FOR ALL THINGS TECH LOOK AT OUR
 [Wiki!!](https://github.com/sachsom95/Dublin_bus_official/wiki)
 <br>Test coverage : 95%
 
-
-
 ### This is Dublin Buses a webapp Every Dubliners crave for. 
 Get the best bus journey predictions modeled on 2018 Dublin bus dataset.
 ![Dublin Bus](https://github.com/sachsom95/Dublin_bus_official/blob/master/readme_content/intro.gif)
-
 
 ### Have leap card and dont know the balance?
 Link leap card to the app and check your balance and bus all in same place bonus: cool avatar included :)
@@ -23,7 +20,7 @@ Use the share my trip feature and send the link to them with everything pre-writ
 
 ### Keep you favourite locations saved.
 No need to search guineess store house all the time.
-![Sharable link](https://github.com/sachsom95/Dublin_bus_official/blob/master/readme_content/sharable_link.gif)
+![Sharable link](https://github.com/sachsom95/Dublin_bus_official/blob/master/readme_content/fav.gif)
 
 ### Popular tourist destinations all in single click of button.
 Thats right no need to search for Guninness store house.
