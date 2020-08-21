@@ -142,6 +142,10 @@ def prediction(request):
         # if no appropriate model found use google time prediction
         time_prediction = google_pred
 
+    if float(time_prediction) < 0:
+        time_prediction *= -1
+
+    # print(time_prediction)
     # test_data = true_df.to_json()
     return JsonResponse({'prediction': time_prediction})
 

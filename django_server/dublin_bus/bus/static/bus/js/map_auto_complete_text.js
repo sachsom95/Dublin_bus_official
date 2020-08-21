@@ -72,7 +72,7 @@ function auto_suggest_location() {
         has_entered_stop = false;
         //    generate marker and execute route as well
         stepList = [];
-        console.log('now')
+        // console.log('now')
         showRoutes();
       }
     }
@@ -106,7 +106,7 @@ function auto_suggest_location() {
         //generate marker and execute route as well
         // stepList is a global variable created by stacy to hold the instructions
         stepList = [];
-        console.log('now1')
+        // console.log('now1')
         showRoutes();
       }
     }

@@ -51,14 +51,14 @@ $( "#submit-btn" ).click(function(){predict()});
 
 function predict(){
     var time_prediction = 0
-    console.log(route)
+    // console.log(route)
     // get an array with the number of hours and minutes chosen by the user 
     let hour_minutes = document.getElementById("datetimepicker4").value.split(" ")[1].split(":");
     // create a total seconds variable with the seconds that have elapsed in the day for the prediction model
     var total_seconds = 0;
     total_seconds += hour_minutes[0] * 60 * 60
     total_seconds += hour_minutes[1] * 60
-    console.log(total_seconds)
+    // console.log(total_seconds)
     // create a date object for prediction model
     let date = document.getElementById("datetimepicker4").value.split(" ")[0].split("/")
     let date_obj = new Date('20'+date[2],date[1]-1,date[0])
@@ -89,7 +89,7 @@ function predict(){
                 success: function (data) {
                         time_prediction = parseInt(time_prediction) + parseInt(data.prediction)
                         prediction_steps[i+1] = secondsToHms(data.prediction)
-                        console.log(data.prediction)
+                        // console.log(data.prediction)
                 }
         
             })
