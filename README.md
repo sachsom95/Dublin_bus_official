@@ -8,7 +8,9 @@ NOTE : FOR ALL THINGS TECH LOOK AT OUR
 
 ### This is Dublin Buses a webapp Every Dubliners crave for. 
 Get the best bus journey predictions modeled on 2018 Dublin bus dataset.
-![Dublin Bus](https://github.com/sachsom95/Dublin_bus_official/blob/master/readme_content/intro.gif)
+<p align="center">
+  <img width="600" height="400"src="https://github.com/sachsom95/Dublin_bus_official/blob/master/readme_content/intro.gif">
+</p>
 
 ### Have leap card and dont know the balance?
 Link leap card to the app and check your balance and bus all in same place bonus: cool avatar included :)
