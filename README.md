@@ -14,23 +14,38 @@ Get the best bus journey predictions modeled on 2018 Dublin bus dataset.
 
 ### Have leap card and dont know the balance?
 Link leap card to the app and check your balance and bus all in same place bonus: cool avatar included :)
-![Leap card](https://github.com/sachsom95/Dublin_bus_official/blob/master/readme_content/login.gif)
+<p align="center">
+  <img width="600" height="400"src="https://github.com/sachsom95/Dublin_bus_official/blob/master/readme_content/login.gif">
+</p>
+
 
 ### wanna share bus route from "Dún Laoghaire" to "clonskeagh" to your just arrived foreign friend who doesn't know how to type Irish places.
 Use the share my trip feature and send the link to them with everything pre-written yaaay!.
-![Sharable link](https://github.com/sachsom95/Dublin_bus_official/blob/master/readme_content/sharable_link.gif)
+<p align="center">
+  <img width="600" height="400"src="https://github.com/sachsom95/Dublin_bus_official/blob/master/readme_content/sharable_link.gif">
+</p>
+
 
 ### Keep you favourite locations saved.
 No need to search guineess store house all the time.
-![Sharable link](https://github.com/sachsom95/Dublin_bus_official/blob/master/readme_content/fav.gif)
+<p align="center">
+  <img width="600" height="400"src="https://github.com/sachsom95/Dublin_bus_official/blob/master/readme_content/fav.gif">
+</p>
+
 
 ### Popular tourist destinations all in single click of button.
 Thats right no need to search for Guninness store house.
-![More stuff](https://github.com/sachsom95/Dublin_bus_official/blob/master/readme_content/tourism.gif)
+<p align="center">
+  <img width="600" height="400"src="https://github.com/sachsom95/Dublin_bus_official/blob/master/readme_content/tourism.gif">
+</p>
+
 
 ### Get the latest Covid data and decide if you want to use the bus.
 Hope this feature doesn't last long.
-![More stuff](https://github.com/sachsom95/Dublin_bus_official/blob/master/readme_content/covid.gif)
+<p align="center">
+  <img width="600" height="400"src="https://github.com/sachsom95/Dublin_bus_official/blob/master/readme_content/covid.gif">
+</p>
+
 
 ### Android webview app.
 No need to access the app via browser use the APK
