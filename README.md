@@ -47,7 +47,7 @@ Hope this feature doesn't last long.
 </p>
 
 ### Are you an Admin? no worries fam We made a page for you.
-Hope remove those banned accounts with an iron fist!!!!.
+Remove accounts with an iron fist!!!!.
 <p align="center">
   <img width="600" height="400"src="https://user-images.githubusercontent.com/55349036/102928453-9de5e200-4490-11eb-8189-281d8d6b68f9.gif">
 </p>
