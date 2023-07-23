@@ -85,7 +85,7 @@ pyasn1-modules==0.2.8
 pycodestyle==2.6.0
 pycparser==2.19
 pyflakes==2.2.0
-Pygments==2.5.2
+Pygments==2.15.0
 pyleapcard==0.1.8
 pylint==2.5.3
 pylint-django==2.0.15
